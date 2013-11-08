@@ -2,13 +2,13 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `proyecto9` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `proyecto9` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`User`
+-- Table `proyecto9`.`User`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`User` (
+CREATE TABLE IF NOT EXISTS `proyecto9`.`User` (
   `idUser` INT NOT NULL,
   `username` VARCHAR(16) NOT NULL,
   `password` VARCHAR(32) NOT NULL,
@@ -20,9 +20,9 @@ CREATE TABLE IF NOT EXISTS `mydb`.`User` (
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Tesoro`
+-- Table `proyecto9`.`Tesoro`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Tesoro` (
+CREATE TABLE IF NOT EXISTS `proyecto9`.`Tesoro` (
   `idTesoro` INT NOT NULL,
   `nombre` VARCHAR(45) NOT NULL,
   `ciudad` VARCHAR(45) NOT NULL,
@@ -37,16 +37,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Tesoro` (
   INDEX `fk_Tesoro_user1_idx` (`user_idUser` ASC),
   CONSTRAINT `fk_Tesoro_user1`
     FOREIGN KEY (`user_idUser`)
-    REFERENCES `mydb`.`User` (`idUser`)
+    REFERENCES `proyecto9`.`User` (`idUser`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Log`
+-- Table `proyecto9`.`Log`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Log` (
+CREATE TABLE IF NOT EXISTS `proyecto9`.`Log` (
   `idLog` INT NOT NULL,
   `comentario` VARCHAR(255) NULL,
   `tipo` ENUM('encontrado','noEncontrado','problemas') NOT NULL,
@@ -57,12 +57,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Log` (
   INDEX `fk_Log_Tesoro1_idx` (`Tesoro_idTesoro` ASC),
   CONSTRAINT `fk_Log_user1`
     FOREIGN KEY (`user_idUser`)
-    REFERENCES `mydb`.`User` (`idUser`)
+    REFERENCES `proyecto9`.`User` (`idUser`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Log_Tesoro1`
     FOREIGN KEY (`Tesoro_idTesoro`)
-    REFERENCES `mydb`.`Tesoro` (`idTesoro`)
+    REFERENCES `proyecto9`.`Tesoro` (`idTesoro`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
