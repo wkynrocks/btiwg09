@@ -26,21 +26,21 @@
             <isset property="conf.dir"/>
         </condition>
     </target>
-    <target name="wsimport-client-TesoroService" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/TesoroService"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/TesoroService" destdir="${build.generated.dir}/jax-wsCache/TesoroService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/TesoroService/wsdl/localhost_8080/Proyecto9-war/TesoroService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/Proyecto9-war/TesoroService?WSDL" xnocompile="true" xendorsed="true" package="service.tesoro">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/TesoroService/wsdl/localhost_8080/Proyecto9-war/TesoroService.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/TesoroService"/>
+    <target name="wsimport-client-LogService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/LogService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/LogService" destdir="${build.generated.dir}/jax-wsCache/LogService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/LogService/wsdl/localhost_8080/Proyecto9-war/LogService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/Proyecto9-war/LogService?WSDL" xnocompile="true" xendorsed="true" package="service.log">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/LogService/wsdl/localhost_8080/Proyecto9-war/LogService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/LogService"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/TesoroService">
+            <fileset dir="${build.generated.dir}/jax-wsCache/LogService">
                 <include name="**/*.java"/>
             </fileset>
         </copy>
     </target>
-    <target name="wsimport-client-clean-TesoroService" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/service/tesoro"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/TesoroService"/>
+    <target name="wsimport-client-clean-LogService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/service/log"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/LogService"/>
     </target>
     <target name="wsimport-client-UserService" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/UserService"/>
@@ -58,21 +58,21 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/service/user"/>
         <delete dir="${build.generated.dir}/jax-wsCache/UserService"/>
     </target>
-    <target name="wsimport-client-LogService" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/LogService"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/LogService" destdir="${build.generated.dir}/jax-wsCache/LogService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/LogService/wsdl/localhost_8080/Proyecto9-war/LogService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/Proyecto9-war/LogService?WSDL" xnocompile="true" xendorsed="true" package="service.log">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/LogService/wsdl/localhost_8080/Proyecto9-war/LogService.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/LogService"/>
+    <target name="wsimport-client-TesoroService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/TesoroService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/TesoroService" destdir="${build.generated.dir}/jax-wsCache/TesoroService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/TesoroService/wsdl/localhost_8080/Proyecto9-war/TesoroService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/Proyecto9-war/TesoroService?WSDL" xnocompile="true" xendorsed="true" package="service.tesoro">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/TesoroService/wsdl/localhost_8080/Proyecto9-war/TesoroService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/TesoroService"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/LogService">
+            <fileset dir="${build.generated.dir}/jax-wsCache/TesoroService">
                 <include name="**/*.java"/>
             </fileset>
         </copy>
     </target>
-    <target name="wsimport-client-clean-LogService" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/service/log"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/LogService"/>
+    <target name="wsimport-client-clean-TesoroService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/service/tesoro"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/TesoroService"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-TesoroService, wsimport-client-UserService, wsimport-client-LogService"/>
+    <target name="wsimport-client-generate" depends="wsimport-client-LogService, wsimport-client-UserService, wsimport-client-TesoroService"/>
 </project>

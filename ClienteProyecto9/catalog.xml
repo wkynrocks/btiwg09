@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
-    <system systemId="http://localhost:8080/Proyecto9-war/TesoroService?WSDL" uri="src/conf/xml-resources/web-service-references/TesoroService/wsdl/localhost_8080/Proyecto9-war/TesoroService.wsdl"/>
-    <system systemId="http://localhost:8080/Proyecto9-war/TesoroService?xsd=1" uri="src/conf/xml-resources/web-service-references/TesoroService/wsdl/localhost_8080/Proyecto9-war/TesoroService.xsd_1.xsd"/>
-    <system systemId="http://localhost:8080/Proyecto9-war/UserService?WSDL" uri="src/conf/xml-resources/web-service-references/UserService/wsdl/localhost_8080/Proyecto9-war/UserService.wsdl"/>
-    <system systemId="http://localhost:8080/Proyecto9-war/UserService?xsd=1" uri="src/conf/xml-resources/web-service-references/UserService/wsdl/localhost_8080/Proyecto9-war/UserService.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/Proyecto9-war/LogService?WSDL" uri="src/conf/xml-resources/web-service-references/LogService/wsdl/localhost_8080/Proyecto9-war/LogService.wsdl"/>
     <system systemId="http://localhost:8080/Proyecto9-war/LogService?xsd=1" uri="src/conf/xml-resources/web-service-references/LogService/wsdl/localhost_8080/Proyecto9-war/LogService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/Proyecto9-war/UserService?WSDL" uri="src/conf/xml-resources/web-service-references/UserService/wsdl/localhost_8080/Proyecto9-war/UserService.wsdl"/>
+    <system systemId="http://localhost:8080/Proyecto9-war/UserService?xsd=1" uri="src/conf/xml-resources/web-service-references/UserService/wsdl/localhost_8080/Proyecto9-war/UserService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/Proyecto9-war/TesoroService?WSDL" uri="src/conf/xml-resources/web-service-references/TesoroService/wsdl/localhost_8080/Proyecto9-war/TesoroService.wsdl"/>
+    <system systemId="http://localhost:8080/Proyecto9-war/TesoroService?xsd=1" uri="src/conf/xml-resources/web-service-references/TesoroService/wsdl/localhost_8080/Proyecto9-war/TesoroService.xsd_1.xsd"/>
 </catalog>

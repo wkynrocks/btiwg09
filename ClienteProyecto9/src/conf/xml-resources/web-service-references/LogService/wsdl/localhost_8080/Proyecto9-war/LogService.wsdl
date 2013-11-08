@@ -4,23 +4,14 @@
 <xsd:import namespace="http://service/" schemaLocation="http://localhost:8080/Proyecto9-war/LogService?xsd=1"/>
 </xsd:schema>
 </types>
+<message name="createLog">
+<part name="parameters" element="tns:createLog"/>
+</message>
 <message name="editLog">
 <part name="parameters" element="tns:editLog"/>
 </message>
-<message name="findRangeLog">
-<part name="parameters" element="tns:findRangeLog"/>
-</message>
-<message name="findRangeLogResponse">
-<part name="parameters" element="tns:findRangeLogResponse"/>
-</message>
 <message name="removeLog">
 <part name="parameters" element="tns:removeLog"/>
-</message>
-<message name="findAllLog">
-<part name="parameters" element="tns:findAllLog"/>
-</message>
-<message name="findAllLogResponse">
-<part name="parameters" element="tns:findAllLogResponse"/>
 </message>
 <message name="findLog">
 <part name="parameters" element="tns:findLog"/>
@@ -28,73 +19,70 @@
 <message name="findLogResponse">
 <part name="parameters" element="tns:findLogResponse"/>
 </message>
+<message name="findAllLog">
+<part name="parameters" element="tns:findAllLog"/>
+</message>
+<message name="findAllLogResponse">
+<part name="parameters" element="tns:findAllLogResponse"/>
+</message>
+<message name="findRangeLog">
+<part name="parameters" element="tns:findRangeLog"/>
+</message>
+<message name="findRangeLogResponse">
+<part name="parameters" element="tns:findRangeLogResponse"/>
+</message>
 <message name="countLog">
 <part name="parameters" element="tns:countLog"/>
 </message>
 <message name="countLogResponse">
 <part name="parameters" element="tns:countLogResponse"/>
 </message>
-<message name="createLog">
-<part name="parameters" element="tns:createLog"/>
-</message>
 <portType name="LogService">
+<operation name="createLog">
+<input wsam:Action="http://service/LogService/createLog" message="tns:createLog"/>
+</operation>
 <operation name="editLog">
 <input wsam:Action="http://service/LogService/editLog" message="tns:editLog"/>
 </operation>
-<operation name="findRangeLog">
-<input wsam:Action="http://service/LogService/findRangeLogRequest" message="tns:findRangeLog"/>
-<output wsam:Action="http://service/LogService/findRangeLogResponse" message="tns:findRangeLogResponse"/>
-</operation>
 <operation name="removeLog">
 <input wsam:Action="http://service/LogService/removeLog" message="tns:removeLog"/>
-</operation>
-<operation name="findAllLog">
-<input wsam:Action="http://service/LogService/findAllLogRequest" message="tns:findAllLog"/>
-<output wsam:Action="http://service/LogService/findAllLogResponse" message="tns:findAllLogResponse"/>
 </operation>
 <operation name="findLog">
 <input wsam:Action="http://service/LogService/findLogRequest" message="tns:findLog"/>
 <output wsam:Action="http://service/LogService/findLogResponse" message="tns:findLogResponse"/>
 </operation>
+<operation name="findAllLog">
+<input wsam:Action="http://service/LogService/findAllLogRequest" message="tns:findAllLog"/>
+<output wsam:Action="http://service/LogService/findAllLogResponse" message="tns:findAllLogResponse"/>
+</operation>
+<operation name="findRangeLog">
+<input wsam:Action="http://service/LogService/findRangeLogRequest" message="tns:findRangeLog"/>
+<output wsam:Action="http://service/LogService/findRangeLogResponse" message="tns:findRangeLogResponse"/>
+</operation>
 <operation name="countLog">
 <input wsam:Action="http://service/LogService/countLogRequest" message="tns:countLog"/>
 <output wsam:Action="http://service/LogService/countLogResponse" message="tns:countLogResponse"/>
 </operation>
-<operation name="createLog">
-<input wsam:Action="http://service/LogService/createLog" message="tns:createLog"/>
-</operation>
 </portType>
 <binding name="LogServicePortBinding" type="tns:LogService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<operation name="createLog">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+</operation>
 <operation name="editLog">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
 </input>
 </operation>
-<operation name="findRangeLog">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
 <operation name="removeLog">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
 </input>
-</operation>
-<operation name="findAllLog">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
 </operation>
 <operation name="findLog">
 <soap:operation soapAction=""/>
@@ -105,7 +93,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="countLog">
+<operation name="findAllLog">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -114,11 +102,23 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="createLog">
+<operation name="findRangeLog">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
 </input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="countLog">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
 </operation>
 </binding>
 <service name="LogService">

@@ -7,6 +7,18 @@
 <message name="editTesoro">
 <part name="parameters" element="tns:editTesoro"/>
 </message>
+<message name="findAllTesoro">
+<part name="parameters" element="tns:findAllTesoro"/>
+</message>
+<message name="findAllTesoroResponse">
+<part name="parameters" element="tns:findAllTesoroResponse"/>
+</message>
+<message name="countTesoro">
+<part name="parameters" element="tns:countTesoro"/>
+</message>
+<message name="countTesoroResponse">
+<part name="parameters" element="tns:countTesoroResponse"/>
+</message>
 <message name="removeTesoro">
 <part name="parameters" element="tns:removeTesoro"/>
 </message>
@@ -16,11 +28,8 @@
 <message name="findTesoroResponse">
 <part name="parameters" element="tns:findTesoroResponse"/>
 </message>
-<message name="findAllTesoro">
-<part name="parameters" element="tns:findAllTesoro"/>
-</message>
-<message name="findAllTesoroResponse">
-<part name="parameters" element="tns:findAllTesoroResponse"/>
+<message name="createTesoro">
+<part name="parameters" element="tns:createTesoro"/>
 </message>
 <message name="findRangeTesoro">
 <part name="parameters" element="tns:findRangeTesoro"/>
@@ -28,18 +37,17 @@
 <message name="findRangeTesoroResponse">
 <part name="parameters" element="tns:findRangeTesoroResponse"/>
 </message>
-<message name="countTesoro">
-<part name="parameters" element="tns:countTesoro"/>
-</message>
-<message name="countTesoroResponse">
-<part name="parameters" element="tns:countTesoroResponse"/>
-</message>
-<message name="createTesoro">
-<part name="parameters" element="tns:createTesoro"/>
-</message>
 <portType name="TesoroService">
 <operation name="editTesoro">
 <input wsam:Action="http://service/TesoroService/editTesoro" message="tns:editTesoro"/>
+</operation>
+<operation name="findAllTesoro">
+<input wsam:Action="http://service/TesoroService/findAllTesoroRequest" message="tns:findAllTesoro"/>
+<output wsam:Action="http://service/TesoroService/findAllTesoroResponse" message="tns:findAllTesoroResponse"/>
+</operation>
+<operation name="countTesoro">
+<input wsam:Action="http://service/TesoroService/countTesoroRequest" message="tns:countTesoro"/>
+<output wsam:Action="http://service/TesoroService/countTesoroResponse" message="tns:countTesoroResponse"/>
 </operation>
 <operation name="removeTesoro">
 <input wsam:Action="http://service/TesoroService/removeTesoro" message="tns:removeTesoro"/>
@@ -48,20 +56,12 @@
 <input wsam:Action="http://service/TesoroService/findTesoroRequest" message="tns:findTesoro"/>
 <output wsam:Action="http://service/TesoroService/findTesoroResponse" message="tns:findTesoroResponse"/>
 </operation>
-<operation name="findAllTesoro">
-<input wsam:Action="http://service/TesoroService/findAllTesoroRequest" message="tns:findAllTesoro"/>
-<output wsam:Action="http://service/TesoroService/findAllTesoroResponse" message="tns:findAllTesoroResponse"/>
+<operation name="createTesoro">
+<input wsam:Action="http://service/TesoroService/createTesoro" message="tns:createTesoro"/>
 </operation>
 <operation name="findRangeTesoro">
 <input wsam:Action="http://service/TesoroService/findRangeTesoroRequest" message="tns:findRangeTesoro"/>
 <output wsam:Action="http://service/TesoroService/findRangeTesoroResponse" message="tns:findRangeTesoroResponse"/>
-</operation>
-<operation name="countTesoro">
-<input wsam:Action="http://service/TesoroService/countTesoroRequest" message="tns:countTesoro"/>
-<output wsam:Action="http://service/TesoroService/countTesoroResponse" message="tns:countTesoroResponse"/>
-</operation>
-<operation name="createTesoro">
-<input wsam:Action="http://service/TesoroService/createTesoro" message="tns:createTesoro"/>
 </operation>
 </portType>
 <binding name="TesoroServicePortBinding" type="tns:TesoroService">
@@ -72,31 +72,7 @@
 <soap:body use="literal"/>
 </input>
 </operation>
-<operation name="removeTesoro">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-</operation>
-<operation name="findTesoro">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
 <operation name="findAllTesoro">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="findRangeTesoro">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -114,11 +90,35 @@
 <soap:body use="literal"/>
 </output>
 </operation>
+<operation name="removeTesoro">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+</operation>
+<operation name="findTesoro">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="createTesoro">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
 </input>
+</operation>
+<operation name="findRangeTesoro">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
 </operation>
 </binding>
 <service name="TesoroService">
