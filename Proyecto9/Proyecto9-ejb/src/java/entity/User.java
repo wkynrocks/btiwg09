@@ -13,6 +13,9 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -64,8 +67,13 @@ public class User implements Serializable {
     @Size(min = 1, max = 13)
     @Column(name = "rol")
     private String rol;
+    @JoinTable(name = "Usuario_Tesoro_Map", joinColumns = {
+        @JoinColumn(name = "user_idUser", referencedColumnName = "idUser")}, inverseJoinColumns = {
+        @JoinColumn(name = "Tesoro_idTesoro", referencedColumnName = "idTesoro")})
+    @ManyToMany
+    private List<Tesoro> buscarTesoroList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "useridUser")
-    private List<Tesoro> tesoroList;
+    private List<Tesoro> crearTesoroList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "useridUser")
     private List<Log> logList;
 
@@ -125,12 +133,21 @@ public class User implements Serializable {
     }
 
     @XmlTransient
-    public List<Tesoro> getTesoroList() {
-        return tesoroList;
+    public List<Tesoro> getBuscarTesoroList() {
+        return buscarTesoroList;
     }
 
-    public void setTesoroList(List<Tesoro> tesoroList) {
-        this.tesoroList = tesoroList;
+    public void setBuscarTesoroList(List<Tesoro> buscarTesoroList) {
+        this.buscarTesoroList = buscarTesoroList;
+    }
+
+    @XmlTransient
+    public List<Tesoro> getCrearTesoroList() {
+        return crearTesoroList;
+    }
+
+    public void setCrearTesoroList(List<Tesoro> crearTesoroList) {
+        this.crearTesoroList = crearTesoroList;
     }
 
     @XmlTransient

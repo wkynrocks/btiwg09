@@ -47,12 +47,12 @@ public class Log implements Serializable {
     @Size(min = 1, max = 12)
     @Column(name = "tipo")
     private String tipo;
-    @JoinColumn(name = "Tesoro_idTesoro", referencedColumnName = "idTesoro")
-    @ManyToOne(optional = false)
-    private Tesoro tesoroidTesoro;
     @JoinColumn(name = "user_idUser", referencedColumnName = "idUser")
     @ManyToOne(optional = false)
     private User useridUser;
+    @JoinColumn(name = "Tesoro_idTesoro", referencedColumnName = "idTesoro")
+    @ManyToOne(optional = false)
+    private Tesoro tesoroidTesoro;
 
     public Log() {
     }
@@ -90,20 +90,20 @@ public class Log implements Serializable {
         this.tipo = tipo;
     }
 
-    public Tesoro getTesoroidTesoro() {
-        return tesoroidTesoro;
-    }
-
-    public void setTesoroidTesoro(Tesoro tesoroidTesoro) {
-        this.tesoroidTesoro = tesoroidTesoro;
-    }
-
     public User getUseridUser() {
         return useridUser;
     }
 
     public void setUseridUser(User useridUser) {
         this.useridUser = useridUser;
+    }
+
+    public Tesoro getTesoroidTesoro() {
+        return tesoroidTesoro;
+    }
+
+    public void setTesoroidTesoro(Tesoro tesoroidTesoro) {
+        this.tesoroidTesoro = tesoroidTesoro;
     }
 
     @Override

@@ -14,6 +14,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -76,6 +77,8 @@ public class Tesoro implements Serializable {
     @NotNull
     @Column(name = "habilitado")
     private boolean habilitado;
+    @ManyToMany(mappedBy = "buscarTesoroList")
+    private List<User> userList;
     @JoinColumn(name = "user_idUser", referencedColumnName = "idUser")
     @ManyToOne(optional = false)
     private User useridUser;
@@ -153,6 +156,15 @@ public class Tesoro implements Serializable {
 
     public void setHabilitado(boolean habilitado) {
         this.habilitado = habilitado;
+    }
+
+    @XmlTransient
+    public List<User> getUserList() {
+        return userList;
+    }
+
+    public void setUserList(List<User> userList) {
+        this.userList = userList;
     }
 
     public User getUseridUser() {
