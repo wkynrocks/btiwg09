@@ -64,6 +64,7 @@ public class Usuario {
         if(u!=null && usuario.getPassword().equals(u.getPassword())){
             usuario=u;
             //LOGIN SUCCESSFUL
+            return "paginaHomeUsuario";
         }else{
             //LOGIN ERROR
         }

@@ -10,7 +10,7 @@
         <f:view>
             <h:form>
                 <h:outputText value="Usuario"/><h:inputText value="#{usuario.usuario.username}" />
-                <h:outputText value="Contraseña"/><h:inputText value="#{usuario.usuario.password}" />
+                <h:outputText value="Contraseña"/><h:inputSecret value="#{usuario.usuario.password}" />
                 <h:commandButton value="Aceptar" action="#{usuario.loginUsuario()}"/>
             </h:form>
         </f:view>
