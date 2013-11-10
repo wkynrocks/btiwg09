@@ -42,22 +42,6 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/service/log"/>
         <delete dir="${build.generated.dir}/jax-wsCache/LogService"/>
     </target>
-    <target name="wsimport-client-UserService" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/UserService"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/UserService" destdir="${build.generated.dir}/jax-wsCache/UserService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/UserService/wsdl/localhost_8080/Proyecto9-war/UserService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/Proyecto9-war/UserService?WSDL" xnocompile="true" xendorsed="true" package="service.user">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/UserService/wsdl/localhost_8080/Proyecto9-war/UserService.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/UserService"/>
-        </wsimport>
-        <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/UserService">
-                <include name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="wsimport-client-clean-UserService" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/service/user"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/UserService"/>
-    </target>
     <target name="wsimport-client-TesoroService" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/TesoroService"/>
         <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/TesoroService" destdir="${build.generated.dir}/jax-wsCache/TesoroService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/TesoroService/wsdl/localhost_8080/Proyecto9-war/TesoroService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/Proyecto9-war/TesoroService?WSDL" xnocompile="true" xendorsed="true" package="service.tesoro">
@@ -74,5 +58,21 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/service/tesoro"/>
         <delete dir="${build.generated.dir}/jax-wsCache/TesoroService"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-LogService, wsimport-client-UserService, wsimport-client-TesoroService"/>
+    <target name="wsimport-client-UserService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/UserService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/UserService" destdir="${build.generated.dir}/jax-wsCache/UserService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/UserService/wsdl/localhost_8080/Proyecto9-war/UserService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/Proyecto9-war/UserService?WSDL" xnocompile="true" xendorsed="true" package="service.user">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/UserService/wsdl/localhost_8080/Proyecto9-war/UserService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/UserService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/UserService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-UserService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/service/user"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/UserService"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-LogService, wsimport-client-TesoroService, wsimport-client-UserService"/>
 </project>

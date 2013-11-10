@@ -12,6 +12,10 @@
 
 <xs:element name="findAllUserResponse" type="tns:findAllUserResponse"/>
 
+<xs:element name="findByUsername" type="tns:findByUsername"/>
+
+<xs:element name="findByUsernameResponse" type="tns:findByUsernameResponse"/>
+
 <xs:element name="findRangeUser" type="tns:findRangeUser"/>
 
 <xs:element name="findRangeUserResponse" type="tns:findRangeUserResponse"/>
@@ -24,13 +28,13 @@
 
 <xs:element name="user" type="tns:user"/>
 
-<xs:complexType name="findUser">
+<xs:complexType name="findByUsername">
 <xs:sequence>
-<xs:element name="id" type="xs:anyType" minOccurs="0"/>
+<xs:element name="username" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="findUserResponse">
+<xs:complexType name="findByUsernameResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:user" minOccurs="0"/>
 </xs:sequence>
@@ -43,6 +47,18 @@
 <xs:element name="password" type="xs:string" minOccurs="0"/>
 <xs:element name="rol" type="xs:string" minOccurs="0"/>
 <xs:element name="username" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findUser">
+<xs:sequence>
+<xs:element name="id" type="xs:anyType" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findUserResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:user" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 

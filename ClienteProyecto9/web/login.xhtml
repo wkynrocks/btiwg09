@@ -9,7 +9,9 @@
     <h:body>
         <f:view>
             <h:form>
-                <h:inputText value="" 
+                <h:outputText value="Usuario"/><h:inputText value="#{usuario.usuario.username}" />
+                <h:outputText value="Contraseña"/><h:inputText value="#{usuario}" />
+                <h:commandButton value="#{usuario.login()}"
             </h:form>
         </f:view>
 

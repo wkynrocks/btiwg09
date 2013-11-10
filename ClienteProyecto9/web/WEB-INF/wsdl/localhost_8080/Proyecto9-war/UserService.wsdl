@@ -4,20 +4,26 @@
 <xsd:import namespace="http://service/" schemaLocation="http://localhost:8080/Proyecto9-war/UserService?xsd=1"/>
 </xsd:schema>
 </types>
+<message name="findByUsername">
+<part name="parameters" element="tns:findByUsername"/>
+</message>
+<message name="findByUsernameResponse">
+<part name="parameters" element="tns:findByUsernameResponse"/>
+</message>
 <message name="removeUser">
 <part name="parameters" element="tns:removeUser"/>
 </message>
 <message name="editUser">
 <part name="parameters" element="tns:editUser"/>
 </message>
-<message name="createUser">
-<part name="parameters" element="tns:createUser"/>
-</message>
 <message name="findUser">
 <part name="parameters" element="tns:findUser"/>
 </message>
 <message name="findUserResponse">
 <part name="parameters" element="tns:findUserResponse"/>
+</message>
+<message name="createUser">
+<part name="parameters" element="tns:createUser"/>
 </message>
 <message name="findAllUser">
 <part name="parameters" element="tns:findAllUser"/>
@@ -38,18 +44,22 @@
 <part name="parameters" element="tns:countUserResponse"/>
 </message>
 <portType name="UserService">
+<operation name="findByUsername">
+<input wsam:Action="http://service/UserService/findByUsernameRequest" message="tns:findByUsername"/>
+<output wsam:Action="http://service/UserService/findByUsernameResponse" message="tns:findByUsernameResponse"/>
+</operation>
 <operation name="removeUser">
 <input wsam:Action="http://service/UserService/removeUser" message="tns:removeUser"/>
 </operation>
 <operation name="editUser">
 <input wsam:Action="http://service/UserService/editUser" message="tns:editUser"/>
 </operation>
-<operation name="createUser">
-<input wsam:Action="http://service/UserService/createUser" message="tns:createUser"/>
-</operation>
 <operation name="findUser">
 <input wsam:Action="http://service/UserService/findUserRequest" message="tns:findUser"/>
 <output wsam:Action="http://service/UserService/findUserResponse" message="tns:findUserResponse"/>
+</operation>
+<operation name="createUser">
+<input wsam:Action="http://service/UserService/createUser" message="tns:createUser"/>
 </operation>
 <operation name="findAllUser">
 <input wsam:Action="http://service/UserService/findAllUserRequest" message="tns:findAllUser"/>
@@ -66,6 +76,15 @@
 </portType>
 <binding name="UserServicePortBinding" type="tns:UserService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<operation name="findByUsername">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="removeUser">
 <soap:operation soapAction=""/>
 <input>
@@ -73,12 +92,6 @@
 </input>
 </operation>
 <operation name="editUser">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-</operation>
-<operation name="createUser">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -92,6 +105,12 @@
 <output>
 <soap:body use="literal"/>
 </output>
+</operation>
+<operation name="createUser">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
 </operation>
 <operation name="findAllUser">
 <soap:operation soapAction=""/>

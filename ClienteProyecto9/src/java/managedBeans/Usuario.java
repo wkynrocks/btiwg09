@@ -41,7 +41,13 @@ public class Usuario {
     public void crearUsuario(){
         createUser(usuario);
     }
-
+    
+    public void loginUsuario(){
+        editUser(usuario);
+    }
+    
+    
+    
     private void createUser(service.user.User entity) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
@@ -52,6 +58,13 @@ public class Usuario {
     @PostConstruct
     public void init(){
         usuario=new service.user.User();
+    }
+
+    private void editUser(service.user.User entity) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        service.user.UserService port = service.getUserServicePort();
+        port.editUser(entity);
     }
     
 }
