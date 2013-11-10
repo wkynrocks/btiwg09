@@ -38,9 +38,18 @@ public class Usuario {
     public Usuario() {
     }
     
-    public void registrarse(){
+    public String registrarse(){
         usuario.setRol("BuscaTesoros");
         crearUsuario();
+        return paginicio();
+    }
+    
+    public String pagregistro(){
+        return "/faces/Registrarse.xhtml";
+    }
+    
+    public String paginicio(){
+        return "/faces/index.xhtml";
     }
     
     public void crearUsuario(){
