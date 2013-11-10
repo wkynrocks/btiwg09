@@ -8,10 +8,13 @@ package entity;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.annotation.Generated;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.AUTO;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -44,6 +47,7 @@ public class User implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
+    @GeneratedValue(strategy = AUTO)
     @Column(name = "idUser")
     private Integer idUser;
     @Basic(optional = false)
