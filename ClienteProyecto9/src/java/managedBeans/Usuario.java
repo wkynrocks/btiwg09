@@ -23,6 +23,8 @@ public class Usuario {
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Proyecto9-war/UserService.wsdl")
     private UserService_Service service;
     private service.user.User usuario;
+    
+    boolean existe=true;
 
     public User getUsuario() {
         return usuario;
@@ -44,11 +46,21 @@ public class Usuario {
             crearUsuario();
             return paginicio(); 
         }
+        existe = false;
         return pagregistro();
     }
     
     public String pagregistro(){
         return "/faces/Registrarse.xhtml";
+    }
+    
+    public String errorregistro(){
+        if(!existe){
+            existe = true;
+            return "Ese usuario ya existe. Elige otro nombre";
+        } else{
+            return "";
+        }
     }
     
     public String paginicio(){

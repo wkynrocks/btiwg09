@@ -21,7 +21,9 @@
                 </tr>
             </tbody>
         </table><br/>
-        <h:commandButton value="Aceptar" action="#{usuario.registrarse()}"/>    
+        <h:commandButton value="Aceptar" action="#{usuario.registrarse()}"/> 
+        <br/><br/>
+        <h:outputText value="#{usuario.errorregistro()}"/>
         </h:form>
     </h:body>
 </html>
