@@ -38,6 +38,11 @@ public class Usuario {
     public Usuario() {
     }
     
+    public void registrarse(){
+        usuario.setRol("BuscaTesoros");
+        crearUsuario();
+    }
+    
     public void crearUsuario(){
         createUser(usuario);
     }
