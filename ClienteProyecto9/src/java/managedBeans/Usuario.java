@@ -8,7 +8,6 @@ package managedBeans;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.xml.ws.WebServiceRef;
 import service.user.User;
@@ -40,8 +39,12 @@ public class Usuario {
     
     public String registrarse(){
         usuario.setRol("BuscaTesoros");
-        crearUsuario();
-        return paginicio();
+        User u = findByUsername(usuario.getUsername());
+        if(u==null){ 
+            crearUsuario();
+            return paginicio(); 
+        }
+        return pagregistro();
     }
     
     public String pagregistro(){
