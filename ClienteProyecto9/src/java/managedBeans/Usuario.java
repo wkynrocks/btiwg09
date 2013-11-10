@@ -42,8 +42,15 @@ public class Usuario {
         createUser(usuario);
     }
     
-    public void loginUsuario(){
-        editUser(usuario);
+    public String loginUsuario(){
+        User u = findByUsername(usuario.getUsername());
+        if(u!=null && usuario.getPassword().equals(u.getPassword())){
+            usuario=u;
+            //LOGIN SUCCESSFUL
+        }else{
+            //LOGIN ERROR
+        }
+        return null;
     }
     
     
@@ -66,5 +73,14 @@ public class Usuario {
         service.user.UserService port = service.getUserServicePort();
         port.editUser(entity);
     }
+
+    private User findByUsername(java.lang.String username) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        service.user.UserService port = service.getUserServicePort();
+        return port.findByUsername(username);
+    }
+    
+    
     
 }
