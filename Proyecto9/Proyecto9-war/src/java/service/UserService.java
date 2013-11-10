@@ -62,5 +62,10 @@ public class UserService {
     public int countUser() {
         return ejbRef.count();
     }
+
+    @WebMethod(operationName = "findByUsername")
+    public User findByUsername(@WebParam(name = "username") String username) {
+        return ejbRef.findByUsername(username);
+    }
     
 }
