@@ -28,6 +28,9 @@ public class Usuario {
     boolean existe=true;
     private boolean fallologin=false;
 
+    public boolean isAdmin(){
+        return usuario.getRol().equals("Admin");
+    }
     public boolean isFallologin() {
         return fallologin;
     }

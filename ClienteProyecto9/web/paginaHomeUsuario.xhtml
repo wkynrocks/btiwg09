@@ -7,6 +7,7 @@
         <title>Home Usuario</title>
     </h:head>
     <h:body>
+        <h:link value="Login page" outcome="gestionarUsuarios" rendered="#{usuario.isAdmin()}"/>
         <h:form>
         <h:commandButton action="#{usuario.logout()}" value="Logout"/>
         </h:form>

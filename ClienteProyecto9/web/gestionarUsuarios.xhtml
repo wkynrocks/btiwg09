@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>CRUD Usuarios</title>
+    </h:head>
+    <h:body>
+        <h1 align="center">Lista de Usuarios:</h1>
+        <f:view >
+            <h:form >
+                <h:dataTable rowClasses="center-td" value="#{listaUsuarios.listaTodos()}" var="item">
+                    <h:column >
+                        <f:facet name="header">Nombre usuario</f:facet>
+                        #{item.username}
+                    </h:column>
+                    <h:column >
+                        <f:facet name="header">Contraseña</f:facet>
+                        #{item.password}
+                    </h:column>
+                    <h:column >
+                        <f:facet name="header">Email</f:facet>
+                        #{item.email}
+                    </h:column>
+                    <h:column >
+                        <f:facet name="header">Rol</f:facet>
+                        #{item.rol}
+                    </h:column>
+                    <h:column >
+                        <f:facet name="header">Acción 1</f:facet>
+                        
+                            <h:commandButton action="#{borrarYDeshabilitarUsuario.borrar(item)}" value="Borrar"/>
+                    
+                    </h:column>
+                    <h:column >
+                        <f:facet name="header">Acción 2</f:facet>
+                            <h:commandButton action="#{borrarYDeshabilitarUsuario.deshabilitar(item)}" value="Deshabilitar"/>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+
