@@ -9,6 +9,7 @@ package managedBeans;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.xml.ws.WebServiceRef;
 import service.TesoroService_Service;
 import service.User;
@@ -39,4 +40,8 @@ public class ListarTesoros {
         return port.findByUsuarioBuscando(user);
     }
     
+    public java.util.List <service.Tesoro> listTesoros(service.User usuario){
+        
+        return null;
+    }
 }

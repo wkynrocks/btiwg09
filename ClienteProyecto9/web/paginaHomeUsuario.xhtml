@@ -7,7 +7,7 @@
         <title>Home Usuario</title>
     </h:head>
     <h:body>
-        <h:link value="Login page" outcome="gestionarUsuarios" rendered="#{usuario.isAdmin()}"/>
+        <h:link value="Gestionar Usuarios" outcome="gestionarUsuarios" rendered="#{usuario.isAdmin()}"/>
         <h:form>
         <h:commandButton action="#{usuario.logout()}" value="Logout"/>
         </h:form>
@@ -51,7 +51,7 @@
                 </h:dataTable>
             </h:form>
         </f:view>
-
+        <h:link value="CrearTesoro" outcome="crearTesoro"/>
     </h:body>
 </html>
 
