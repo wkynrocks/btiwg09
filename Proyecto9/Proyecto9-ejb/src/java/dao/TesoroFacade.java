@@ -31,9 +31,8 @@ public class TesoroFacade extends AbstractFacade<Tesoro> {
         super(Tesoro.class);
     }
 
-    public List<Tesoro> findByUsuarioBuscando(User usuario) {
-        List<Tesoro> lt = em.createNamedQuery("Tesoro.findByBusquedaTesoro").setParameter("usuario",usuario).getResultList();
+    public List<Tesoro> findByUsuarioBuscando(String usu) {        
+        List<Tesoro> lt = em.createNamedQuery("Tesoro.findByBusquedaTesoro").setParameter("username", usu).getResultList();
         return lt;
     }
-
 }

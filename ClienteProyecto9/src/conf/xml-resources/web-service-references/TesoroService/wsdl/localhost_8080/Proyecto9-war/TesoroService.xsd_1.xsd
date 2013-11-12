@@ -32,17 +32,7 @@
 
 <xs:complexType name="findByUsuarioBuscando">
 <xs:sequence>
-<xs:element ref="tns:user" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="user">
-<xs:sequence>
-<xs:element name="email" type="xs:string" minOccurs="0"/>
-<xs:element name="idUser" type="xs:int" minOccurs="0"/>
-<xs:element name="password" type="xs:string" minOccurs="0"/>
-<xs:element name="rol" type="xs:string" minOccurs="0"/>
-<xs:element name="username" type="xs:string" minOccurs="0"/>
+<xs:element name="user" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -62,6 +52,16 @@
 <xs:element name="pais" type="xs:string" minOccurs="0"/>
 <xs:element name="posicion" type="xs:string" minOccurs="0"/>
 <xs:element name="useridUser" type="tns:user" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="user">
+<xs:sequence>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="idUser" type="xs:int" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+<xs:element name="rol" type="xs:string" minOccurs="0"/>
+<xs:element name="username" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 

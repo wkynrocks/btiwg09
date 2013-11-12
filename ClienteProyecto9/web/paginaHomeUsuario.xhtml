@@ -15,7 +15,39 @@
         Listar Tesoros<br/>
         <f:view>
             <h:form>
-                <h:dataTable value="" var="item">
+                <h:dataTable value="#{listarTesoros.listaTesoros(usuario.usuario)}" var="item">
+                    <h:column >
+                        <f:facet name="header">ID</f:facet>
+                        #{item.idTesoro}
+                    </h:column>
+                    <h:column >
+                        <f:facet name="header">Nombre</f:facet>
+                        #{item.nombre}
+                    </h:column>
+                    <h:column >
+                        <f:facet name="header">Ciudad</f:facet>
+                        #{item.ciudad}
+                    </h:column>
+                    <h:column >
+                        <f:facet name="header">Pais</f:facet>
+                        #{item.pais}
+                    </h:column>
+                    <h:column >
+                        <f:facet name="header">Posición</f:facet>
+                        #{item.posicion}
+                    </h:column>
+                    <h:column >
+                        <f:facet name="header">Codigo Secreto</f:facet>
+                        #{item.codigoSecreto}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Ciudad</f:facet>
+                        #{item.ciudad}
+                    </h:column>
+                    <h:column >
+                        <f:facet name="header">Habilitado</f:facet>
+                        #{item.habilitado}
+                    </h:column>
                 </h:dataTable>
             </h:form>
         </f:view>

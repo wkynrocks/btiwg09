@@ -22,6 +22,12 @@
 <message name="createTesoro">
 <part name="parameters" element="tns:createTesoro"/>
 </message>
+<message name="findAllTesoro">
+<part name="parameters" element="tns:findAllTesoro"/>
+</message>
+<message name="findAllTesoroResponse">
+<part name="parameters" element="tns:findAllTesoroResponse"/>
+</message>
 <message name="editTesoro">
 <part name="parameters" element="tns:editTesoro"/>
 </message>
@@ -30,12 +36,6 @@
 </message>
 <message name="findRangeTesoroResponse">
 <part name="parameters" element="tns:findRangeTesoroResponse"/>
-</message>
-<message name="findAllTesoro">
-<part name="parameters" element="tns:findAllTesoro"/>
-</message>
-<message name="findAllTesoroResponse">
-<part name="parameters" element="tns:findAllTesoroResponse"/>
 </message>
 <message name="findByUsuarioBuscando">
 <part name="parameters" element="tns:findByUsuarioBuscando"/>
@@ -58,16 +58,16 @@
 <operation name="createTesoro">
 <input wsam:Action="http://service/TesoroService/createTesoro" message="tns:createTesoro"/>
 </operation>
+<operation name="findAllTesoro">
+<input wsam:Action="http://service/TesoroService/findAllTesoroRequest" message="tns:findAllTesoro"/>
+<output wsam:Action="http://service/TesoroService/findAllTesoroResponse" message="tns:findAllTesoroResponse"/>
+</operation>
 <operation name="editTesoro">
 <input wsam:Action="http://service/TesoroService/editTesoro" message="tns:editTesoro"/>
 </operation>
 <operation name="findRangeTesoro">
 <input wsam:Action="http://service/TesoroService/findRangeTesoroRequest" message="tns:findRangeTesoro"/>
 <output wsam:Action="http://service/TesoroService/findRangeTesoroResponse" message="tns:findRangeTesoroResponse"/>
-</operation>
-<operation name="findAllTesoro">
-<input wsam:Action="http://service/TesoroService/findAllTesoroRequest" message="tns:findAllTesoro"/>
-<output wsam:Action="http://service/TesoroService/findAllTesoroResponse" message="tns:findAllTesoroResponse"/>
 </operation>
 <operation name="findByUsuarioBuscando">
 <input wsam:Action="http://service/TesoroService/findByUsuarioBuscandoRequest" message="tns:findByUsuarioBuscando"/>
@@ -106,13 +106,7 @@
 <soap:body use="literal"/>
 </input>
 </operation>
-<operation name="editTesoro">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-</operation>
-<operation name="findRangeTesoro">
+<operation name="findAllTesoro">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -121,7 +115,13 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="findAllTesoro">
+<operation name="editTesoro">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+</operation>
+<operation name="findRangeTesoro">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

@@ -17,7 +17,7 @@ import service.UserService_Service;
  *
  * @author wkynrocks
  */
-@ManagedBean
+@ManagedBean 
 @SessionScoped
 public class Usuario {
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Proyecto9-war/UserService.wsdl")

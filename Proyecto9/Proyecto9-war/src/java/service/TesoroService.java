@@ -65,7 +65,7 @@ public class TesoroService {
     }
 
     @WebMethod(operationName = "findByUsuarioBuscando")
-    public List<Tesoro> findByUsuarioBuscando(@WebParam(name = "user") User user) {
+    public List<Tesoro> findByUsuarioBuscando(@WebParam(name = "user") String user) {
         return ejbRef.findByUsuarioBuscando(user);
     }
     
