@@ -31,7 +31,7 @@ public class UserFacade extends AbstractFacade<User> {
     }
     
     public User findByUsername(String username){
-        List<User> lu = em.createNamedQuery("User.findByUsername" ).setParameter("username",username).getResultList();
+        List<User> lu = em.createNamedQuery("User.findByUsername").setParameter("username",username).getResultList();
         return !lu.isEmpty() ? lu.get(0): null;
         
     }

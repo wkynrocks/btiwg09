@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form><table border="0">
+            <tbody>
+                <tr>
+                    <td>Nombre:  </td>
+                    <td><h:inputText value="#{tesoro.tes.nombre}"/></td>
+                </tr>
+                <tr>
+                    <td>Ciudad:</td>
+                    <td><h:inputText value="#{tesoro.tes.ciudad}"/></td>
+                </tr>
+                <tr>
+                    <td>Pais:</td>
+                    <td><h:inputText value="#{tesoro.tes.pais}"/></td>
+                </tr>
+                <tr>
+                    <td>Posición:</td>
+                    <td><h:inputText value="#{tesoro.tes.posicion}"/></td>
+                </tr>
+                <tr>
+                    <td>Código Secreto:</td>
+                    <td><h:inputText value="#{tesoro.tes.codigoSecreto}"/></td>
+                </tr>
+            </tbody>
+        </table><br/>
+        <h:commandButton value="Aceptar" action="#{tesoro.registrarTes()}"/> 
+        <br/><br/>
+        <h:outputText value="#{usuario.errorregistro()}"/>
+        </h:form>
+    </h:body>
+</html>
+

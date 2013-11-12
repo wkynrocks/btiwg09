@@ -42,7 +42,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Tesoro.findByPais", query = "SELECT t FROM Tesoro t WHERE t.pais = :pais"),
     @NamedQuery(name = "Tesoro.findByPosicion", query = "SELECT t FROM Tesoro t WHERE t.posicion = :posicion"),
     @NamedQuery(name = "Tesoro.findByCodigoSecreto", query = "SELECT t FROM Tesoro t WHERE t.codigoSecreto = :codigoSecreto"),
-    @NamedQuery(name = "Tesoro.findByHabilitado", query = "SELECT t FROM Tesoro t WHERE t.habilitado = :habilitado")})
+    @NamedQuery(name = "Tesoro.findByHabilitado", query = "SELECT t FROM Tesoro t WHERE t.habilitado = :habilitado"),
+    @NamedQuery(name = "Tesoro.findByBusquedaTesoro", query = "SELECT t FROM Tesoro t WHERE t.userList IN :usuario")})
 public class Tesoro implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

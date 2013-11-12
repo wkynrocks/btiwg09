@@ -7,9 +7,11 @@
 package managedBeans;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.xml.ws.WebServiceRef;
 import service.tesoro.TesoroService_Service;
+import service.tesoro.User;
 
 /**
  *
@@ -20,7 +22,12 @@ import service.tesoro.TesoroService_Service;
 public class ListarTesoros {
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Proyecto9-war/TesoroService.wsdl")
     private TesoroService_Service service;
+    
+    @ManagedProperty(value="#{usuario}")
+    private User usuario;
 
+
+    
     /**
      * Creates a new instance of ListarTesoros
      */
@@ -28,7 +35,7 @@ public class ListarTesoros {
     }
     
     public java.util.List<service.tesoro.Tesoro> porUsuarioBuscando(){
-        return findByUsuarioBuscando(null);
+        return findByUsuarioBuscando(usuario);
     }
 
     private java.util.List<service.tesoro.Tesoro> findByUsuarioBuscando(service.tesoro.User user) {
