@@ -26,6 +26,15 @@ public class Usuario {
     private service.user.User usuario;
     
     boolean existe=true;
+    private boolean fallologin=false;
+
+    public boolean isFallologin() {
+        return fallologin;
+    }
+
+    public void setFallologin(boolean fallologin) {
+        this.fallologin = fallologin;
+    }
 
     public User getUsuario() {
         return usuario;
@@ -73,6 +82,7 @@ public class Usuario {
     }
     
     public String loginUsuario(){
+        fallologin=false;
         User u = findByUsername(usuario.getUsername());
         if(u!=null && usuario.getPassword().equals(u.getPassword())){
             usuario=u;
@@ -80,8 +90,14 @@ public class Usuario {
             return "paginaHomeUsuario";
         }else{
             //LOGIN ERROR
+            fallologin=true;
         }
         return null;
+    }
+    
+    public String logout(){
+        usuario= new User();
+        return "/faces/index.xhtml";
     }
     
     
