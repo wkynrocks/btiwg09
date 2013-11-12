@@ -6,6 +6,8 @@
 
 package managedBeans;
 
+import javax.annotation.PostConstruct;
+import javax.ejb.EJBException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -23,10 +25,25 @@ public class Tesoro {
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Proyecto9-war/TesoroService.wsdl")
     private TesoroService_Service service;
     
-    private service.Tesoro tes;
-  
-    @ManagedProperty(value="#{Usuario.usuario}")
-    private User us;
+    private boolean errorTesoroCrear=false;
+
+    public boolean isErrorTesoroCrear() {
+        return errorTesoroCrear;
+    }
+
+    public void setErrorTesoroCrear(boolean errorTesoroCrear) {
+        this.errorTesoroCrear = errorTesoroCrear;
+    }
+    
+    private service.Tesoro tesoro;
+
+    public service.Tesoro getTesoro() {
+        return tesoro;
+    }
+
+    public void setTesoro(service.Tesoro tesoro) {
+        this.tesoro = tesoro;
+    }
     
     
     /**
@@ -47,28 +64,16 @@ public class Tesoro {
         port.createTesoro(entity);
     }
     
-    public void crearTesoro(){
-        create(tes);
-    }
-
-    /**
-     * @return the tes
-     */
-    public service.Tesoro getTes() {
-        return tes;
-    }
-
-    /**
-     * @param tes the tes to set
-     */
-    public void setTes(service.Tesoro tes) {
-        this.tes = tes;
-    }
-    
-    public String registrarTes(){
-        tes.setHabilitado(true);
-        return null;
+    public String crearTesoro(service.User usuario){
+        tesoro.setUseridUser(usuario);
+        tesoro.setHabilitado(true);
+        create(tesoro);
+        return "paginaHomeUsuario.xhtml";
     }
     
     
+    @PostConstruct
+    public void init(){
+        tesoro=new service.Tesoro();
+    }
 }

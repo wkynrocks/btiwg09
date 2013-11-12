@@ -10,29 +10,29 @@
             <tbody>
                 <tr>
                     <td>Nombre:  </td>
-                    <td><h:inputText value="#{tesoro.tes.nombre}"/></td>
+                    <td><h:inputText value="#{tesoro.tesoro.nombre}"/></td>
                 </tr>
                 <tr>
                     <td>Ciudad:</td>
-                    <td><h:inputText value="#{tesoro.tes.ciudad}"/></td>
+                    <td><h:inputText value="#{tesoro.tesoro.ciudad}"/></td>
                 </tr>
                 <tr>
                     <td>Pais:</td>
-                    <td><h:inputText value="#{tesoro.tes.pais}"/></td>
+                    <td><h:inputText value="#{tesoro.tesoro.pais}"/></td>
                 </tr>
                 <tr>
                     <td>Posición:</td>
-                    <td><h:inputText value="#{tesoro.tes.posicion}"/></td>
+                    <td><h:inputText value="#{tesoro.tesoro.posicion}"/></td>
                 </tr>
                 <tr>
                     <td>Código Secreto:</td>
-                    <td><h:inputText value="#{tesoro.tes.codigoSecreto}"/></td>
+                    <td><h:inputText value="#{tesoro.tesoro.codigoSecreto}"/></td>
                 </tr>
             </tbody>
         </table><br/>
-        <h:commandButton value="Aceptar" action="#{tesoro.registrarTes()}"/> 
+        <h:commandButton value="Aceptar" action="#{tesoro.crearTesoro(usuario.usuario)}"/> 
         <br/><br/>
-        <h:outputText value="#{usuario.errorregistro()}"/>
+        <h:outputText value="Error al crear tesoro" rendered="#{errorTesoroCrear}"/>
         </h:form>
     </h:body>
 </html>

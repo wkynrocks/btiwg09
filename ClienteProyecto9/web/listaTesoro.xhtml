@@ -4,22 +4,16 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Home Usuario</title>
+        <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <h:link value="Gestionar Usuarios" outcome="gestionarUsuarios" rendered="#{usuario.isAdmin()}"/>
-        <h:form>
-        <h:commandButton action="#{usuario.logout()}" value="Logout"/>
-        </h:form>
-        
-        Listar Tesoros<br/>
         <f:view>
             <h:form>
-                <h:dataTable value="" var="item">
+                <h:dataTable value="#{listarTesoros.porUsuarioBuscando()}" var="item">
                 </h:dataTable>
             </h:form>
         </f:view>
-        <h:link value="CrearTesoro" outcome="crearTesoro"/>
+
     </h:body>
 </html>
 
