@@ -38,42 +38,6 @@
         </wsimport-option>
       </wsimport-options>
     </client>
-    <client name="TesoroService">
-      <wsdl-url>http://localhost:8080/Proyecto9-war/TesoroService?WSDL</wsdl-url>
-      <local-wsdl-file>localhost_8080/Proyecto9-war/TesoroService.wsdl</local-wsdl-file>
-      <package-name forceReplace="true">service.tesoro</package-name>
-      <catalog-file>catalog.xml</catalog-file>
-      <wsimport-options>
-        <wsimport-option>
-          <wsimport-option-name>extension</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>verbose</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>fork</wsimport-option-name>
-          <wsimport-option-value>false</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:8080/Proyecto9-war/TesoroService?WSDL</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>xnocompile</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>xendorsed</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>package</wsimport-option-name>
-          <wsimport-option-value>service.tesoro</wsimport-option-value>
-        </wsimport-option>
-      </wsimport-options>
-    </client>
     <client name="UserService">
       <wsdl-url>http://localhost:8080/Proyecto9-war/UserService?WSDL</wsdl-url>
       <local-wsdl-file>localhost_8080/Proyecto9-war/UserService.wsdl</local-wsdl-file>
@@ -107,6 +71,42 @@
         <wsimport-option>
           <wsimport-option-name>package</wsimport-option-name>
           <wsimport-option-value>service.user</wsimport-option-value>
+        </wsimport-option>
+      </wsimport-options>
+    </client>
+    <client name="TesoroService">
+      <wsdl-url>http://localhost:8080/Proyecto9-war/TesoroService?WSDL</wsdl-url>
+      <local-wsdl-file>localhost_8080/Proyecto9-war/TesoroService.wsdl</local-wsdl-file>
+      <package-name forceReplace="true">service.tesoro</package-name>
+      <catalog-file>catalog.xml</catalog-file>
+      <wsimport-options>
+        <wsimport-option>
+          <wsimport-option-name>extension</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>verbose</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>fork</wsimport-option-name>
+          <wsimport-option-value>false</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>wsdlLocation</wsimport-option-name>
+          <wsimport-option-value>http://localhost:8080/Proyecto9-war/TesoroService?WSDL</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xnocompile</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xendorsed</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>package</wsimport-option-name>
+          <wsimport-option-value>service.tesoro</wsimport-option-value>
         </wsimport-option>
       </wsimport-options>
     </client>

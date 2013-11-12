@@ -8,6 +8,8 @@ package managedBeans;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.xml.ws.WebServiceRef;
+import service.tesoro.TesoroService_Service;
 
 /**
  *
@@ -16,6 +18,8 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean
 @RequestScoped
 public class Tesoro {
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Proyecto9-war/TesoroService.wsdl")
+    private TesoroService_Service service;
     
     /**
      * Creates a new instance of Tesoro
@@ -23,4 +27,4 @@ public class Tesoro {
     public Tesoro() {
     }
     
-}
+    }

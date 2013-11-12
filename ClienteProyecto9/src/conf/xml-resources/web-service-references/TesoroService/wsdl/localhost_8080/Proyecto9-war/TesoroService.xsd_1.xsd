@@ -1,36 +1,52 @@
 <?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.3 (tags/2.3-7528; 2013-04-29T19:34:10+0000) JAXWS-RI/2.2.8 JAXWS/2.2 svn-revision#unknown. --><xs:schema xmlns:tns="http://service/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://service/">
 
-<xs:element name="countTesoro" type="tns:countTesoro"/>
+<xs:element name="count" type="tns:count"/>
 
-<xs:element name="countTesoroResponse" type="tns:countTesoroResponse"/>
+<xs:element name="countResponse" type="tns:countResponse"/>
 
-<xs:element name="createTesoro" type="tns:createTesoro"/>
+<xs:element name="create" type="tns:create"/>
 
-<xs:element name="editTesoro" type="tns:editTesoro"/>
+<xs:element name="edit" type="tns:edit"/>
 
-<xs:element name="findAllTesoro" type="tns:findAllTesoro"/>
+<xs:element name="find" type="tns:find"/>
 
-<xs:element name="findAllTesoroResponse" type="tns:findAllTesoroResponse"/>
+<xs:element name="findAll" type="tns:findAll"/>
 
-<xs:element name="findRangeTesoro" type="tns:findRangeTesoro"/>
+<xs:element name="findAllResponse" type="tns:findAllResponse"/>
 
-<xs:element name="findRangeTesoroResponse" type="tns:findRangeTesoroResponse"/>
+<xs:element name="findByUsuarioBuscando" type="tns:findByUsuarioBuscando"/>
 
-<xs:element name="findTesoro" type="tns:findTesoro"/>
+<xs:element name="findByUsuarioBuscandoResponse" type="tns:findByUsuarioBuscandoResponse"/>
 
-<xs:element name="findTesoroResponse" type="tns:findTesoroResponse"/>
+<xs:element name="findRange" type="tns:findRange"/>
 
-<xs:element name="removeTesoro" type="tns:removeTesoro"/>
+<xs:element name="findRangeResponse" type="tns:findRangeResponse"/>
+
+<xs:element name="findResponse" type="tns:findResponse"/>
+
+<xs:element name="remove" type="tns:remove"/>
 
 <xs:element name="tesoro" type="tns:tesoro"/>
 
 <xs:element name="user" type="tns:user"/>
 
-<xs:complexType name="findAllTesoro">
-<xs:sequence/>
+<xs:complexType name="findByUsuarioBuscando">
+<xs:sequence>
+<xs:element ref="tns:user" minOccurs="0"/>
+</xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="findAllTesoroResponse">
+<xs:complexType name="user">
+<xs:sequence>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="idUser" type="xs:int" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+<xs:element name="rol" type="xs:string" minOccurs="0"/>
+<xs:element name="username" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByUsuarioBuscandoResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:tesoro" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
@@ -49,65 +65,65 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="user">
-<xs:sequence>
-<xs:element name="email" type="xs:string" minOccurs="0"/>
-<xs:element name="idUser" type="xs:int" minOccurs="0"/>
-<xs:element name="password" type="xs:string" minOccurs="0"/>
-<xs:element name="rol" type="xs:string" minOccurs="0"/>
-<xs:element name="username" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="editTesoro">
+<xs:complexType name="edit">
 <xs:sequence>
 <xs:element name="entity" type="tns:tesoro" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="createTesoro">
-<xs:sequence>
-<xs:element name="entity" type="tns:tesoro" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="removeTesoro">
-<xs:sequence>
-<xs:element name="entity" type="tns:tesoro" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="findRangeTesoro">
-<xs:sequence>
-<xs:element name="range" type="xs:int" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="findRangeTesoroResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:tesoro" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="countTesoro">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="countTesoroResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="findTesoro">
+<xs:complexType name="find">
 <xs:sequence>
 <xs:element name="id" type="xs:anyType" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="findTesoroResponse">
+<xs:complexType name="findResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:tesoro" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findRange">
+<xs:sequence>
+<xs:element name="range" type="xs:int" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findRangeResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:tesoro" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="create">
+<xs:sequence>
+<xs:element name="entity" type="tns:tesoro" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findAll">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findAllResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:tesoro" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="count">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="countResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="remove">
+<xs:sequence>
+<xs:element name="entity" type="tns:tesoro" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>

@@ -22,6 +22,7 @@ import service.user.UserService_Service;
 public class Usuario {
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Proyecto9-war/UserService.wsdl")
     private UserService_Service service;
+    
     private service.user.User usuario;
     
     boolean existe=true;
