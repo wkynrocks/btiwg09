@@ -4,11 +4,11 @@
     <service name="LogService">
       <implementation-class>service.LogService</implementation-class>
     </service>
-    <service name="UserService">
-      <implementation-class>service.UserService</implementation-class>
-    </service>
     <service name="TesoroService">
       <implementation-class>service.TesoroService</implementation-class>
+    </service>
+    <service name="UserService">
+      <implementation-class>service.UserService</implementation-class>
     </service>
   </services>
   <clients/>

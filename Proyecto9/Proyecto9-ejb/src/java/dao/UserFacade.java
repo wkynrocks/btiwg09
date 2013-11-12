@@ -6,6 +6,7 @@
 
 package dao;
 
+import entity.Tesoro;
 import entity.User;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -34,6 +35,11 @@ public class UserFacade extends AbstractFacade<User> {
         List<User> lu = em.createNamedQuery("User.findByUsername").setParameter("username",username).getResultList();
         return !lu.isEmpty() ? lu.get(0): null;
         
+    }
+    
+    public java.util.List<entity.Tesoro> findListaTesorosCreados(Integer idUser){
+        List<Tesoro> lt = em.createNamedQuery("User.findAllUserTreasures").setParameter("idUser", idUser).getResultList();
+        return lt;
     }
     
 }

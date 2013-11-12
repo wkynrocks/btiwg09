@@ -16,6 +16,10 @@
 
 <xs:element name="findByUsernameResponse" type="tns:findByUsernameResponse"/>
 
+<xs:element name="findListaTesorosCreados" type="tns:findListaTesorosCreados"/>
+
+<xs:element name="findListaTesorosCreadosResponse" type="tns:findListaTesorosCreadosResponse"/>
+
 <xs:element name="findRangeUser" type="tns:findRangeUser"/>
 
 <xs:element name="findRangeUserResponse" type="tns:findRangeUserResponse"/>
@@ -26,17 +30,32 @@
 
 <xs:element name="removeUser" type="tns:removeUser"/>
 
+<xs:element name="tesoro" type="tns:tesoro"/>
+
 <xs:element name="user" type="tns:user"/>
 
-<xs:complexType name="findByUsername">
+<xs:complexType name="findListaTesorosCreados">
 <xs:sequence>
-<xs:element name="username" type="xs:string" minOccurs="0"/>
+<xs:element name="idUser" type="xs:int" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="findByUsernameResponse">
+<xs:complexType name="findListaTesorosCreadosResponse">
 <xs:sequence>
-<xs:element name="return" type="tns:user" minOccurs="0"/>
+<xs:element name="return" type="tns:tesoro" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="tesoro">
+<xs:sequence>
+<xs:element name="ciudad" type="xs:string" minOccurs="0"/>
+<xs:element name="codigoSecreto" type="xs:string" minOccurs="0"/>
+<xs:element name="habilitado" type="xs:boolean"/>
+<xs:element name="idTesoro" type="xs:int" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="pais" type="xs:string" minOccurs="0"/>
+<xs:element name="posicion" type="xs:string" minOccurs="0"/>
+<xs:element name="useridUser" type="tns:user" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -47,6 +66,18 @@
 <xs:element name="password" type="xs:string" minOccurs="0"/>
 <xs:element name="rol" type="xs:string" minOccurs="0"/>
 <xs:element name="username" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByUsername">
+<xs:sequence>
+<xs:element name="username" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByUsernameResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:user" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -68,6 +99,16 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="countUser">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="countUserResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="findRangeUser">
 <xs:sequence>
 <xs:element name="range" type="xs:int" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
@@ -77,16 +118,6 @@
 <xs:complexType name="findRangeUserResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:user" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="countUser">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="countUserResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:int"/>
 </xs:sequence>
 </xs:complexType>
 

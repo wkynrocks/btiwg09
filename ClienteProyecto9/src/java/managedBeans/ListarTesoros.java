@@ -13,6 +13,7 @@ import javax.faces.context.FacesContext;
 import javax.xml.ws.WebServiceRef;
 import service.TesoroService_Service;
 import service.User;
+import service.UserService_Service;
 
 /**
  *
@@ -21,11 +22,15 @@ import service.User;
 @ManagedBean
 @RequestScoped
 public class ListarTesoros {
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Proyecto9-war/UserService.wsdl")
+    private UserService_Service service_1;
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Proyecto9-war/TesoroService.wsdl")
     private TesoroService_Service service;
-    /**
+    /** 
      * Creates a new instance of ListarTesoros
      */
+    
+    
     public ListarTesoros() {
     }
     
@@ -40,8 +45,16 @@ public class ListarTesoros {
         return port.findByUsuarioBuscando(user);
     }
     
-    public java.util.List <service.Tesoro> listTesoros(service.User usuario){
+    
+    public java.util.List <service.Tesoro> listarTesorosCreados(service.User usuario){
         
-        return null;
+        return findListaTesorosCreados(usuario.getIdUser());
+    }
+
+    private java.util.List<service.Tesoro> findListaTesorosCreados(java.lang.Integer idUser) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        service.UserService port = service_1.getUserServicePort();
+        return port.findListaTesorosCreados(idUser);
     }
 }

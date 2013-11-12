@@ -7,6 +7,7 @@
 package service;
 
 import dao.UserFacade;
+import entity.Tesoro;
 import entity.User;
 import java.util.List;
 import javax.ejb.EJB;
@@ -66,6 +67,11 @@ public class UserService {
     @WebMethod(operationName = "findByUsername")
     public User findByUsername(@WebParam(name = "username") String username) {
         return ejbRef.findByUsername(username);
+    }
+
+    @WebMethod(operationName = "findListaTesorosCreados")
+    public List<Tesoro> findListaTesorosCreados(@WebParam(name = "idUser") Integer idUser) {
+        return ejbRef.findListaTesorosCreados(idUser);
     }
     
 }
