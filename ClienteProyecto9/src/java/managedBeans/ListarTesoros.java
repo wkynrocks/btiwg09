@@ -10,8 +10,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.xml.ws.WebServiceRef;
-import service.tesoro.TesoroService_Service;
-import service.tesoro.User;
+import service.TesoroService_Service;
+import service.User;
 
 /**
  *
@@ -34,14 +34,14 @@ public class ListarTesoros {
     public ListarTesoros() {
     }
     
-    public java.util.List<service.tesoro.Tesoro> porUsuarioBuscando(){
+    public java.util.List<service.Tesoro> porUsuarioBuscando(){
         return findByUsuarioBuscando(usuario);
     }
 
-    private java.util.List<service.tesoro.Tesoro> findByUsuarioBuscando(service.tesoro.User user) {
+    private java.util.List<service.Tesoro> findByUsuarioBuscando(service.User user) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        service.tesoro.TesoroService port = service.getTesoroServicePort();
+        service.TesoroService port = service.getTesoroServicePort();
         return port.findByUsuarioBuscando(user);
     }
     
