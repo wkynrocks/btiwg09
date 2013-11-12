@@ -42,6 +42,25 @@ CREATE TABLE IF NOT EXISTS `proyecto9`.`Tesoro` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `proyecto9`.`Usuario_Tesoro_Map`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto9`.`Usuario_Tesoro_Map` (
+ user_idUser int not null,
+ Tesoro_idTesoro int not null,
+ primary key (user_idUser,Tesoro_idTesoro),
+CONSTRAINT `fk_Usuario_Tesoro_Map_user1`
+    FOREIGN KEY (`user_idUser`)
+    REFERENCES `proyecto9`.`User` (`idUser`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Usuario_Tesoro_Map_Tesoro1`
+    FOREIGN KEY (`Tesoro_idTesoro`)
+    REFERENCES `proyecto9`.`Tesoro` (`idTesoro`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+)
+ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `proyecto9`.`Log`
@@ -71,3 +90,8 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+ALTER TABLE `proyecto9`.`User` 
+CHANGE COLUMN `rol` `rol` ENUM('BuscaTesoros','Colaborador','Admin','Deshabilitado') NOT NULL ;
+
+INSERT INTO `proyecto9`.`User` (`idUser`, `username`, `password`, `email`, `rol`) VALUES ('1', 'admin', 'admin', 'admin@admin.com', 'Admin');
