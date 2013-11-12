@@ -8,6 +8,7 @@ package service;
 
 import dao.TesoroFacade;
 import entity.Tesoro;
+import entity.User;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.jws.Oneway;
@@ -25,42 +26,47 @@ public class TesoroService {
     private TesoroFacade ejbRef;// Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Web Service Operation")
 
-    @WebMethod(operationName = "createTesoro")
+    @WebMethod(operationName = "create")
     @Oneway
-    public void createTesoro(@WebParam(name = "entity") Tesoro entity) {
+    public void create(@WebParam(name = "entity") Tesoro entity) {
         ejbRef.create(entity);
     }
 
-    @WebMethod(operationName = "editTesoro")
+    @WebMethod(operationName = "edit")
     @Oneway
-    public void editTesoro(@WebParam(name = "entity") Tesoro entity) {
+    public void edit(@WebParam(name = "entity") Tesoro entity) {
         ejbRef.edit(entity);
     }
 
-    @WebMethod(operationName = "removeTesoro")
+    @WebMethod(operationName = "remove")
     @Oneway
-    public void removeTesoro(@WebParam(name = "entity") Tesoro entity) {
+    public void remove(@WebParam(name = "entity") Tesoro entity) {
         ejbRef.remove(entity);
     }
 
-    @WebMethod(operationName = "findTesoro")
-    public Tesoro findTesoro(@WebParam(name = "id") Object id) {
+    @WebMethod(operationName = "find")
+    public Tesoro find(@WebParam(name = "id") Object id) {
         return ejbRef.find(id);
     }
 
-    @WebMethod(operationName = "findAllTesoro")
-    public List<Tesoro> findAllTesoro() {
+    @WebMethod(operationName = "findAll")
+    public List<Tesoro> findAll() {
         return ejbRef.findAll();
     }
 
-    @WebMethod(operationName = "findRangeTesoro")
-    public List<Tesoro> findRangeTesoro(@WebParam(name = "range") int[] range) {
+    @WebMethod(operationName = "findRange")
+    public List<Tesoro> findRange(@WebParam(name = "range") int[] range) {
         return ejbRef.findRange(range);
     }
 
-    @WebMethod(operationName = "countTesoro")
-    public int countTesoro() {
+    @WebMethod(operationName = "count")
+    public int count() {
         return ejbRef.count();
+    }
+
+    @WebMethod(operationName = "findByUsuarioBuscando")
+    public List<Tesoro> findByUsuarioBuscando(@WebParam(name = "user") User user) {
+        return ejbRef.findByUsuarioBuscando(user);
     }
     
 }

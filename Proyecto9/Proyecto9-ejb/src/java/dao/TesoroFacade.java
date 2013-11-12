@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package dao;
 
 import entity.Tesoro;
+import entity.User;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -17,6 +18,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class TesoroFacade extends AbstractFacade<Tesoro> {
+
     @PersistenceContext(unitName = "Proyecto9-ejbPU")
     private EntityManager em;
 
@@ -28,5 +30,9 @@ public class TesoroFacade extends AbstractFacade<Tesoro> {
     public TesoroFacade() {
         super(Tesoro.class);
     }
-    
+
+    public List<Tesoro> findByUsuarioBuscando(User user) {
+        return null;
+    }
+
 }
