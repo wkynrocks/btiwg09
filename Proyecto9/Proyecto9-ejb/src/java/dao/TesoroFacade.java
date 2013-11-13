@@ -7,6 +7,7 @@ package dao;
 
 import entity.Tesoro;
 import entity.User;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -33,6 +34,18 @@ public class TesoroFacade extends AbstractFacade<Tesoro> {
 
     public List<Tesoro> findByUsuarioBuscando(String usu) {        
         List<Tesoro> lt = em.createNamedQuery("Tesoro.findByBusquedaTesoro").setParameter("username", usu).getResultList();
+        return lt;
+    }
+    
+    public List<Tesoro> findByCriterioTesoro(String criterio, String textbusqueda){
+        List<Tesoro> lt = null;
+        switch (criterio){
+            case "nombre": lt = em.createNamedQuery("Tesoro.findByLikeNombre").setParameter("nombre","%"+textbusqueda+"%").getResultList(); break;
+            case "ciudad": lt = em.createNamedQuery("Tesoro.findByLikeCiudad").setParameter("ciudad","%"+textbusqueda+"%").getResultList(); break;
+            case "pais": lt = em.createNamedQuery("Tesoro.findByLikePais").setParameter("pais","%"+textbusqueda+"%").getResultList(); break;
+            case "posicion": lt = em.createNamedQuery("Tesoro.findByLikePosicion").setParameter("posicion","%"+textbusqueda+"%").getResultList(); break; 
+            default: break;
+        }
         return lt;
     }
 }
