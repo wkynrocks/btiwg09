@@ -7,9 +7,10 @@
         <title>CRUD Usuarios</title>
     </h:head>
     <h:body>
+        <h:link value="User Home" outcome="paginaHomeUsuario"/>
         <h1 align="center">Lista de Usuarios:</h1>
         <f:view >
-            <h:form >
+            <h:form>
                 <h:dataTable rowClasses="center-td" value="#{listaUsuarios.listaTodos()}" var="item">
                     <h:column >
                         <f:facet name="header">Nombre usuario</f:facet>

@@ -14,6 +14,7 @@ import javax.faces.bean.RequestScoped;
 import javax.xml.ws.WebServiceRef;
 import service.TesoroService_Service;
 import service.User;
+import service.UserService_Service;
 
 /**
  *
@@ -22,6 +23,8 @@ import service.User;
 @ManagedBean
 @RequestScoped
 public class Tesoro {
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Proyecto9-war/UserService.wsdl")
+    private UserService_Service service_1;
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Proyecto9-war/TesoroService.wsdl")
     private TesoroService_Service service;
     
@@ -68,6 +71,8 @@ public class Tesoro {
         tesoro.setUseridUser(usuario);
         tesoro.setHabilitado(true);
         create(tesoro);
+        usuario.setRol("Colaborador");
+        editUser(usuario);
         return "paginaHomeUsuario.xhtml";
     }
     
@@ -75,5 +80,12 @@ public class Tesoro {
     @PostConstruct
     public void init(){
         tesoro=new service.Tesoro();
+    }
+
+    private void editUser(service.User entity) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        service.UserService port = service_1.getUserServicePort();
+        port.editUser(entity);
     }
 }
