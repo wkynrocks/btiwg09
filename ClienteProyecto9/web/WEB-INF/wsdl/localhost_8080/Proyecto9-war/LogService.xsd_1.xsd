@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.3 (tags/2.3-7528; 2013-04-29T19:34:10+0000) JAXWS-RI/2.2.8 JAXWS/2.2 svn-revision#unknown. --><xs:schema xmlns:tns="http://service/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://service/">
+
+<xs:element name="countLog" type="tns:countLog"/>
+
+<xs:element name="countLogResponse" type="tns:countLogResponse"/>
+
+<xs:element name="createLog" type="tns:createLog"/>
+
+<xs:element name="editLog" type="tns:editLog"/>
+
+<xs:element name="findAllLog" type="tns:findAllLog"/>
+
+<xs:element name="findAllLogResponse" type="tns:findAllLogResponse"/>
+
+<xs:element name="findLog" type="tns:findLog"/>
+
+<xs:element name="findLogResponse" type="tns:findLogResponse"/>
+
+<xs:element name="findRangeLog" type="tns:findRangeLog"/>
+
+<xs:element name="findRangeLogResponse" type="tns:findRangeLogResponse"/>
+
+<xs:element name="log" type="tns:log"/>
+
+<xs:element name="removeLog" type="tns:removeLog"/>
+
+<xs:element name="tesoro" type="tns:tesoro"/>
+
+<xs:element name="user" type="tns:user"/>
+
+<xs:complexType name="countLog">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="countLogResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="removeLog">
+<xs:sequence>
+<xs:element name="entity" type="tns:log" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="log">
+<xs:sequence>
+<xs:element name="comentario" type="xs:string" minOccurs="0"/>
+<xs:element name="idLog" type="xs:int" minOccurs="0"/>
+<xs:element name="tesoroidTesoro" type="tns:tesoro" minOccurs="0"/>
+<xs:element name="tipo" type="xs:string" minOccurs="0"/>
+<xs:element name="useridUser" type="tns:user" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="tesoro">
+<xs:sequence>
+<xs:element name="ciudad" type="xs:string" minOccurs="0"/>
+<xs:element name="codigoSecreto" type="xs:string" minOccurs="0"/>
+<xs:element name="habilitado" type="xs:boolean"/>
+<xs:element name="idTesoro" type="xs:int" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="pais" type="xs:string" minOccurs="0"/>
+<xs:element name="posicion" type="xs:string" minOccurs="0"/>
+<xs:element name="useridUser" type="tns:user" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="user">
+<xs:sequence>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="idUser" type="xs:int" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+<xs:element name="rol" type="xs:string" minOccurs="0"/>
+<xs:element name="username" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findLog">
+<xs:sequence>
+<xs:element name="id" type="xs:anyType" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findLogResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:log" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="editLog">
+<xs:sequence>
+<xs:element name="entity" type="tns:log" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findRangeLog">
+<xs:sequence>
+<xs:element name="range" type="xs:int" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findRangeLogResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:log" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createLog">
+<xs:sequence>
+<xs:element name="entity" type="tns:log" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findAllLog">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findAllLogResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:log" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
