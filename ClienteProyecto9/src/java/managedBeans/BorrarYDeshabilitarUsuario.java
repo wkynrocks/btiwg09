@@ -7,7 +7,6 @@ package managedBeans;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
 import javax.xml.ws.WebServiceRef;
 import service.User;
 import service.UserService_Service;
@@ -23,27 +22,11 @@ public class BorrarYDeshabilitarUsuario {
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Proyecto9-war/UserService.wsdl")
     private UserService_Service service;
 
-    String desButton;
-
     boolean estaDeshabilitado;
 
     public boolean estaDeshabilitado(String rol) {
-        
-        return rol.equals("Deshabilitado");
-//        boolean res=true;
-//        if (user.getRol().equals("Deshabilitado")) {
-//            if (findListaTesorosCreados(user.getIdUser()).isEmpty()) {
-//                user.setRol("BuscaTesoros");
-//            } else {
-//                user.setRol("Colaborador");
-//            }
-//            res=false;
-//        } else {
-//            user.setRol("Deshabilitado");
-//            res=true;
-//        }
-//        editUser(user);
-//        return res;
+        estaDeshabilitado= rol.equals("Deshabilitado");
+        return estaDeshabilitado;
     }
 
     public boolean isEstaDeshabilitado() {
