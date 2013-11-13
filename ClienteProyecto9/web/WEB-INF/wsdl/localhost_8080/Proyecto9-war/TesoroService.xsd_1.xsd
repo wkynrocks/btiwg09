@@ -12,6 +12,10 @@
 
 <xs:element name="findAllTesoroResponse" type="tns:findAllTesoroResponse"/>
 
+<xs:element name="findByCriterioTesoro" type="tns:findByCriterioTesoro"/>
+
+<xs:element name="findByCriterioTesoroResponse" type="tns:findByCriterioTesoroResponse"/>
+
 <xs:element name="findByUsuarioBuscando" type="tns:findByUsuarioBuscando"/>
 
 <xs:element name="findByUsuarioBuscandoResponse" type="tns:findByUsuarioBuscandoResponse"/>
@@ -32,7 +36,7 @@
 
 <xs:complexType name="findByUsuarioBuscando">
 <xs:sequence>
-<xs:element name="user" type="xs:string" minOccurs="0"/>
+<xs:element name="usu" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -65,21 +69,44 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="findAllTesoro">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findAllTesoroResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:tesoro" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="editTesoro">
 <xs:sequence>
 <xs:element name="entity" type="tns:tesoro" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="findTesoro">
+<xs:complexType name="findByCriterioTesoro">
 <xs:sequence>
-<xs:element name="id" type="xs:anyType" minOccurs="0"/>
+<xs:element name="criterio" type="xs:string" minOccurs="0"/>
+<xs:element name="textbusqueda" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="findTesoroResponse">
+<xs:complexType name="findByCriterioTesoroResponse">
 <xs:sequence>
-<xs:element name="return" type="tns:tesoro" minOccurs="0"/>
+<xs:element name="return" type="tns:tesoro" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createTesoro">
+<xs:sequence>
+<xs:element name="entity" type="tns:tesoro" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="removeTesoro">
+<xs:sequence>
+<xs:element name="entity" type="tns:tesoro" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -95,22 +122,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="createTesoro">
-<xs:sequence>
-<xs:element name="entity" type="tns:tesoro" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="findAllTesoro">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="findAllTesoroResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:tesoro" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="countTesoro">
 <xs:sequence/>
 </xs:complexType>
@@ -121,9 +132,15 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="removeTesoro">
+<xs:complexType name="findTesoro">
 <xs:sequence>
-<xs:element name="entity" type="tns:tesoro" minOccurs="0"/>
+<xs:element name="id" type="xs:anyType" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findTesoroResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:tesoro" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>

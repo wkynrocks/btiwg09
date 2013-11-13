@@ -38,12 +38,12 @@ public class TesoroFacade extends AbstractFacade<Tesoro> {
     }
     
     public List<Tesoro> findByCriterioTesoro(String criterio, String textbusqueda){
-        List<Tesoro> lt = new ArrayList<Tesoro>();
+        List<Tesoro> lt = null;
         switch (criterio){
-            case "nombre": em.createNamedQuery("Tesoro.findByNombre").setParameter("nombre", textbusqueda).getResultList(); break;
-            case "ciudad": em.createNamedQuery("Tesoro.findByCiudad").setParameter("ciudad", textbusqueda).getResultList(); break;
-            case "pais":   em.createNamedQuery("Tesoro.findByPais").setParameter("pais", textbusqueda).getResultList(); break;
-            case "posicion": em.createNamedQuery("Tesoro.findByPosicion").setParameter("posicion", textbusqueda).getResultList(); break; 
+            case "nombre": lt = em.createNamedQuery("Tesoro.findByLikeNombre").setParameter("nombre","%"+textbusqueda+"%").getResultList(); break;
+            case "ciudad": lt = em.createNamedQuery("Tesoro.findByLikeCiudad").setParameter("ciudad","%"+textbusqueda+"%").getResultList(); break;
+            case "pais": lt = em.createNamedQuery("Tesoro.findByLikePais").setParameter("pais","%"+textbusqueda+"%").getResultList(); break;
+            case "posicion": lt = em.createNamedQuery("Tesoro.findByLikePosicion").setParameter("posicion","%"+textbusqueda+"%").getResultList(); break; 
             default: break;
         }
         return lt;

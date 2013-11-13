@@ -6,6 +6,7 @@
 
 package managedBeans;
 
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -96,8 +97,15 @@ public class ListarTesoros {
         return "busquedaTesoro.xhtml";
     }
     
+    private java.util.List<service.Tesoro> findByCriterioTesoro(java.lang.String criterio, java.lang.String textbusqueda) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        service.TesoroService port = service.getTesoroServicePort();
+        return port.findByCriterioTesoro(criterio, textbusqueda);
+    }
+    
     public java.util.List<service.Tesoro> listarTesorosporCriterio(){
-        return null;
+        return findByCriterioTesoro(criterio,textbusqueda);
     }
 
     /**
@@ -113,4 +121,24 @@ public class ListarTesoros {
     public void setBusqueda(boolean busqueda) {
         this.busqueda = busqueda;
     }
+    
+    public boolean hacerSeguimiento(Integer idUser, Integer idTesoro){
+        return false;
+    }
+    
+    public boolean estaSiguiendo(User usuario,service.Tesoro tesoro){
+        java.util.List<service.Tesoro> lt = listaTesoros(usuario);
+        boolean encontrado = false;
+        int i=0;
+        while ((i<lt.size())&&(!encontrado)){
+            if (lt.get(i).getIdTesoro()==tesoro.getIdTesoro()){
+                encontrado = true;
+            }
+            i++;
+        }
+        
+        return encontrado;
+    }
+
+
 }

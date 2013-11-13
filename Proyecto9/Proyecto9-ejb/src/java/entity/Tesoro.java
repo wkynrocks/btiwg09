@@ -38,9 +38,13 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Tesoro.findAll", query = "SELECT t FROM Tesoro t"),
     @NamedQuery(name = "Tesoro.findByIdTesoro", query = "SELECT t FROM Tesoro t WHERE t.idTesoro = :idTesoro"),
     @NamedQuery(name = "Tesoro.findByNombre", query = "SELECT t FROM Tesoro t WHERE t.nombre = :nombre"),
+    @NamedQuery(name = "Tesoro.findByLikeNombre", query = "SELECT t FROM Tesoro t WHERE t.nombre LIKE :nombre"),
     @NamedQuery(name = "Tesoro.findByCiudad", query = "SELECT t FROM Tesoro t WHERE t.ciudad = :ciudad"),
+    @NamedQuery(name = "Tesoro.findByLikeCiudad", query = "SELECT t FROM Tesoro t WHERE t.ciudad LIKE :ciudad"),
     @NamedQuery(name = "Tesoro.findByPais", query = "SELECT t FROM Tesoro t WHERE t.pais = :pais"),
+    @NamedQuery(name = "Tesoro.findByLikePais", query = "SELECT t FROM Tesoro t WHERE t.pais LIKE :pais"),
     @NamedQuery(name = "Tesoro.findByPosicion", query = "SELECT t FROM Tesoro t WHERE t.posicion = :posicion"),
+    @NamedQuery(name = "Tesoro.findByLikePosicion", query = "SELECT t FROM Tesoro t WHERE t.posicion LIKE :posicion"),
     @NamedQuery(name = "Tesoro.findByCodigoSecreto", query = "SELECT t FROM Tesoro t WHERE t.codigoSecreto = :codigoSecreto"),
     @NamedQuery(name = "Tesoro.findByHabilitado", query = "SELECT t FROM Tesoro t WHERE t.habilitado = :habilitado"),
     @NamedQuery(name = "Tesoro.findByBusquedaTesoro", query = "SELECT t FROM Tesoro t INNER JOIN t.userList u WHERE u.username = :username")})

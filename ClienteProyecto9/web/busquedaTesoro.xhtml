@@ -38,8 +38,9 @@
                         #{item.posicion}
                     </h:column>
                     <h:column >
-                            <f:facet name="header">Busqueda</f:facet>
-                                <h:commandButton value="Buscar"/>
+                            <f:facet name="header">Seguimiento</f:facet>
+                            <h:selectBooleanCheckbox onclick="#{listarTesoros.hacerSeguimiento(usuario.usuario.idUser,item.idTesoro)}"
+                                                     value="#{listarTesoros.estaSiguiendo(usuario.usuario, item)}" />
                     </h:column>
                 </h:dataTable>
             </c:if>
