@@ -19,29 +19,28 @@
                 <h:dataTable rowClasses="center-td" value="#{listaUsuarios.lista}" var="item">
                     <h:column >
                         <f:facet name="header">Nombre usuario</f:facet>
-                        #{item.username}
+                            #{item.username}
                     </h:column>
                     <h:column >
                         <f:facet name="header">Contraseña</f:facet>
-                        #{item.password}
+                            #{item.password}
                     </h:column>
                     <h:column >
                         <f:facet name="header">Email</f:facet>
-                        #{item.email}
+                            #{item.email}
                     </h:column>
                     <h:column >
                         <f:facet name="header">Rol</f:facet>
-                        #{item.rol}
+                            #{item.rol}
                     </h:column>
                     <h:column >
                         <f:facet name="header">Acción 1</f:facet>
-                        
-                            <h:commandButton action="#{borrarYDeshabilitarUsuario.borrar(item)}" value="Borrar"/>
-                    
+                        <h:commandButton action="#{borrarYDeshabilitarUsuario.borrar(item)}" value="Borrar"/>
                     </h:column>
                     <h:column >
                         <f:facet name="header">Acción 2</f:facet>
-                            <h:commandButton action="#{borrarYDeshabilitarUsuario.deshabilitar(item)}" value="Deshabilitar"/>
+                        <h:commandButton value="Habilitar" action="#{borrarYDeshabilitarUsuario.deshabilitar(item)}" rendered="#{borrarYDeshabilitarUsuario.estaDeshabilitado(item.rol)}"/>
+                        <h:commandButton value="Deshabilitar" action="#{borrarYDeshabilitarUsuario.deshabilitar(item)}" rendered="#{!borrarYDeshabilitarUsuario.estaDeshabilitado(item.rol)}"/>
                     </h:column>
                 </h:dataTable>
             </h:form>
