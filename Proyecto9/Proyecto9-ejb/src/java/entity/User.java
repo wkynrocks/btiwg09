@@ -8,13 +8,11 @@ package entity;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.annotation.Generated;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import static javax.persistence.GenerationType.AUTO;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -45,7 +43,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "User.findByUsername", query = "SELECT u FROM User u WHERE u.username = :username"),
     @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password"),
     @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email = :email"),
-    @NamedQuery(name = "User.findByRol", query = "SELECT u FROM User u WHERE u.rol = :rol")})
+    @NamedQuery(name = "User.findByRol", query = "SELECT u FROM User u WHERE u.rol LIKE :rol")})
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
