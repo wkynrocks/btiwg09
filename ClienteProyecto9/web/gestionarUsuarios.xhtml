@@ -11,7 +11,12 @@
         <h1 align="center">Lista de Usuarios:</h1>
         <f:view >
             <h:form>
-                <h:dataTable rowClasses="center-td" value="#{listaUsuarios.listaTodos()}" var="item">
+                <h:selectOneMenu value="#{listaUsuarios.modoBusqueda}">
+                    <f:selectItems value="#{listaUsuarios.parametros}"/>
+                </h:selectOneMenu>
+                <h:inputText value="#{listaUsuarios.valorParametro}"/>
+                <h:commandButton value="Buscar" action="#{listaUsuarios.busca()}"/>
+                <h:dataTable rowClasses="center-td" value="#{listaUsuarios.lista}" var="item">
                     <h:column >
                         <f:facet name="header">Nombre usuario</f:facet>
                         #{item.username}
@@ -41,7 +46,6 @@
                 </h:dataTable>
             </h:form>
         </f:view>
-
     </h:body>
 </html>
 

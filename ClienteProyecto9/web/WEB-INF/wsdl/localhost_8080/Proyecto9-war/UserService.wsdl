@@ -4,6 +4,24 @@
 <xsd:import namespace="http://service/" schemaLocation="http://localhost:8080/Proyecto9-war/UserService?xsd=1"/>
 </xsd:schema>
 </types>
+<message name="findByRol">
+<part name="parameters" element="tns:findByRol"/>
+</message>
+<message name="findByRolResponse">
+<part name="parameters" element="tns:findByRolResponse"/>
+</message>
+<message name="findByPartialEmail">
+<part name="parameters" element="tns:findByPartialEmail"/>
+</message>
+<message name="findByPartialEmailResponse">
+<part name="parameters" element="tns:findByPartialEmailResponse"/>
+</message>
+<message name="findByPartialUsername">
+<part name="parameters" element="tns:findByPartialUsername"/>
+</message>
+<message name="findByPartialUsernameResponse">
+<part name="parameters" element="tns:findByPartialUsernameResponse"/>
+</message>
 <message name="removeUser">
 <part name="parameters" element="tns:removeUser"/>
 </message>
@@ -12,6 +30,12 @@
 </message>
 <message name="findByUsernameResponse">
 <part name="parameters" element="tns:findByUsernameResponse"/>
+</message>
+<message name="findListaTesorosCreados">
+<part name="parameters" element="tns:findListaTesorosCreados"/>
+</message>
+<message name="findListaTesorosCreadosResponse">
+<part name="parameters" element="tns:findListaTesorosCreadosResponse"/>
 </message>
 <message name="editUser">
 <part name="parameters" element="tns:editUser"/>
@@ -43,19 +67,29 @@
 <message name="countUserResponse">
 <part name="parameters" element="tns:countUserResponse"/>
 </message>
-<message name="findListaTesorosCreados">
-<part name="parameters" element="tns:findListaTesorosCreados"/>
-</message>
-<message name="findListaTesorosCreadosResponse">
-<part name="parameters" element="tns:findListaTesorosCreadosResponse"/>
-</message>
 <portType name="UserService">
+<operation name="findByRol">
+<input wsam:Action="http://service/UserService/findByRolRequest" message="tns:findByRol"/>
+<output wsam:Action="http://service/UserService/findByRolResponse" message="tns:findByRolResponse"/>
+</operation>
+<operation name="findByPartialEmail">
+<input wsam:Action="http://service/UserService/findByPartialEmailRequest" message="tns:findByPartialEmail"/>
+<output wsam:Action="http://service/UserService/findByPartialEmailResponse" message="tns:findByPartialEmailResponse"/>
+</operation>
+<operation name="findByPartialUsername">
+<input wsam:Action="http://service/UserService/findByPartialUsernameRequest" message="tns:findByPartialUsername"/>
+<output wsam:Action="http://service/UserService/findByPartialUsernameResponse" message="tns:findByPartialUsernameResponse"/>
+</operation>
 <operation name="removeUser">
 <input wsam:Action="http://service/UserService/removeUser" message="tns:removeUser"/>
 </operation>
 <operation name="findByUsername">
 <input wsam:Action="http://service/UserService/findByUsernameRequest" message="tns:findByUsername"/>
 <output wsam:Action="http://service/UserService/findByUsernameResponse" message="tns:findByUsernameResponse"/>
+</operation>
+<operation name="findListaTesorosCreados">
+<input wsam:Action="http://service/UserService/findListaTesorosCreadosRequest" message="tns:findListaTesorosCreados"/>
+<output wsam:Action="http://service/UserService/findListaTesorosCreadosResponse" message="tns:findListaTesorosCreadosResponse"/>
 </operation>
 <operation name="editUser">
 <input wsam:Action="http://service/UserService/editUser" message="tns:editUser"/>
@@ -79,13 +113,36 @@
 <input wsam:Action="http://service/UserService/countUserRequest" message="tns:countUser"/>
 <output wsam:Action="http://service/UserService/countUserResponse" message="tns:countUserResponse"/>
 </operation>
-<operation name="findListaTesorosCreados">
-<input wsam:Action="http://service/UserService/findListaTesorosCreadosRequest" message="tns:findListaTesorosCreados"/>
-<output wsam:Action="http://service/UserService/findListaTesorosCreadosResponse" message="tns:findListaTesorosCreadosResponse"/>
-</operation>
 </portType>
 <binding name="UserServicePortBinding" type="tns:UserService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<operation name="findByRol">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="findByPartialEmail">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="findByPartialUsername">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="removeUser">
 <soap:operation soapAction=""/>
 <input>
@@ -93,6 +150,15 @@
 </input>
 </operation>
 <operation name="findByUsername">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="findListaTesorosCreados">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -141,15 +207,6 @@
 </output>
 </operation>
 <operation name="countUser">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="findListaTesorosCreados">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
