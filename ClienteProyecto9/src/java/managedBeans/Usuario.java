@@ -100,7 +100,7 @@ public class Usuario {
     
     public String logout(){
         usuario= new User();
-        return "/faces/index.xhtml";
+        return "index";
     }
     
     

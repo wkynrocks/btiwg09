@@ -12,6 +12,18 @@
 
 <xs:element name="findAllUserResponse" type="tns:findAllUserResponse"/>
 
+<xs:element name="findByPartialEmail" type="tns:findByPartialEmail"/>
+
+<xs:element name="findByPartialEmailResponse" type="tns:findByPartialEmailResponse"/>
+
+<xs:element name="findByPartialUsername" type="tns:findByPartialUsername"/>
+
+<xs:element name="findByPartialUsernameResponse" type="tns:findByPartialUsernameResponse"/>
+
+<xs:element name="findByRol" type="tns:findByRol"/>
+
+<xs:element name="findByRolResponse" type="tns:findByRolResponse"/>
+
 <xs:element name="findByUsername" type="tns:findByUsername"/>
 
 <xs:element name="findByUsernameResponse" type="tns:findByUsernameResponse"/>
@@ -33,6 +45,28 @@
 <xs:element name="tesoro" type="tns:tesoro"/>
 
 <xs:element name="user" type="tns:user"/>
+
+<xs:complexType name="findByRol">
+<xs:sequence>
+<xs:element name="rol" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByRolResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:user" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="user">
+<xs:sequence>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="idUser" type="xs:int" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+<xs:element name="rol" type="xs:string" minOccurs="0"/>
+<xs:element name="username" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
 
 <xs:complexType name="findListaTesorosCreados">
 <xs:sequence>
@@ -56,16 +90,6 @@
 <xs:element name="pais" type="xs:string" minOccurs="0"/>
 <xs:element name="posicion" type="xs:string" minOccurs="0"/>
 <xs:element name="useridUser" type="tns:user" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="user">
-<xs:sequence>
-<xs:element name="email" type="xs:string" minOccurs="0"/>
-<xs:element name="idUser" type="xs:int" minOccurs="0"/>
-<xs:element name="password" type="xs:string" minOccurs="0"/>
-<xs:element name="rol" type="xs:string" minOccurs="0"/>
-<xs:element name="username" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -96,6 +120,18 @@
 <xs:complexType name="removeUser">
 <xs:sequence>
 <xs:element name="entity" type="tns:user" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByPartialUsername">
+<xs:sequence>
+<xs:element name="username" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByPartialUsernameResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:user" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -140,6 +176,18 @@
 <xs:complexType name="editUser">
 <xs:sequence>
 <xs:element name="entity" type="tns:user" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByPartialEmail">
+<xs:sequence>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByPartialEmailResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:user" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>

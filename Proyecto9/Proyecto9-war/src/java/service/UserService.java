@@ -64,6 +64,21 @@ public class UserService {
         return ejbRef.count();
     }
 
+    @WebMethod(operationName = "findByPartialEmail")
+    public List<User> findByPartialEmail(@WebParam(name = "email") String email) {
+        return ejbRef.findByPartialEmail(email);
+    }
+
+    @WebMethod(operationName = "findByPartialUsername")
+    public List<User> findByPartialUsername(@WebParam(name = "username") String username) {
+        return ejbRef.findByPartialUsername(username);
+    }
+
+    @WebMethod(operationName = "findByRol")
+    public List<User> findByRol(@WebParam(name = "rol") String rol) {
+        return ejbRef.findByRol(rol);
+    }
+
     @WebMethod(operationName = "findByUsername")
     public User findByUsername(@WebParam(name = "username") String username) {
         return ejbRef.findByUsername(username);
