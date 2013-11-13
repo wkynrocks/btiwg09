@@ -30,6 +30,10 @@ public class ListarTesoros {
      * Creates a new instance of ListarTesoros
      */
     
+    private String criterio;
+    private String textbusqueda;
+    private boolean busqueda=false;
+    
     
     public ListarTesoros() {
     }
@@ -56,5 +60,57 @@ public class ListarTesoros {
         // If the calling of port operations may lead to race condition some synchronization is required.
         service.UserService port = service_1.getUserServicePort();
         return port.findListaTesorosCreados(idUser);
+    }
+
+    /**
+     * @return the criterio
+     */
+    public String getCriterio() {
+        return criterio;
+    }
+
+    /**
+     * @param criterio the criterio to set
+     */
+    public void setCriterio(String criterio) {
+        this.criterio = criterio;
+    }
+
+    /**
+     * @return the textbusqueda
+     */
+    public String getTextbusqueda() {
+        return textbusqueda;
+    }
+
+    /**
+     * @param textbusqueda the textbusqueda to set
+     */
+    public void setTextbusqueda(String textbusqueda) {
+        this.textbusqueda = textbusqueda;
+    }
+    
+    public String listarBusquedaTesoros(){
+        busqueda = true;
+
+        return "busquedaTesoro.xhtml";
+    }
+    
+    public java.util.List<service.Tesoro> listarTesorosporCriterio(){
+        return null;
+    }
+
+    /**
+     * @return the busqueda
+     */
+    public boolean isBusqueda() {
+        return busqueda;
+    }
+
+    /**
+     * @param busqueda the busqueda to set
+     */
+    public void setBusqueda(boolean busqueda) {
+        this.busqueda = busqueda;
     }
 }
