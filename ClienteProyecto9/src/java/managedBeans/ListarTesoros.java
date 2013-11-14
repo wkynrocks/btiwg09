@@ -6,11 +6,8 @@
 
 package managedBeans;
 
-import java.util.List;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
 import javax.xml.ws.WebServiceRef;
 import service.TesoroService_Service;
 import service.User;
@@ -122,10 +119,6 @@ public class ListarTesoros {
         this.busqueda = busqueda;
     }
     
-    public boolean hacerSeguimiento(Integer idUser, Integer idTesoro){
-        return false;
-    }
-    
     public boolean estaSiguiendo(User usuario,service.Tesoro tesoro){
         java.util.List<service.Tesoro> lt = listaTesoros(usuario);
         boolean encontrado = false;
@@ -140,5 +133,23 @@ public class ListarTesoros {
         return encontrado;
     }
 
+    public String habilitar(service.Tesoro tesoro){
+        tesoro.setHabilitado(true);
+        editTesoro(tesoro);
+        return null;
+    }
+    
+    public String deshabilitar(service.Tesoro tesoro){
+        tesoro.setHabilitado(false);
+        editTesoro(tesoro);
+        return null;
+    }
+
+    private void editTesoro(service.Tesoro entity) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        service.TesoroService port = service.getTesoroServicePort();
+        port.editTesoro(entity);
+    }
 
 }
