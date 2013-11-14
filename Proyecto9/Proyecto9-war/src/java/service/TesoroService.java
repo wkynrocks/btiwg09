@@ -7,6 +7,7 @@
 package service;
 
 import dao.TesoroFacade;
+import entity.Log;
 import entity.Tesoro;
 import java.util.List;
 import javax.ejb.EJB;
@@ -17,7 +18,7 @@ import javax.jws.WebService;
 
 /**
  *
- * @author tolkirlaptop
+ * @author wkynrocks
  */
 @WebService(serviceName = "TesoroService")
 public class TesoroService {
@@ -71,6 +72,11 @@ public class TesoroService {
     @WebMethod(operationName = "findByCriterioTesoro")
     public List<Tesoro> findByCriterioTesoro(@WebParam(name = "criterio") String criterio, @WebParam(name = "textbusqueda") String textbusqueda) {
         return ejbRef.findByCriterioTesoro(criterio, textbusqueda);
+    }
+
+    @WebMethod(operationName = "findAllLogs")
+    public List<Log> findAllLogs(@WebParam(name = "tesoroId") Integer tesoroId) {
+        return ejbRef.findAllLogs(tesoroId);
     }
     
 }

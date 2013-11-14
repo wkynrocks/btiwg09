@@ -5,6 +5,7 @@
  */
 package dao;
 
+import entity.Log;
 import entity.Tesoro;
 import entity.User;
 import java.util.ArrayList;
@@ -47,5 +48,9 @@ public class TesoroFacade extends AbstractFacade<Tesoro> {
             default: break;
         }
         return lt;
+    }
+    
+    public List<Log> findAllLogs(Integer tesoroId){
+        return em.createNamedQuery("Tesoro.findAllLogs").setParameter("tesoroId",tesoroId).getResultList();
     }
 }
