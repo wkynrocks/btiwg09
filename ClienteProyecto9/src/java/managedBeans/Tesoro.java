@@ -88,4 +88,9 @@ public class Tesoro {
         service.UserService port = service_1.getUserServicePort();
         port.editUser(entity);
     }
+    
+    public String pagInfo(service.Tesoro tesoro){
+        this.tesoro = tesoro;
+        return "infoTesoro.xhtml";
+    }
 }
