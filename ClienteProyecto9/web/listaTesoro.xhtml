@@ -36,6 +36,10 @@
                         <h:commandButton value="Habilitar" action="#{listarTesoros.habilitar(item)}" rendered="#{!item.habilitado}"/>
                         <h:commandButton value="Deshabilitar" action="#{listarTesoros.deshabilitar(item)}" rendered="#{item.habilitado}"/>
                     </h:column>  
+                    <h:column>
+                        <f:facet name="header">Información</f:facet>
+                        <h:commandButton value="Más Info" action="#{tesoro.pagInfo(item)}" rendered="#{item.habilitado}"/>
+                    </h:column>  
                 </h:dataTable>
             <br/>
             <br/>
