@@ -9,14 +9,43 @@
     <h:body>
          <f:view>
             <h:form>
+                <h1><p style="color:blue;"> Tesoros creados por ti</p></h1>
                 <h:dataTable value="#{listarTesoros.listarTesorosCreados(usuario.usuario)}" var="item">
                     <h:column >
+                        <f:facet name="header">Nombre</f:facet>
                         #{item.nombre}
                     </h:column>
+                    <h:column >
+                        <f:facet name="header">Ciudad</f:facet>
+                        #{item.ciudad}
+                    </h:column>
+                    <h:column >
+                        <f:facet name="header">Pais</f:facet>
+                        #{item.pais}
+                    </h:column>
+                    <h:column >
+                        <f:facet name="header">Posición</f:facet>
+                        #{item.posicion}
+                    </h:column>
+                    <h:column >
+                        <f:facet name="header">Posición</f:facet>
+                        #{item.codigoSecreto}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Habilitado</f:facet>
+                        <h:commandButton value="Habilitar" action="#{listarTesoros.habilitar(item)}" rendered="#{!item.habilitado}"/>
+                        <h:commandButton value="Deshabilitar" action="#{listarTesoros.deshabilitar(item)}" rendered="#{item.habilitado}"/>
+                    </h:column>  
+                    <h:column>
+                        <f:facet name="header">Información</f:facet>
+                        <h:commandButton value="Más Info" action="#{tesoro.pagInfo(item)}" rendered="#{item.habilitado}"/>
+                    </h:column>  
                 </h:dataTable>
+            <br/>
+            <br/>
+            <h:link value="Volver" outcome="paginaHomeUsuario"/>   
             </h:form>
         </f:view>
-
     </h:body>
 </html>
 
