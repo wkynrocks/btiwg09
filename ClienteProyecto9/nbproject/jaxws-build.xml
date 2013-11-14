@@ -60,7 +60,7 @@
     </target>
     <target name="wsimport-client-LogService" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/LogService"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/LogService" destdir="${build.generated.dir}/jax-wsCache/LogService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/LogService/wsdl/localhost_8080/Proyecto9-war/LogService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/Proyecto9-war/LogService?WSDL" xnocompile="true" xendorsed="true" package="service">
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/LogService" destdir="${build.generated.dir}/jax-wsCache/LogService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/LogService/wsdl/localhost_8080/Proyecto9-war/LogService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/Proyecto9-war/LogService?WSDL" xnocompile="true" xendorsed="true">
             <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/LogService/wsdl/localhost_8080/Proyecto9-war/LogService.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/LogService"/>
         </wsimport>

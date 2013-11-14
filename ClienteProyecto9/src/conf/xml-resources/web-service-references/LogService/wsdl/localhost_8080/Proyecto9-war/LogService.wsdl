@@ -37,6 +37,12 @@
 <message name="countLogResponse">
 <part name="parameters" element="tns:countLogResponse"/>
 </message>
+<message name="findByTesoroId">
+<part name="parameters" element="tns:findByTesoroId"/>
+</message>
+<message name="findByTesoroIdResponse">
+<part name="parameters" element="tns:findByTesoroIdResponse"/>
+</message>
 <portType name="LogService">
 <operation name="createLog">
 <input wsam:Action="http://service/LogService/createLog" message="tns:createLog"/>
@@ -62,6 +68,10 @@
 <operation name="countLog">
 <input wsam:Action="http://service/LogService/countLogRequest" message="tns:countLog"/>
 <output wsam:Action="http://service/LogService/countLogResponse" message="tns:countLogResponse"/>
+</operation>
+<operation name="findByTesoroId">
+<input wsam:Action="http://service/LogService/findByTesoroIdRequest" message="tns:findByTesoroId"/>
+<output wsam:Action="http://service/LogService/findByTesoroIdResponse" message="tns:findByTesoroIdResponse"/>
 </operation>
 </portType>
 <binding name="LogServicePortBinding" type="tns:LogService">
@@ -112,6 +122,15 @@
 </output>
 </operation>
 <operation name="countLog">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="findByTesoroId">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

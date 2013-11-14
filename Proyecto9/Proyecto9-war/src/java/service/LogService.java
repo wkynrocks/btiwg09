@@ -17,7 +17,7 @@ import javax.jws.WebService;
 
 /**
  *
- * @author wkynrocks
+ * @author Luby
  */
 @WebService(serviceName = "LogService")
 public class LogService {
@@ -61,6 +61,11 @@ public class LogService {
     @WebMethod(operationName = "countLog")
     public int countLog() {
         return ejbRef.count();
+    }
+
+    @WebMethod(operationName = "findByTesoroId")
+    public List<Log> findByTesoroId(@WebParam(name = "logtes") int logtes) {
+        return ejbRef.findByTesoroId(logtes);
     }
     
 }

@@ -12,6 +12,10 @@
 
 <xs:element name="findAllLogResponse" type="tns:findAllLogResponse"/>
 
+<xs:element name="findByTesoroId" type="tns:findByTesoroId"/>
+
+<xs:element name="findByTesoroIdResponse" type="tns:findByTesoroIdResponse"/>
+
 <xs:element name="findLog" type="tns:findLog"/>
 
 <xs:element name="findLogResponse" type="tns:findLogResponse"/>
@@ -92,6 +96,18 @@
 <xs:complexType name="editLog">
 <xs:sequence>
 <xs:element name="entity" type="tns:log" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByTesoroId">
+<xs:sequence>
+<xs:element name="logtes" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByTesoroIdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:log" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 

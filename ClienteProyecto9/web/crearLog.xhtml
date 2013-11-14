@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form><table border="0">
+            <tbody>
+                <tr>
+                    <td>Tesoro:  </td>
+                    <td><h:outputText value="#{log.comentario.tesoroidTesoro}"/></td>
+                </tr>
+                <tr>
+                    <td>Comentario:</td>
+                    <td><h:inputText value="#{log.comentario.comentario}"/></td>
+                </tr>
+                <tr>
+                    <td>Estado:</td>
+                    <td><h:inputText value="#{log.comentario.tipo}"/></td>
+                </tr>
+                
+            </tbody>
+        </table><br/>
+        <h:commandButton value="Aceptar" action="#{log.crearLog(tesoro)}"/> 
+        <br/><br/>
+        </h:form>
+    </h:body>
+</html>
+
