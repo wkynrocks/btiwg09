@@ -9,6 +9,7 @@
     </h:head>
     <h:body>
         <ui:include src="logout.xhtml" />
+        <ui:include src="notificaciones.xhtml" />
         <h:panelGrid columns="3" style="margin: auto;width: 70%;">
             <h:link  value="Gestionar Usuarios" outcome="gestionarUsuarios" rendered="#{usuario.isAdmin()}"/>
             <h:link value="Búsqueda Tesoro" outcome="busquedaTesoro"/>

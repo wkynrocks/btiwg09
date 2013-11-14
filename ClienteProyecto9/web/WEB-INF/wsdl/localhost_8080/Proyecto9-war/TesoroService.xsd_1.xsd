@@ -8,6 +8,10 @@
 
 <xs:element name="editTesoro" type="tns:editTesoro"/>
 
+<xs:element name="findAllLogs" type="tns:findAllLogs"/>
+
+<xs:element name="findAllLogsResponse" type="tns:findAllLogsResponse"/>
+
 <xs:element name="findAllTesoro" type="tns:findAllTesoro"/>
 
 <xs:element name="findAllTesoroResponse" type="tns:findAllTesoroResponse"/>
@@ -27,6 +31,8 @@
 <xs:element name="findTesoro" type="tns:findTesoro"/>
 
 <xs:element name="findTesoroResponse" type="tns:findTesoroResponse"/>
+
+<xs:element name="log" type="tns:log"/>
 
 <xs:element name="removeTesoro" type="tns:removeTesoro"/>
 
@@ -85,6 +91,18 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="removeTesoro">
+<xs:sequence>
+<xs:element name="entity" type="tns:tesoro" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createTesoro">
+<xs:sequence>
+<xs:element name="entity" type="tns:tesoro" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="findByCriterioTesoro">
 <xs:sequence>
 <xs:element name="criterio" type="xs:string" minOccurs="0"/>
@@ -95,18 +113,6 @@
 <xs:complexType name="findByCriterioTesoroResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:tesoro" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="createTesoro">
-<xs:sequence>
-<xs:element name="entity" type="tns:tesoro" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="removeTesoro">
-<xs:sequence>
-<xs:element name="entity" type="tns:tesoro" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -141,6 +147,28 @@
 <xs:complexType name="findTesoroResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:tesoro" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findAllLogs">
+<xs:sequence>
+<xs:element name="tesoroId" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findAllLogsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:log" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="log">
+<xs:sequence>
+<xs:element name="comentario" type="xs:string" minOccurs="0"/>
+<xs:element name="idLog" type="xs:int" minOccurs="0"/>
+<xs:element name="tesoroidTesoro" type="tns:tesoro" minOccurs="0"/>
+<xs:element name="tipo" type="xs:string" minOccurs="0"/>
+<xs:element name="useridUser" type="tns:user" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>

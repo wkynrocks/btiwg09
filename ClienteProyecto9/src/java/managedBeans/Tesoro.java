@@ -7,13 +7,10 @@
 package managedBeans;
 
 import javax.annotation.PostConstruct;
-import javax.ejb.EJBException;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.xml.ws.WebServiceRef;
 import service.TesoroService_Service;
-import service.User;
 import service.UserService_Service;
 
 /**
