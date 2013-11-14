@@ -152,13 +152,4 @@ public class ListarTesoros {
         port.editTesoro(entity);
     }
     
-
-    private void editTesoro(service.Tesoro entity) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        service.TesoroService port = service.getTesoroServicePort();
-        port.editTesoro(entity);
-    }
-    
-
 }
