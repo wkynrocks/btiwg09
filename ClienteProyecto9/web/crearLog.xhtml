@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -10,7 +11,7 @@
             <tbody>
                 <tr>
                     <td>Tesoro:  </td>
-                    <td><h:outputText value="#{log.comentario.tesoroidTesoro}"/></td>
+                    <td><h:outputLabel value="#{tesoro.tesoro.nombre}"/></td>
                 </tr>
                 <tr>
                     <td>Comentario:</td>
@@ -18,12 +19,16 @@
                 </tr>
                 <tr>
                     <td>Estado:</td>
-                    <td><h:inputText value="#{log.comentario.tipo}"/></td>
+                    <td><h:selectOneMenu value="#{log.comentario.tipo}"> 
+                            <f:selectItem itemValue="encontrado" itemLabel="Encontrado" />
+                            <f:selectItem itemValue="noEncontrado" itemLabel="No Encontrado" />
+                            <f:selectItem itemValue="problemas" itemLabel="Problemas" />
+                        </h:selectOneMenu></td>
                 </tr>
                 
             </tbody>
         </table><br/>
-        <h:commandButton value="Aceptar" action="#{log.crearLog(tesoro)}"/> 
+        <h:commandButton value="Aceptar" action="#{log.crearLog(tesoro.tesoro,usuario.usuario)}"/> 
         <br/><br/>
         </h:form>
     </h:body>

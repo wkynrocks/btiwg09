@@ -8,6 +8,7 @@ package managedBeans;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.xml.ws.WebServiceRef;
 import service.LogService_Service;
 
@@ -16,7 +17,7 @@ import service.LogService_Service;
  * @author Luby
  */
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class Log {
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Proyecto9-war/LogService.wsdl")
     private LogService_Service service;
@@ -27,7 +28,9 @@ public class Log {
     public Log() {
     }
     
-    private service.Log comentario;
+    
+    
+    private service.Log comentario = new service.Log();
 
     public service.Log getComentario() {
         return comentario;
@@ -48,8 +51,9 @@ public class Log {
         port.createLog(entity);
     }
     
-    public String crearLog (service.Tesoro tesoro){
+    public String crearLog (service.Tesoro tesoro, service.User usuario){
         comentario.setTesoroidTesoro(tesoro);
+        comentario.setUseridUser(usuario);
         createLog(comentario);
         return null; //falta poner la pagina correspondiente cuando se haya creado
     }
