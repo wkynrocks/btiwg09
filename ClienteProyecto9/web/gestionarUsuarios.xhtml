@@ -23,7 +23,7 @@
                 <h:inputText value="#{listaUsuarios.valorParametro}">
                 </h:inputText>
                 <h:commandButton value="Buscar" action="#{listaUsuarios.busca()}"/>
-                <h:dataTable value="#{listaUsuarios.lista}" var="item">
+                <h:dataTable value="#{listaUsuarios.lista}" var="item" id="tabla3">
                     <h:column >
                         <f:facet name="header">Nombre usuario</f:facet>
                             #{item.username}
@@ -43,7 +43,7 @@
                     <h:column >
                         <f:facet name="header">Acción 1</f:facet>
                         <h:commandButton onclick="return confirm('Cuidado !!: Se borrarán todos los tesoros y logs asociados')" value="Borrar">
-                            <f:ajax listener="#{borrarYDeshabilitarUsuario.borrar(item)}" render="@form"/>
+                            <f:ajax  listener="#{borrarYDeshabilitarUsuario.borrar(item)}" render="@all"/>
                         </h:commandButton>  
                     </h:column>
                     <h:column >

@@ -6,7 +6,6 @@
 package managedBeans;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.xml.ws.WebServiceRef;
 import service.User;
@@ -23,14 +22,27 @@ public class BorrarYDeshabilitarUsuario {
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Proyecto9-war/UserService.wsdl")
     private UserService_Service service;
     
-    public String borrar(User user) {
+    
+    boolean estaDeshabilitado;
+    
+    
+    public boolean estaDeshabilitado(String rol) {
+        estaDeshabilitado= rol.equals("Deshabilitado");
+        return estaDeshabilitado;
+    }
+    
+    public boolean isEstaDeshabilitado() {
+        return estaDeshabilitado;
+    }
+
+    public void setEstaDeshabilitado(boolean estaDeshabilitado) {
+        this.estaDeshabilitado = estaDeshabilitado;
+    }
+    
+    public void borrar(User user) {
         //Si usuario creó tesoros, busco tesoros o creo logs no se puede borrar
-        if(false){
-            findListaTesorosCreados(user.getIdUser()).isEmpty();
-        }else{
-            removeUser(user);
-        }
-        return null;
+        removeUser(user);
+//        return null;
     }
 
     public String deshabilitar(User user) {
