@@ -29,7 +29,6 @@ public class Usuario {
     private boolean fallologin=false;
 
     public boolean isAdmin(){
-        System.out.println("MECAGOENLAPUTA: ESto es "+usuario.getRol());
         return usuario.getRol().equals("Admin");
     }
     public boolean isFallologin() {

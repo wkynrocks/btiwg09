@@ -18,9 +18,9 @@
                 <f:selectItem itemValue="pais" itemLabel="País" />
                 <f:selectItem itemValue="posicion" itemLabel="Posición" />
             </h:selectOneMenu>
-            <h:inputText value="#{listarTesoros.textbusqueda}" >
+            <h:inputText value="#{listarTesoros.textbusqueda}">
                 <!--        <h:commandButton value="Buscar" action=" listarTesoros.listarBusquedaTesoros() ">-->
-                <f:ajax render="tabla" event="keyup" execute="@form"/></h:inputText>
+                <f:ajax event="keyup" render="tabla" execute="@form"/></h:inputText>
             <!--</h:commandButton>-->
             <h:dataTable id="tabla" value="#{listarTesoros.listarTesorosporCriterio()}" var="item">
                 <h:column >
