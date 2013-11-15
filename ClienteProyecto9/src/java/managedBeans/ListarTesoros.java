@@ -38,7 +38,9 @@ public class ListarTesoros {
     }
     
     public java.util.List<service.Tesoro> listaTesoros(service.User user){
-        return findByUsuarioBuscando(user.getUsername());
+        java.util.List<service.Tesoro> l = findByUsuarioBuscando(user.getUsername());
+        busqueda = l.isEmpty();
+        return l;
     }
 
     private java.util.List<service.Tesoro> findByUsuarioBuscando(String user) {
@@ -50,7 +52,6 @@ public class ListarTesoros {
     
     
     public java.util.List <service.Tesoro> listarTesorosCreados(service.User usuario){
-        
         return findListaTesorosCreados(usuario.getIdUser());
     }
 
