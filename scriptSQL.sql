@@ -5,6 +5,13 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 CREATE SCHEMA IF NOT EXISTS `proyecto9` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `proyecto9` ;
 
+DELETE FROM `proyecto9`.`Log`;
+DELETE FROM `proyecto9`.`Usuario_Tesoro_Map`;
+DELETE FROM `proyecto9`.`Tesoro`;
+DELETE FROM `proyecto9`.`User`;
+
+DROP TABLE IF EXISTS `proyecto9`.`User`, `proyecto9`.`Usuario_Tesoro_Map`, `proyecto9`.`Tesoro`;
+
 -- -----------------------------------------------------
 -- Table `proyecto9`.`User`
 -- -----------------------------------------------------
@@ -90,12 +97,6 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
-DELETE FROM `proyecto9`.`Log`;
-DELETE FROM `proyecto9`.`Usuario_Tesoro_Map`;
-DELETE FROM `proyecto9`.`Tesoro`;
-
-DELETE FROM `proyecto9`.`User`;
 
 
 
