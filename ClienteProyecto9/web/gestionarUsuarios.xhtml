@@ -19,9 +19,11 @@
                 <h:selectOneMenu value="#{listaUsuarios.modoBusqueda}">
                     <f:selectItems value="#{listaUsuarios.parametros}"/>
                 </h:selectOneMenu>
-                <h:inputText value="#{listaUsuarios.valorParametro}"/>
-                <h:commandButton value="Buscar" action="#{listaUsuarios.busca()}"/>
-                <h:dataTable rowClasses="center-td" value="#{listaUsuarios.lista}" var="item">
+                <h:inputText value="#{listaUsuarios.valorParametro}">
+                    <f:ajax onevent="keyup" render="tabla2" execute="@form"/>
+                </h:inputText>
+                <!--<h:commandButton value="Buscar" action=" listaUsuarios.busca() "/>-->
+                <h:dataTable id="tabla2" rowClasses="center-td" value="#{listaUsuarios.dameLista()}" var="item">
                     <h:column >
                         <f:facet name="header">Nombre usuario</f:facet>
                             #{item.username}

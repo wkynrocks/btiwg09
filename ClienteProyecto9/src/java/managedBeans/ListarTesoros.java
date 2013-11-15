@@ -8,6 +8,7 @@ package managedBeans;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.xml.ws.WebServiceRef;
 import service.TesoroService_Service;
 import service.User;
@@ -18,7 +19,7 @@ import service.UserService_Service;
  * @author wkynrocks
  */
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class ListarTesoros {
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Proyecto9-war/UserService.wsdl")
     private UserService_Service service_1;
@@ -102,7 +103,11 @@ public class ListarTesoros {
     }
     
     public java.util.List<service.Tesoro> listarTesorosporCriterio(){
-        return findByCriterioTesoro(criterio,textbusqueda);
+        if(textbusqueda==null){
+            return findByCriterioTesoro("nombre","");
+        }else{
+            return findByCriterioTesoro(criterio,textbusqueda);
+        }
     }
 
     /**
@@ -152,4 +157,10 @@ public class ListarTesoros {
         port.editTesoro(entity);
     }
     
+    public boolean hacerSeguimiento(Integer idUser, Integer idTesoro){
+
+        return false;
+
+    }
+
 }
