@@ -55,10 +55,10 @@ public class TesoroFacade extends AbstractFacade<Tesoro> {
     }
     
     public void seguirTesoro(Integer usuarioId, Integer tesoroId){
-        em.createNativeQuery("INSERT INTO usuario_tesoro_map VALUES ("+ usuarioId + "," + tesoroId + ")").executeUpdate();
+        em.createNativeQuery("INSERT INTO Usuario_Tesoro_Map VALUES ("+ usuarioId + "," + tesoroId + ")").executeUpdate();
     }
     
     public void dejarseguirTesoro(Integer usuarioId, Integer tesoroId){
-        em.createNativeQuery("DELETE FROM usuario_tesoro_map WHERE user_idUser="+ usuarioId + " AND Tesoro_idTesoro=" + tesoroId).executeUpdate();
+        em.createNativeQuery("DELETE FROM Usuario_Tesoro_Map WHERE user_idUser="+ usuarioId + " AND Tesoro_idTesoro=" + tesoroId).executeUpdate();
     }
 }
