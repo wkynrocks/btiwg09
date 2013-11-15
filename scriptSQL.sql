@@ -12,7 +12,7 @@ DELETE FROM `proyecto9`.`Tesoro`;
 DELETE FROM `proyecto9`.`User`;
 SET SQL_SAFE_UPDATES=1;
 
-DROP TABLE IF EXISTS `proyecto9`.`User`, `proyecto9`.`Usuario_Tesoro_Map`, `proyecto9`.`Tesoro`;
+DROP TABLE IF EXISTS `proyecto9`.`User`, `proyecto9`.`Usuario_Tesoro_Map`, `proyecto9`.`Tesoro`,`proyecto9`.`Log`;
 
 -- -----------------------------------------------------
 -- Table `proyecto9`.`User`
@@ -47,8 +47,8 @@ CREATE TABLE IF NOT EXISTS `proyecto9`.`Tesoro` (
   CONSTRAINT `fk_Tesoro_user1`
     FOREIGN KEY (`user_idUser`)
     REFERENCES `proyecto9`.`User` (`idUser`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
@@ -61,13 +61,13 @@ CREATE TABLE IF NOT EXISTS `proyecto9`.`Usuario_Tesoro_Map` (
 CONSTRAINT `fk_Usuario_Tesoro_Map_user1`
     FOREIGN KEY (`user_idUser`)
     REFERENCES `proyecto9`.`User` (`idUser`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_Usuario_Tesoro_Map_Tesoro1`
     FOREIGN KEY (`Tesoro_idTesoro`)
     REFERENCES `proyecto9`.`Tesoro` (`idTesoro`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 )
 ENGINE = InnoDB;
 
@@ -86,13 +86,13 @@ CREATE TABLE IF NOT EXISTS `proyecto9`.`Log` (
   CONSTRAINT `fk_Log_user1`
     FOREIGN KEY (`user_idUser`)
     REFERENCES `proyecto9`.`User` (`idUser`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_Log_Tesoro1`
     FOREIGN KEY (`Tesoro_idTesoro`)
     REFERENCES `proyecto9`.`Tesoro` (`idTesoro`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
