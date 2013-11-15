@@ -89,12 +89,6 @@ public class ListarTesoros {
         this.textbusqueda = textbusqueda;
     }
     
-    public String listarBusquedaTesoros(){
-        busqueda = true;
-
-        return "busquedaTesoro.xhtml";
-    }
-    
     private java.util.List<service.Tesoro> findByCriterioTesoro(java.lang.String criterio, java.lang.String textbusqueda) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
@@ -124,12 +118,12 @@ public class ListarTesoros {
         this.busqueda = busqueda;
     }
     
-    public boolean estaSiguiendo(User usuario,service.Tesoro tesoro){
+    public boolean estaSiguiendo(User usuario, Integer idTesoro){
         java.util.List<service.Tesoro> lt = listaTesoros(usuario);
         boolean encontrado = false;
         int i=0;
         while ((i<lt.size())&&(!encontrado)){
-            if (lt.get(i).getIdTesoro()==tesoro.getIdTesoro()){
+            if (lt.get(i).getIdTesoro()==idTesoro){
                 encontrado = true;
             }
             i++;
@@ -156,11 +150,31 @@ public class ListarTesoros {
         service.TesoroService port = service.getTesoroServicePort();
         port.editTesoro(entity);
     }
-    
-    public boolean hacerSeguimiento(Integer idUser, Integer idTesoro){
 
-        return false;
-
+    private void seguirTesoro(java.lang.Integer usuarioId, java.lang.Integer tesoroId) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        service.TesoroService port = service.getTesoroServicePort();
+        port.seguirTesoro(usuarioId, tesoroId);
     }
+    
+    public String hacerSeguimiento(Integer idUser, Integer idTesoro){
+        seguirTesoro(idUser,idTesoro);
+        return null;
+    }
+
+    private void dejarseguirTesoro(java.lang.Integer usuarioId, java.lang.Integer tesoroId) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        service.TesoroService port = service.getTesoroServicePort();
+        port.dejarseguirTesoro(usuarioId, tesoroId);
+    }
+    
+    public String quitarSeguimiento(Integer idUser, Integer idTesoro){
+        dejarseguirTesoro(idUser,idTesoro);
+        return null;
+    }
+    
+    
 
 }

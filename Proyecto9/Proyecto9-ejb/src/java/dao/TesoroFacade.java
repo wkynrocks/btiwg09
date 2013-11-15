@@ -53,4 +53,12 @@ public class TesoroFacade extends AbstractFacade<Tesoro> {
     public List<Log> findAllLogs(Integer tesoroId){
         return em.createNamedQuery("Tesoro.findAllLogs").setParameter("tesoroId",tesoroId).getResultList();
     }
+    
+    public void seguirTesoro(Integer usuarioId, Integer tesoroId){
+        em.createNativeQuery("INSERT INTO usuario_tesoro_map VALUES ("+ usuarioId + "," + tesoroId + ")").executeUpdate();
+    }
+    
+    public void dejarseguirTesoro(Integer usuarioId, Integer tesoroId){
+        em.createNativeQuery("DELETE FROM usuario_tesoro_map WHERE user_idUser="+ usuarioId + " AND Tesoro_idTesoro=" + tesoroId).executeUpdate();
+    }
 }

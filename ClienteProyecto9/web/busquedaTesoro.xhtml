@@ -19,9 +19,7 @@
                 <f:selectItem itemValue="posicion" itemLabel="Posición" />
             </h:selectOneMenu>
             <h:inputText value="#{listarTesoros.textbusqueda}" >
-                <!--        <h:commandButton value="Buscar" action=" listarTesoros.listarBusquedaTesoros() ">-->
                 <f:ajax render="tabla" event="keyup" execute="@form"/></h:inputText>
-            <!--</h:commandButton>-->
             <h:dataTable id="tabla" value="#{listarTesoros.listarTesorosporCriterio()}" var="item">
                 <h:column >
                     <f:facet name="header">Nombre</f:facet>
@@ -39,15 +37,11 @@
                     <f:facet name="header">Posición</f:facet>
                         #{item.posicion}
                 </h:column>
-                <h:column >
-                    <f:facet name="header">Seguimiento</f:facet>
-                    <h:selectBooleanCheckbox onclick=" #{listarTesoros.hacerSeguimiento(usuario.usuario.idUser,item.idTesoro)} "
-                                             value=" listarTesoros.estaSiguiendo(usuario.usuario, item) " />
-                </h:column>
                 <h:column>
-                    <h:form>
-                        <h:commandButton action="#{usuario.registrarse()}"/>
-                    </h:form>
+                        <h:commandButton value="Seguir" action="#{listarTesoros.hacerSeguimiento(usuario.usuario.idUser, item.idTesoro)}"
+                                         rendered="#{!listarTesoros.estaSiguiendo(usuario.usuario, item.idTesoro)}"/>
+                        <h:commandButton value="Dejar de Seguir" action="#{listarTesoros.quitarSeguimiento(usuario.usuario.idUser, item.idTesoro)}"
+                                         rendered="#{listarTesoros.estaSiguiendo(usuario.usuario, item.idTesoro)}"/>
                 </h:column>
             </h:dataTable>
         </h:form>

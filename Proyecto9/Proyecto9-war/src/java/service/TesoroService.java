@@ -18,7 +18,7 @@ import javax.jws.WebService;
 
 /**
  *
- * @author wkynrocks
+ * @author tolkirlaptop
  */
 @WebService(serviceName = "TesoroService")
 public class TesoroService {
@@ -49,8 +49,8 @@ public class TesoroService {
         return ejbRef.find(id);
     }
 
-    @WebMethod(operationName = "findAllTesoro")
-    public List<Tesoro> findAllTesoro() {
+    @WebMethod(operationName = "findAll")
+    public List<Tesoro> findAll() {
         return ejbRef.findAll();
     }
 
@@ -77,6 +77,18 @@ public class TesoroService {
     @WebMethod(operationName = "findAllLogs")
     public List<Log> findAllLogs(@WebParam(name = "tesoroId") Integer tesoroId) {
         return ejbRef.findAllLogs(tesoroId);
+    }
+
+    @WebMethod(operationName = "seguirTesoro")
+    @Oneway
+    public void seguirTesoro(@WebParam(name = "usuarioId") Integer usuarioId, @WebParam(name = "tesoroId") Integer tesoroId) {
+        ejbRef.seguirTesoro(usuarioId, tesoroId);
+    }
+
+    @WebMethod(operationName = "dejarseguirTesoro")
+    @Oneway
+    public void dejarseguirTesoro(@WebParam(name = "usuarioId") Integer usuarioId, @WebParam(name = "tesoroId") Integer tesoroId) {
+        ejbRef.dejarseguirTesoro(usuarioId, tesoroId);
     }
     
 }
