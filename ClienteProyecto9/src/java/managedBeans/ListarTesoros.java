@@ -89,19 +89,27 @@ public class ListarTesoros {
         this.textbusqueda = textbusqueda;
     }
     
-    private java.util.List<service.Tesoro> findByCriterioTesoro(java.lang.String criterio, java.lang.String textbusqueda) {
+    private java.util.List<service.Tesoro> findByNombreTesoro(java.lang.String textbusqueda) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
         service.TesoroService port = service.getTesoroServicePort();
-        return port.findByCriterioTesoro(criterio, textbusqueda);
+        return port.findByNombreTesoro(textbusqueda);
     }
     
     public java.util.List<service.Tesoro> listarTesorosporCriterio(){
         if(textbusqueda==null){
-            return findByCriterioTesoro("nombre","");
+            return findByNombreTesoro("");
         }else{
-            return findByCriterioTesoro(criterio,textbusqueda);
+            java.util.List<service.Tesoro> lt = null;
+            switch (criterio){
+                case "nombre": lt = findByNombreTesoro(textbusqueda);break;
+                case "ciudad": lt = findByCiudadTesoro(textbusqueda);break;
+                case "pais": lt = findByPaisTesoro(textbusqueda);break;
+                case "posicion": lt = findByPosicionTesoro(textbusqueda);break;
+            }
+            return lt;
         }
+        
     }
 
     /**
@@ -173,8 +181,28 @@ public class ListarTesoros {
     public String quitarSeguimiento(Integer idUser, Integer idTesoro){
         dejarseguirTesoro(idUser,idTesoro);
         return null;
+    }    
+
+    private java.util.List<service.Tesoro> findByCiudadTesoro(java.lang.String textbusqueda) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        service.TesoroService port = service.getTesoroServicePort();
+        return port.findByCiudadTesoro(textbusqueda);
     }
-    
+
+    private java.util.List<service.Tesoro> findByPaisTesoro(java.lang.String textbusqueda) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        service.TesoroService port = service.getTesoroServicePort();
+        return port.findByPaisTesoro(textbusqueda);
+    }
+
+    private java.util.List<service.Tesoro> findByPosicionTesoro(java.lang.String textbusqueda) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        service.TesoroService port = service.getTesoroServicePort();
+        return port.findByPosicionTesoro(textbusqueda);
+    }
     
 
 }

@@ -49,8 +49,8 @@ public class TesoroService {
         return ejbRef.find(id);
     }
 
-    @WebMethod(operationName = "findAll")
-    public List<Tesoro> findAll() {
+    @WebMethod(operationName = "findAllTesoro")
+    public List<Tesoro> findAllTesoro() {
         return ejbRef.findAll();
     }
 
@@ -69,9 +69,24 @@ public class TesoroService {
         return ejbRef.findByUsuarioBuscando(usu);
     }
 
-    @WebMethod(operationName = "findByCriterioTesoro")
-    public List<Tesoro> findByCriterioTesoro(@WebParam(name = "criterio") String criterio, @WebParam(name = "textbusqueda") String textbusqueda) {
-        return ejbRef.findByCriterioTesoro(criterio, textbusqueda);
+    @WebMethod(operationName = "findByNombreTesoro")
+    public List<Tesoro> findByNombreTesoro(@WebParam(name = "textbusqueda") String textbusqueda) {
+        return ejbRef.findByNombreTesoro(textbusqueda);
+    }
+
+    @WebMethod(operationName = "findByCiudadTesoro")
+    public List<Tesoro> findByCiudadTesoro(@WebParam(name = "textbusqueda") String textbusqueda) {
+        return ejbRef.findByCiudadTesoro(textbusqueda);
+    }
+
+    @WebMethod(operationName = "findByPaisTesoro")
+    public List<Tesoro> findByPaisTesoro(@WebParam(name = "textbusqueda") String textbusqueda) {
+        return ejbRef.findByPaisTesoro(textbusqueda);
+    }
+
+    @WebMethod(operationName = "findByPosicionTesoro")
+    public List<Tesoro> findByPosicionTesoro(@WebParam(name = "textbusqueda") String textbusqueda) {
+        return ejbRef.findByPosicionTesoro(textbusqueda);
     }
 
     @WebMethod(operationName = "findAllLogs")
