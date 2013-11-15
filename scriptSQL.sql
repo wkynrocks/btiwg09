@@ -5,10 +5,12 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 CREATE SCHEMA IF NOT EXISTS `proyecto9` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `proyecto9` ;
 
+SET SQL_SAFE_UPDATES=0;
 DELETE FROM `proyecto9`.`Log`;
 DELETE FROM `proyecto9`.`Usuario_Tesoro_Map`;
 DELETE FROM `proyecto9`.`Tesoro`;
 DELETE FROM `proyecto9`.`User`;
+SET SQL_SAFE_UPDATES=1;
 
 DROP TABLE IF EXISTS `proyecto9`.`User`, `proyecto9`.`Usuario_Tesoro_Map`, `proyecto9`.`Tesoro`;
 
