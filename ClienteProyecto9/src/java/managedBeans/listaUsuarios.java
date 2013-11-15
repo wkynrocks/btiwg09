@@ -26,7 +26,12 @@ public class listaUsuarios {
 
     private String modoBusqueda = "todos";
 
-    private String[] parametros = {"todos", "username", "email", "rol"};
+    private String[] parametros = {"username", "email", "rol"};
+    
+    public List<User> dameLista(){
+        busca();
+        return lista;
+    }
 
     public void setParametros(String[] parametros) {
         this.parametros = parametros;
@@ -64,22 +69,23 @@ public class listaUsuarios {
         return parametros;
     }
 
-    public String busca() {
-        switch (modoBusqueda) {
-            case "todos":
-                lista = findAllUser();
-                break;
-            case "username":
-                lista = findByPartialUsername(valorParametro);
-                break;
-            case "email":
-                lista = findByPartialEmail(valorParametro);
-                break;
-            case "rol":
-                lista = findByRol(valorParametro);
-                break;
+    public void busca() {
+        if (valorParametro.equals("")) {
+            lista = findAllUser();
+        } else {
+            switch (modoBusqueda) {
+                case "username":
+                    lista = findByPartialUsername(valorParametro);
+                    break;
+                case "email":
+                    lista = findByPartialEmail(valorParametro);
+                    break;
+                case "rol":
+                    lista = findByRol(valorParametro);
+                    break;
+            }
         }
-        return null;
+
     }
 
     public void setModoBusqueda(String ModoBusqueda) {
