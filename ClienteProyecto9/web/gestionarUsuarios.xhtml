@@ -15,7 +15,7 @@
             <h:link value="User Home" outcome="paginaHomeUsuario"/>          
         </h:panelGrid>
         <h1 align="center">Lista de Usuarios</h1>
-        <h5 align="center">
+        <h6 align="center">
             <h:form>
                 <h:selectOneMenu value="#{listaUsuarios.modoBusqueda}">
                     <f:selectItems value="#{listaUsuarios.parametros}"/>
@@ -23,7 +23,7 @@
                 <h:inputText value="#{listaUsuarios.valorParametro}">
                 </h:inputText>
                 <h:commandButton value="Buscar" action="#{listaUsuarios.busca()}"/>
-                <h:dataTable id="tabla2" rowClasses="center-td" value="#{listaUsuarios.lista}" var="item">
+                <h:dataTable value="#{listaUsuarios.lista}" var="item">
                     <h:column >
                         <f:facet name="header">Nombre usuario</f:facet>
                             #{item.username}
@@ -42,7 +42,9 @@
                     </h:column>
                     <h:column >
                         <f:facet name="header">Acción 1</f:facet>
-                        <h:commandButton action="#{borrarYDeshabilitarUsuario.borrar(item)}" value="Borrar"/>
+                        <h:commandButton onclick="return confirm('Cuidado !!: Se borrarán todos los tesoros y logs asociados')" value="Borrar">
+                            <f:ajax listener="#{borrarYDeshabilitarUsuario.borrar(item)}" render="@form"/>
+                        </h:commandButton>  
                     </h:column>
                     <h:column >
                         <f:facet name="header">Acción 2</f:facet>
@@ -51,7 +53,7 @@
                     </h:column>
                 </h:dataTable>
             </h:form>
-        </h5>
+        </h6>
     </h:body>
 </html>
 
