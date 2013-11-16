@@ -17,9 +17,8 @@
                 <h:link value="Búsqueda Tesoro" outcome="busquedaTesoro"/>
                 Tercer Link
             </h:panelGrid></h2><br/><br/>
-        <f:view>
             <h:form >
-                <h:dataTable border="1" value="#{listarTesoros.listaTesoros(usuario.usuario)}" var="item" style="margin: auto;" rendered="#{false==listarTesoros.busqueda}">
+                <h:dataTable border="1" value="#{listarTesoros.lista}" var="item" style="margin: auto;" rendered="#{listarTesoros.busqueda}">
                     <h:column >
                         <f:facet name="header">Nombre</f:facet>
                             #{item.nombre}
@@ -52,10 +51,9 @@
                         <f:facet name="header">Información</f:facet>
                         <h:commandButton value="Más Info" action="#{tesoro.pagInfo(item)}" rendered="#{item.habilitado}"/>
                     </h:column>  
-                </h:dataTable>
-                <h2 align="center"><h:outputText value="No estas siguiendo ningún tesoro" rendered="#{listarTesoros.busqueda}"/></h2>
+                </h:dataTable>   
+                <h2 align="center"><h:outputText value="No estas siguiendo ningún tesoro" rendered="#{listarTesoros.busqueda eq false}"/></h2>
             </h:form>
-        </f:view>
 
         <h3>
             <h:link value="CrearTesoro" outcome="crearTesoro"/></h3>
