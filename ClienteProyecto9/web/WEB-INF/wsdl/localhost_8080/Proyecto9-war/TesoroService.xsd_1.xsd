@@ -6,6 +6,8 @@
 
 <xs:element name="createTesoro" type="tns:createTesoro"/>
 
+<xs:element name="dejarseguirTesoro" type="tns:dejarseguirTesoro"/>
+
 <xs:element name="editTesoro" type="tns:editTesoro"/>
 
 <xs:element name="findAllLogs" type="tns:findAllLogs"/>
@@ -16,9 +18,21 @@
 
 <xs:element name="findAllTesoroResponse" type="tns:findAllTesoroResponse"/>
 
-<xs:element name="findByCriterioTesoro" type="tns:findByCriterioTesoro"/>
+<xs:element name="findByCiudadTesoro" type="tns:findByCiudadTesoro"/>
 
-<xs:element name="findByCriterioTesoroResponse" type="tns:findByCriterioTesoroResponse"/>
+<xs:element name="findByCiudadTesoroResponse" type="tns:findByCiudadTesoroResponse"/>
+
+<xs:element name="findByNombreTesoro" type="tns:findByNombreTesoro"/>
+
+<xs:element name="findByNombreTesoroResponse" type="tns:findByNombreTesoroResponse"/>
+
+<xs:element name="findByPaisTesoro" type="tns:findByPaisTesoro"/>
+
+<xs:element name="findByPaisTesoroResponse" type="tns:findByPaisTesoroResponse"/>
+
+<xs:element name="findByPosicionTesoro" type="tns:findByPosicionTesoro"/>
+
+<xs:element name="findByPosicionTesoroResponse" type="tns:findByPosicionTesoroResponse"/>
 
 <xs:element name="findByUsuarioBuscando" type="tns:findByUsuarioBuscando"/>
 
@@ -36,17 +50,19 @@
 
 <xs:element name="removeTesoro" type="tns:removeTesoro"/>
 
+<xs:element name="seguirTesoro" type="tns:seguirTesoro"/>
+
 <xs:element name="tesoro" type="tns:tesoro"/>
 
 <xs:element name="user" type="tns:user"/>
 
-<xs:complexType name="findByUsuarioBuscando">
+<xs:complexType name="findByPosicionTesoro">
 <xs:sequence>
-<xs:element name="usu" type="xs:string" minOccurs="0"/>
+<xs:element name="textbusqueda" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="findByUsuarioBuscandoResponse">
+<xs:complexType name="findByPosicionTesoroResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:tesoro" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
@@ -75,44 +91,21 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="findAllTesoro">
-<xs:sequence/>
+<xs:complexType name="findByUsuarioBuscando">
+<xs:sequence>
+<xs:element name="usu" type="xs:string" minOccurs="0"/>
+</xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="findAllTesoroResponse">
+<xs:complexType name="findByUsuarioBuscandoResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:tesoro" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="editTesoro">
-<xs:sequence>
-<xs:element name="entity" type="tns:tesoro" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="removeTesoro">
-<xs:sequence>
-<xs:element name="entity" type="tns:tesoro" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="createTesoro">
 <xs:sequence>
 <xs:element name="entity" type="tns:tesoro" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="findByCriterioTesoro">
-<xs:sequence>
-<xs:element name="criterio" type="xs:string" minOccurs="0"/>
-<xs:element name="textbusqueda" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="findByCriterioTesoroResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:tesoro" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -169,6 +162,78 @@
 <xs:element name="tesoroidTesoro" type="tns:tesoro" minOccurs="0"/>
 <xs:element name="tipo" type="xs:string" minOccurs="0"/>
 <xs:element name="useridUser" type="tns:user" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByNombreTesoro">
+<xs:sequence>
+<xs:element name="textbusqueda" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByNombreTesoroResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:tesoro" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByCiudadTesoro">
+<xs:sequence>
+<xs:element name="textbusqueda" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByCiudadTesoroResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:tesoro" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findAllTesoro">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findAllTesoroResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:tesoro" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="editTesoro">
+<xs:sequence>
+<xs:element name="entity" type="tns:tesoro" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="removeTesoro">
+<xs:sequence>
+<xs:element name="entity" type="tns:tesoro" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByPaisTesoro">
+<xs:sequence>
+<xs:element name="textbusqueda" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByPaisTesoroResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:tesoro" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="seguirTesoro">
+<xs:sequence>
+<xs:element name="usuarioId" type="xs:int" minOccurs="0"/>
+<xs:element name="tesoroId" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dejarseguirTesoro">
+<xs:sequence>
+<xs:element name="usuarioId" type="xs:int" minOccurs="0"/>
+<xs:element name="tesoroId" type="xs:int" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>

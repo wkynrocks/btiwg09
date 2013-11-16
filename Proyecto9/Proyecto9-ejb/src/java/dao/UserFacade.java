@@ -53,5 +53,5 @@ public class UserFacade extends AbstractFacade<User> {
         List<Tesoro> lt = em.createNamedQuery("User.findAllUserTreasures").setParameter("idUser", idUser).getResultList();
         return lt;
     }
-
+    
 }

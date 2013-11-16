@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <script src="./scripts/utils.js"
     type="text/javascript"></script>
@@ -10,7 +11,15 @@
         <title>Busqueda Tesoro</title>
     </h:head>
     <h:body>
-        <h:form>
+        <h:panelGrid columns="2">
+            <ui:include src="logout.xhtml" />
+            <h:link value="User Home" outcome="paginaHomeUsuario"/>          
+        </h:panelGrid>
+        <br/>
+        <h:form>     
+                <h1 align="center">Buscar Tesoro</h1>
+                <br/>
+                 <h4 align="center">
             Criterio: 
             <h:selectOneMenu id="criterios" value="#{listarTesoros.criterio}">
                 <f:selectItem itemValue="nombre" itemLabel="Nombre" />
@@ -19,10 +28,10 @@
                 <f:selectItem itemValue="posicion" itemLabel="Posición" />
             </h:selectOneMenu>
             <h:inputText value="#{listarTesoros.textbusqueda}" >
-                <!--        <h:commandButton value="Buscar" action=" listarTesoros.listarBusquedaTesoros() ">-->
                 <f:ajax render="tabla" event="keyup" execute="@form"/></h:inputText>
-            <!--</h:commandButton>-->
-            <h:dataTable id="tabla" value="#{listarTesoros.listarTesorosporCriterio()}" var="item">
+             <br/>
+             <br/>
+             <h:dataTable width="35%" border="2" id="tabla" value="#{listarTesoros.listarTesorosporCriterio()}" var="item">
                 <h:column >
                     <f:facet name="header">Nombre</f:facet>
                         #{item.nombre}
@@ -39,17 +48,14 @@
                     <f:facet name="header">Posición</f:facet>
                         #{item.posicion}
                 </h:column>
-                <h:column >
-                    <f:facet name="header">Seguimiento</f:facet>
-                    <h:selectBooleanCheckbox onclick=" #{listarTesoros.hacerSeguimiento(usuario.usuario.idUser,item.idTesoro)} "
-                                             value=" listarTesoros.estaSiguiendo(usuario.usuario, item) " />
-                </h:column>
                 <h:column>
-                    <h:form>
-                        <h:commandButton action="#{usuario.registrarse()}"/>
-                    </h:form>
+                        <h:commandButton value="Seguir" action="#{listarTesoros.hacerSeguimiento(usuario.usuario.idUser, item.idTesoro)}"
+                                         rendered="#{!listarTesoros.estaSiguiendo(usuario.usuario, item.idTesoro)}"/>
+                        <h:commandButton value="Dejar de Seguir" action="#{listarTesoros.quitarSeguimiento(usuario.usuario.idUser, item.idTesoro)}"
+                                         rendered="#{listarTesoros.estaSiguiendo(usuario.usuario, item.idTesoro)}"/>
                 </h:column>
             </h:dataTable>
+             </h4>
         </h:form>
     </h:body>
 </html>

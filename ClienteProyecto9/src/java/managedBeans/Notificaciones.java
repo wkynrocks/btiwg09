@@ -20,7 +20,7 @@ import service.UserService_Service;
  * @author wkynrocks
  */
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class Notificaciones {
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Proyecto9-war/TesoroService.wsdl")
     private TesoroService_Service service_1;
@@ -70,7 +70,7 @@ public class Notificaciones {
         java.util.List<service.Tesoro> tl = findListaTesorosCreados(user.getIdUser());
         for(service.Tesoro t: tl){
             for(service.Log l:findAllLogs(t.getIdTesoro())){
-                if(l.getTipo().equals("Problemas")){
+                if(l.getTipo().equals("problemas")){
                    ll.add(l);
                 }
                     
@@ -80,7 +80,10 @@ public class Notificaciones {
     
     public Integer numeroNotificacionesProblemas(service.User user){
         if(ll.isEmpty()){
+            System.out.println("CAGANDO NOTIFICACIONES???");
             cargarNotificacionesProblemas(user);
+        }else{
+            System.out.println("POR QUE NO ESTA VACIO???");
         }
         return ll.size();
     }

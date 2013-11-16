@@ -18,7 +18,7 @@ import javax.jws.WebService;
 
 /**
  *
- * @author wkynrocks
+ * @author tolkirlaptop
  */
 @WebService(serviceName = "TesoroService")
 public class TesoroService {
@@ -69,14 +69,41 @@ public class TesoroService {
         return ejbRef.findByUsuarioBuscando(usu);
     }
 
-    @WebMethod(operationName = "findByCriterioTesoro")
-    public List<Tesoro> findByCriterioTesoro(@WebParam(name = "criterio") String criterio, @WebParam(name = "textbusqueda") String textbusqueda) {
-        return ejbRef.findByCriterioTesoro(criterio, textbusqueda);
+    @WebMethod(operationName = "findByNombreTesoro")
+    public List<Tesoro> findByNombreTesoro(@WebParam(name = "textbusqueda") String textbusqueda) {
+        return ejbRef.findByNombreTesoro(textbusqueda);
+    }
+
+    @WebMethod(operationName = "findByCiudadTesoro")
+    public List<Tesoro> findByCiudadTesoro(@WebParam(name = "textbusqueda") String textbusqueda) {
+        return ejbRef.findByCiudadTesoro(textbusqueda);
+    }
+
+    @WebMethod(operationName = "findByPaisTesoro")
+    public List<Tesoro> findByPaisTesoro(@WebParam(name = "textbusqueda") String textbusqueda) {
+        return ejbRef.findByPaisTesoro(textbusqueda);
+    }
+
+    @WebMethod(operationName = "findByPosicionTesoro")
+    public List<Tesoro> findByPosicionTesoro(@WebParam(name = "textbusqueda") String textbusqueda) {
+        return ejbRef.findByPosicionTesoro(textbusqueda);
     }
 
     @WebMethod(operationName = "findAllLogs")
     public List<Log> findAllLogs(@WebParam(name = "tesoroId") Integer tesoroId) {
         return ejbRef.findAllLogs(tesoroId);
+    }
+
+    @WebMethod(operationName = "seguirTesoro")
+    @Oneway
+    public void seguirTesoro(@WebParam(name = "usuarioId") Integer usuarioId, @WebParam(name = "tesoroId") Integer tesoroId) {
+        ejbRef.seguirTesoro(usuarioId, tesoroId);
+    }
+
+    @WebMethod(operationName = "dejarseguirTesoro")
+    @Oneway
+    public void dejarseguirTesoro(@WebParam(name = "usuarioId") Integer usuarioId, @WebParam(name = "tesoroId") Integer tesoroId) {
+        ejbRef.dejarseguirTesoro(usuarioId, tesoroId);
     }
     
 }

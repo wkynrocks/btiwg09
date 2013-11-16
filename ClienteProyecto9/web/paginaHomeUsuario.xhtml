@@ -8,51 +8,52 @@
         <title>Home Usuario</title>
     </h:head>
     <h:body>
-        <ui:include src="logout.xhtml" />
-        <ui:include src="notificaciones.xhtml" />
-        <h:panelGrid columns="3" style="margin: auto;width: 70%;">
-            <h:link  value="Gestionar Usuarios" outcome="gestionarUsuarios" rendered="#{usuario.isAdmin()}"/>
-            <h:link value="Búsqueda Tesoro" outcome="busquedaTesoro"/>
-            Tercer Link
-        </h:panelGrid><br/>
-            <f:view>
-                <h:form >
-                    <h:dataTable value="#{listarTesoros.listaTesoros(usuario.usuario)}" var="item" style="margin: auto;">
-                        <h:column >
-                            <f:facet name="header">ID</f:facet>
-                                #{item.idTesoro}
-                        </h:column>
-                        <h:column >
-                            <f:facet name="header">Nombre</f:facet>
-                                #{item.nombre}
-                        </h:column>
-                        <h:column >
-                            <f:facet name="header">Ciudad</f:facet>
-                                #{item.ciudad}
-                        </h:column>
-                        <h:column >
-                            <f:facet name="header">Pais</f:facet>
-                                #{item.pais}
-                        </h:column>
-                        <h:column >
-                            <f:facet name="header">Posición</f:facet>
-                                #{item.posicion}
-                        </h:column>
-                        <h:column >
-                            <f:facet name="header">Codigo Secreto</f:facet>
-                                #{item.codigoSecreto}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">Ciudad</f:facet>
-                                #{item.ciudad}
-                        </h:column>
-                        <h:column >
-                            <f:facet name="header">Habilitado</f:facet>
-                                #{item.habilitado}
-                        </h:column>
-                    </h:dataTable>
-                </h:form>
-            </f:view>
+        <h:panelGrid  style="text-align: left; margin-left: 0" cellspacing="20%"  columns="2" >
+            <ui:include src="logout.xhtml" />
+            <ui:include src="notificaciones.xhtml" />
+        </h:panelGrid>
+        <h2><h:panelGrid columns="3" style="margin: auto;width: 70%;" >
+                <h:link  value="Gestionar Usuarios" outcome="gestionarUsuarios" rendered="#{usuario.isAdmin()}"/>
+                <h:link value="Búsqueda Tesoro" outcome="busquedaTesoro"/>
+                Tercer Link
+            </h:panelGrid></h2><br/><br/>
+            <h:form >
+                <h:dataTable border="1" value="#{listarTesoros.lista}" var="item" style="margin: auto;" rendered="#{listarTesoros.busqueda}">
+                    <h:column >
+                        <f:facet name="header">Nombre</f:facet>
+                            #{item.nombre}
+                    </h:column>
+                    <h:column >
+                        <f:facet name="header">Ciudad</f:facet>
+                            #{item.ciudad}
+                    </h:column>
+                    <h:column >
+                        <f:facet name="header">Pais</f:facet>
+                            #{item.pais}
+                    </h:column>
+                    <h:column >
+                        <f:facet name="header">Posición</f:facet>
+                            #{item.posicion}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Ciudad</f:facet>
+                            #{item.ciudad}
+                    </h:column>
+                    <h:column >
+                        <f:facet name="header">Habilitado</f:facet>
+                            #{item.habilitado}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Creado por</f:facet>
+                            #{item.useridUser.username}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Información</f:facet>
+                        <h:commandButton value="Más Info" action="#{tesoro.pagInfo(item)}" rendered="#{item.habilitado}"/>
+                    </h:column>  
+                </h:dataTable>   
+                <h2 align="center"><h:outputText value="No estas siguiendo ningún tesoro" rendered="#{listarTesoros.busqueda eq false}"/></h2>
+            </h:form>
 
         <h3>
             <h:link value="CrearTesoro" outcome="crearTesoro"/></h3>

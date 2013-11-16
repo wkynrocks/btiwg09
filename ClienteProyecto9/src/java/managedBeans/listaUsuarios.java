@@ -9,6 +9,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.xml.ws.WebServiceRef;
 import service.User;
 import service.UserService_Service;
@@ -18,7 +19,7 @@ import service.UserService_Service;
  * @author wkynrocks
  */
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class listaUsuarios {
 
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Proyecto9-war/UserService.wsdl")
@@ -28,7 +29,8 @@ public class listaUsuarios {
 
     private String[] parametros = {"username", "email", "rol"};
     
-    public List<User> dameLista(){
+    public List<service.User> dameLista(){
+        System.out.println("DAME LISTA");
         busca();
         return lista;
     }

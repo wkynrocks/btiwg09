@@ -38,19 +38,35 @@ public class TesoroFacade extends AbstractFacade<Tesoro> {
         return lt;
     }
     
-    public List<Tesoro> findByCriterioTesoro(String criterio, String textbusqueda){
-        List<Tesoro> lt = null;
-        switch (criterio){
-            case "nombre": lt = em.createNamedQuery("Tesoro.findByLikeNombre").setParameter("nombre","%"+textbusqueda+"%").getResultList(); break;
-            case "ciudad": lt = em.createNamedQuery("Tesoro.findByLikeCiudad").setParameter("ciudad","%"+textbusqueda+"%").getResultList(); break;
-            case "pais": lt = em.createNamedQuery("Tesoro.findByLikePais").setParameter("pais","%"+textbusqueda+"%").getResultList(); break;
-            case "posicion": lt = em.createNamedQuery("Tesoro.findByLikePosicion").setParameter("posicion","%"+textbusqueda+"%").getResultList(); break; 
-            default: break;
-        }
+    public List<Tesoro> findByNombreTesoro(String textbusqueda){
+        List<Tesoro> lt = em.createNamedQuery("Tesoro.findByLikeNombre").setParameter("nombre","%"+textbusqueda+"%").getResultList();
+        return lt;
+    }
+
+    public List<Tesoro> findByCiudadTesoro(String textbusqueda){
+        List<Tesoro> lt = em.createNamedQuery("Tesoro.(findByLikeCiudad").setParameter("nombre","%"+textbusqueda+"%").getResultList();
+        return lt;
+    }
+    
+    public List<Tesoro> findByPaisTesoro(String textbusqueda){
+        List<Tesoro> lt = em.createNamedQuery("Tesoro.(findByLikePais").setParameter("nombre","%"+textbusqueda+"%").getResultList();
+        return lt;
+    }
+    
+    public List<Tesoro> findByPosicionTesoro(String textbusqueda){
+        List<Tesoro> lt = em.createNamedQuery("Tesoro.(findByLikePosicion").setParameter("nombre","%"+textbusqueda+"%").getResultList();
         return lt;
     }
     
     public List<Log> findAllLogs(Integer tesoroId){
         return em.createNamedQuery("Tesoro.findAllLogs").setParameter("tesoroId",tesoroId).getResultList();
+    }
+    
+    public void seguirTesoro(Integer usuarioId, Integer tesoroId){
+        em.createNativeQuery("INSERT INTO Usuario_Tesoro_Map VALUES ("+ usuarioId + "," + tesoroId + ")").executeUpdate();
+    }
+    
+    public void dejarseguirTesoro(Integer usuarioId, Integer tesoroId){
+        em.createNativeQuery("DELETE FROM Usuario_Tesoro_Map WHERE user_idUser="+ usuarioId + " AND Tesoro_idTesoro=" + tesoroId).executeUpdate();
     }
 }
