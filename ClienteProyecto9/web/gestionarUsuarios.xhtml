@@ -43,14 +43,12 @@
                     </h:column>
                     <h:column >
                         <f:facet name="header">Acción 1</f:facet>
-                        <h:commandButton onclick="return confirm('Cuidado !!: Se borrarán todos los tesoros y logs asociados')" value="Borrar">
-                            <f:ajax  listener="#{borrarYDeshabilitarUsuario.borrar(item)}" render="@all"/>
-                        </h:commandButton>  
+                        <h:commandButton onclick="return confirm('Se borrarán todos sus tesoros y logs!!!, ¿está seguro?')" value="Borrar" action="#{listaUsuarios.borrar(item)}"/>
                     </h:column>
                     <h:column >
                         <f:facet name="header">Acción 2</f:facet>
-                        <h:commandButton value="Habilitar" action="#{borrarYDeshabilitarUsuario.deshabilitar(item)}" rendered="#{borrarYDeshabilitarUsuario.estaDeshabilitado(item.rol)}"/>
-                        <h:commandButton value="Deshabilitar" action="#{borrarYDeshabilitarUsuario.deshabilitar(item)}" rendered="#{!borrarYDeshabilitarUsuario.estaDeshabilitado(item.rol)}"/>
+                        <h:commandButton value="Habilitar" action="#{listaUsuarios.deshabilitar(item)}" rendered="#{listaUsuarios.estaDeshabilitado(item.rol)}"/>
+                        <h:commandButton value="Deshabilitar" action="#{listaUsuarios.deshabilitar(item)}" rendered="#{!listaUsuarios.estaDeshabilitado(item.rol)}"/>
                     </h:column>
                 </h:dataTable>
             </h:form>
