@@ -8,8 +8,8 @@ package managedBeans;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.xml.ws.WebServiceRef;
 import service.User;
 import service.UserService_Service;
@@ -28,8 +28,12 @@ public class listaUsuarios {
     private String modoBusqueda = "todos";
 
     private String[] parametros = {"username", "email", "rol"};
-    
-    public List<service.User> dameLista(){
+
+    public void actualizaListener(AjaxBehaviorEvent event) {
+        busca();
+    }
+
+    public List<service.User> dameLista() {
         System.out.println("DAME LISTA");
         busca();
         return lista;

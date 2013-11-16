@@ -21,9 +21,10 @@
                     <f:selectItems value="#{listaUsuarios.parametros}"/>
                 </h:selectOneMenu>
                 <h:inputText value="#{listaUsuarios.valorParametro}">
+                    <f:ajax event="keyup" render="a" execute="@form" listener="#{listaUsuarios.actualizaListener(event)}"/>
                 </h:inputText>
                 <h:commandButton value="Buscar" action="#{listaUsuarios.busca()}"/>
-                <h:dataTable value="#{listaUsuarios.lista}" var="item" id="tabla3">
+                <h:dataTable id="a" value="#{listaUsuarios.lista}" var="item" >
                     <h:column >
                         <f:facet name="header">Nombre usuario</f:facet>
                             #{item.username}
