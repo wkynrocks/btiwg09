@@ -9,7 +9,10 @@ package managedBeans;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.xml.ws.WebServiceRef;
+import service.Log;
 import service.LogService_Service;
 
 /**
@@ -18,14 +21,24 @@ import service.LogService_Service;
  */
 @ManagedBean
 @SessionScoped
-public class Log {
+public class LogMB {
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Proyecto9-war/LogService.wsdl")
     private LogService_Service service;
+    
+    private Log log1;
+
+    public Log getLog1() {
+        return log1;
+    }
+
+    public void setLog1(Log log1) {
+        this.log1 = log1;
+    }
 
     /**
      * Creates a new instance of Log
      */
-    public Log() {
+    public LogMB() {
     }
     
     
@@ -55,14 +68,30 @@ public class Log {
         comentario.setTesoroidTesoro(tesoro);
         comentario.setUseridUser(usuario);
         createLog(comentario);
-        return null; //falta poner la pagina correspondiente cuando se haya creado
+        return "listaTesoro.xhtml"; 
     }
+    
+    public String cargarEdicionLog(){
+        ExternalContext et = FacesContext.getCurrentInstance().getExternalContext();
+        Integer logid = Integer.parseInt(et.getRequestParameterMap().get("logparam"));
+        log1 = findLog(logid);
+        return "editarLog";
+    }
+    
+    
 
     private void editLog(service.Log entity) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
         service.LogService port = service.getLogServicePort();
         port.editLog(entity);
+    }
+
+    private Log findLog(java.lang.Object id) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        service.LogService port = service.getLogServicePort();
+        return port.findLog(id);
     }
     
     

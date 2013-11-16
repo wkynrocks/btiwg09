@@ -7,24 +7,30 @@
         <title>Lista de Logs</title>
     </h:head>
     <h:body>
-        
         <f:view>
             <h:form>
                 <h1><p style="color:blue;"> Logs del Tesoro</p></h1>
-                <h:dataTable value="#{listarLogs.cargarLogsPorTesoro(tesoro.tesoro)}" var="log">
+                <h:dataTable value="#{listarLogs.cargarLogsPorTesoro(tesoro.tesoro)}" var="log1">
                     <h:column>
                         <f:facet name="header">Tesoro</f:facet>
-                        #{tesoro.tesoro.nombre}
+                        #{log1.tesoroidTesoro.nombre}
                     </h:column>
                     <h:column>
                         <f:facet name="header">Comentario</f:facet>
-                        #{log.comentario.comentario}
+                        #{log1.comentario}
                     </h:column>
                     <h:column>
                         <f:facet name="header">Tipo</f:facet>
-                        #{log.comentario.tipo}
+                        #{log1.tipo}
+                    </h:column> 
+                    <h:column>
+                        <f:facet name="header">Editar Comentario</f:facet>
+                        <h:commandButton action="#{logMB.cargarEdicionLog()}" value="editar">
+                            <f:param name="logparam" value="#{log1.idLog}"/>
+                        </h:commandButton>
                     </h:column>
                 </h:dataTable>
+                <h:link value="Volver" outcome="listaTesoro"/>
             </h:form>
         </f:view>
 
