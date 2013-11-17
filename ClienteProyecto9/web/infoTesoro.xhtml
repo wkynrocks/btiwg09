@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Info Tesoro</title>
     </h:head>
     <h:body>
         <h:form>
@@ -22,10 +22,10 @@
         Posición: <h:outputLabel value="#{tesoro.tesoro.posicion}"/>
         <br/>
         <br/>
-        <h:commandButton value="Crear Log"/>
+        <h:link value="Crear Log" outcome="crearLog"/>
         <br/>
         <br/>
-        <h:commandButton value="Ver Logs"/>   
+        <h:link value="Ver Logs" outcome="listaLogs"/>
         </h:form>
     </h:body>
 </html>

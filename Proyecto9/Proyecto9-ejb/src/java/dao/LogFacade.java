@@ -7,6 +7,7 @@
 package dao;
 
 import entity.Log;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,6 +26,10 @@ public class LogFacade extends AbstractFacade<Log> {
         return em;
     }
 
+    public List<Log> findByTesoroId (int logtes){
+        List<Log> lt = em.createNamedQuery("Tesoro.findByTesoroId").setParameter("idTesoro", logtes).getResultList();
+        return lt;
+    }
     public LogFacade() {
         super(Log.class);
     }

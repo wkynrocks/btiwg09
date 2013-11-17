@@ -8,9 +8,11 @@ package managedBeans;
 
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.xml.ws.WebServiceRef;
 import service.Log;
+import service.LogService_Service;
 import service.TesoroService_Service;
 import service.UserService_Service;
 
@@ -21,6 +23,8 @@ import service.UserService_Service;
 @ManagedBean
 @RequestScoped
 public class ListarLogs {
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Proyecto9-war/LogService.wsdl")
+    private LogService_Service service;
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Proyecto9-war/TesoroService.wsdl")
     private TesoroService_Service service_1;
 
@@ -40,5 +44,5 @@ public class ListarLogs {
      */
     public ListarLogs() {
     }
-    
+       
 }

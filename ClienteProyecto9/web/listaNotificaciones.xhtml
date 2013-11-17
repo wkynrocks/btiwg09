@@ -18,13 +18,13 @@
             <h:form>
                 <h:dataTable value="#{notificaciones.ll}" var="log">
                     <h:column>
-                        #{log.comentario}
+                        #{logMB.comentario}
                     </h:column>
                     <h:column>
-                        #{log.tipo}
+                        #{logMB.tipo}
                     </h:column>
                     <h:column>
-                        <h:commandButton action="#{notificaciones.goToLog(log)}" value="Ve al Log"/>
+                        <h:commandButton action="#{notificaciones.goToLog(logMB)}" value="Ve al Log"/>
                     </h:column>
                     
                 </h:dataTable>

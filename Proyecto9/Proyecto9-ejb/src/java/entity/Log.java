@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "Log")
 @XmlRootElement
 @NamedQueries({
+    @NamedQuery(name = "Log.findByTesoroId", query = "SELECT l FROM Log l WHERE l.tesoroidTesoro = :idTesoro"),
     @NamedQuery(name = "Log.findAll", query = "SELECT l FROM Log l"),
     @NamedQuery(name = "Log.findByIdLog", query = "SELECT l FROM Log l WHERE l.idLog = :idLog"),
     @NamedQuery(name = "Log.findByComentario", query = "SELECT l FROM Log l WHERE l.comentario = :comentario"),

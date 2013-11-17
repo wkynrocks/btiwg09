@@ -9,6 +9,7 @@ package managedBeans;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.xml.ws.WebServiceRef;
 import service.TesoroService_Service;
 import service.UserService_Service;
@@ -18,7 +19,7 @@ import service.UserService_Service;
  * @author wkynrocks
  */
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class Tesoro {
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Proyecto9-war/UserService.wsdl")
     private UserService_Service service_1;
