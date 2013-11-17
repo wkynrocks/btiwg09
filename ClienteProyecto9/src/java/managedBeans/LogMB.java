@@ -97,8 +97,6 @@ public class LogMB implements Serializable{
     public String edicionLog (){
         log1.setComentario(com); 
         
-        System.out.println(log1.getTesoroidTesoro()+" "+log1.getUseridUser()+" "+ log1.getIdLog());
-        
         editLog(log1);
         return "listaLogs.xhtml";
     }

@@ -38,7 +38,6 @@ public class listaUsuarios {
     }
 
     public List<service.User> dameLista() {
-        System.out.println("DAME LISTA");
         busca();
         return lista;
     }

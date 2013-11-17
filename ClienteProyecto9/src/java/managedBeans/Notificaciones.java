@@ -80,10 +80,8 @@ public class Notificaciones {
     
     public Integer numeroNotificacionesProblemas(service.User user){
         if(ll.isEmpty()){
-            System.out.println("CAGANDO NOTIFICACIONES???");
             cargarNotificacionesProblemas(user);
         }else{
-            System.out.println("POR QUE NO ESTA VACIO???");
         }
         return ll.size();
     }
