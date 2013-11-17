@@ -44,17 +44,17 @@ public class TesoroFacade extends AbstractFacade<Tesoro> {
     }
 
     public List<Tesoro> findByCiudadTesoro(String textbusqueda){
-        List<Tesoro> lt = em.createNamedQuery("Tesoro.(findByLikeCiudad").setParameter("nombre","%"+textbusqueda+"%").getResultList();
+        List<Tesoro> lt = em.createNamedQuery("Tesoro.findByLikeCiudad").setParameter("ciudad","%"+textbusqueda+"%").getResultList();
         return lt;
     }
     
     public List<Tesoro> findByPaisTesoro(String textbusqueda){
-        List<Tesoro> lt = em.createNamedQuery("Tesoro.(findByLikePais").setParameter("nombre","%"+textbusqueda+"%").getResultList();
+        List<Tesoro> lt = em.createNamedQuery("Tesoro.findByLikePais").setParameter("pais","%"+textbusqueda+"%").getResultList();
         return lt;
     }
     
     public List<Tesoro> findByPosicionTesoro(String textbusqueda){
-        List<Tesoro> lt = em.createNamedQuery("Tesoro.(findByLikePosicion").setParameter("nombre","%"+textbusqueda+"%").getResultList();
+        List<Tesoro> lt = em.createNamedQuery("Tesoro.findByLikePosicion").setParameter("posicion","%"+textbusqueda+"%").getResultList();
         return lt;
     }
     
