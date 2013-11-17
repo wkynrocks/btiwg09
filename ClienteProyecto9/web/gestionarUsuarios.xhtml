@@ -24,7 +24,7 @@
                     <f:ajax event="keyup" render="a" execute="@form" listener="#{listaUsuarios.actualizaListener(event)}"/>
                 </h:inputText>
                 <h:commandButton value="Buscar" action="#{listaUsuarios.busca()}"/>
-                <h:dataTable id="a" value="#{listaUsuarios.lista}" var="item" >
+                <h:dataTable id="a" value="#{listaUsuarios.lista}" var="item" style="text-align:center" >
                     <h:column >
                         <f:facet name="header">Nombre usuario</f:facet>
                             #{item.username}

@@ -129,10 +129,11 @@ public class ListarTesoros implements Serializable{
     }
 
     public java.util.List<service.Tesoro> listarTesorosporCriterio() {
-        if (textbusqueda == null) {
+        if (textbusqueda == null || textbusqueda.equals("")) {
             return findByNombreTesoro("");
         } else {
             java.util.List<service.Tesoro> lt = null;
+//            System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAA:"+criterio);
             switch (criterio) {
                 case "nombre":
                     lt = findByNombreTesoro(textbusqueda);

@@ -18,7 +18,7 @@
                 Tercer Link
             </h:panelGrid></h2><br/><br/>
             <h:form >
-                <h:dataTable border="1" value="#{listarTesoros.lista}" var="item" style="margin: auto;" rendered="#{listarTesoros.busqueda}">
+                <h:dataTable border="1" value="#{listarTesoros.lista}" var="item" style="margin: auto;text-align: center" rendered="#{listarTesoros.busqueda}">
                     <h:column >
                         <f:facet name="header">Nombre</f:facet>
                             #{item.nombre}
