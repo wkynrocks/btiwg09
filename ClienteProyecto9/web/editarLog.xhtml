@@ -8,8 +8,9 @@
     </h:head>
     <h:body>
         <h:form>
-                        
-                Comentario: <h:inputTextarea value="#{logMB.log1.comentario}"/>
+                Comentario: <h:inputTextarea value="#{logMB.com}"/>
+                <h:commandButton action="#{logMB.edicionLog()}" value="Guardar"/>
+
             </h:form>
     </h:body>
 </html>

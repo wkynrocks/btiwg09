@@ -6,6 +6,7 @@
 
 package managedBeans;
 
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
@@ -21,11 +22,14 @@ import service.LogService_Service;
  */
 @ManagedBean
 @SessionScoped
-public class LogMB {
+public class LogMB implements Serializable{
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Proyecto9-war/LogService.wsdl")
     private LogService_Service service;
     
+    private static final long serialVersionUID = 12L;
+    
     private Log log1;
+    private Integer idLog;
 
     public Log getLog1() {
         return log1;
@@ -71,13 +75,33 @@ public class LogMB {
         return "listaTesoro.xhtml"; 
     }
     
-    public String cargarEdicionLog(){
+    public String cargarEdicionLog() {
         ExternalContext et = FacesContext.getCurrentInstance().getExternalContext();
         Integer logid = Integer.parseInt(et.getRequestParameterMap().get("logparam"));
         log1 = findLog(logid);
+        this.idLog = log1.getIdLog();
+        com = log1.getComentario();
         return "editarLog";
     }
     
+    private String com;
+
+    public String getCom() {
+        return com;
+    }
+
+    public void setCom(String com) {
+        this.com = com;
+    }
+    
+    public String edicionLog (){
+        log1.setComentario(com); 
+        
+        System.out.println(log1.getTesoroidTesoro()+" "+log1.getUseridUser()+" "+ log1.getIdLog());
+        
+        editLog(log1);
+        return "listaLogs.xhtml";
+    }
     
 
     private void editLog(service.Log entity) {
@@ -93,6 +117,6 @@ public class LogMB {
         service.LogService port = service.getLogServicePort();
         return port.findLog(id);
     }
-    
+
     
 }
