@@ -25,7 +25,7 @@
                     </h:column> 
                     <h:column>
                         <f:facet name="header">Editar Comentario</f:facet>
-                        <h:commandButton action="#{logMB.cargarEdicionLog()}" value="editar">
+                        <h:commandButton action="#{logMB.cargarEdicionLog()}" value="editar" rendered="#{logMB.puedeEditar(log1,usuario.usuario)}">
                             <f:param name="logparam" value="#{log1.idLog}"/>
                         </h:commandButton>
                     </h:column>

@@ -21,9 +21,10 @@
                     <f:selectItems value="#{listaUsuarios.parametros}"/>
                 </h:selectOneMenu>
                 <h:inputText value="#{listaUsuarios.valorParametro}">
+                    <f:ajax event="keyup" render="a" execute="@form" listener="#{listaUsuarios.actualizaListener(event)}"/>
                 </h:inputText>
                 <h:commandButton value="Buscar" action="#{listaUsuarios.busca()}"/>
-                <h:dataTable value="#{listaUsuarios.lista}" var="item" id="tabla3">
+                <h:dataTable id="a" value="#{listaUsuarios.lista}" var="item" >
                     <h:column >
                         <f:facet name="header">Nombre usuario</f:facet>
                             #{item.username}
@@ -42,14 +43,12 @@
                     </h:column>
                     <h:column >
                         <f:facet name="header">Acción 1</f:facet>
-                        <h:commandButton onclick="return confirm('Cuidado !!: Se borrarán todos los tesoros y logs asociados')" value="Borrar">
-                            <f:ajax  listener="#{borrarYDeshabilitarUsuario.borrar(item)}" render="@all"/>
-                        </h:commandButton>  
+                        <h:commandButton onclick="return confirm('Se borrarán todos sus tesoros y logs!!!, ¿está seguro?')" value="Borrar" action="#{listaUsuarios.borrar(item)}"/>
                     </h:column>
                     <h:column >
                         <f:facet name="header">Acción 2</f:facet>
-                        <h:commandButton value="Habilitar" action="#{borrarYDeshabilitarUsuario.deshabilitar(item)}" rendered="#{borrarYDeshabilitarUsuario.estaDeshabilitado(item.rol)}"/>
-                        <h:commandButton value="Deshabilitar" action="#{borrarYDeshabilitarUsuario.deshabilitar(item)}" rendered="#{!borrarYDeshabilitarUsuario.estaDeshabilitado(item.rol)}"/>
+                        <h:commandButton value="Habilitar" action="#{listaUsuarios.deshabilitar(item)}" rendered="#{listaUsuarios.estaDeshabilitado(item.rol)}"/>
+                        <h:commandButton value="Deshabilitar" action="#{listaUsuarios.deshabilitar(item)}" rendered="#{!listaUsuarios.estaDeshabilitado(item.rol)}"/>
                     </h:column>
                 </h:dataTable>
             </h:form>

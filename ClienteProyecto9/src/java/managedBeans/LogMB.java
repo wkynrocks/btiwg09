@@ -110,6 +110,10 @@ public class LogMB implements Serializable{
         service.LogService port = service.getLogServicePort();
         port.editLog(entity);
     }
+    
+    public boolean puedeEditar(service.Log log,service.User user){
+        return (user.getIdUser()== log.getUseridUser().getIdUser());
+    }
 
     private Log findLog(java.lang.Object id) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
