@@ -15,7 +15,6 @@
         <h2><h:panelGrid columns="3" style="margin: auto;width: 70%;" >
                 <h:link  value="Gestionar Usuarios" outcome="gestionarUsuarios" rendered="#{usuario.isAdmin()}"/>
                 <h:link value="Búsqueda Tesoro" outcome="busquedaTesoro"/>
-                Tercer Link
             </h:panelGrid></h2><br/><br/>
             <h:form >
                 <h:dataTable border="1" value="#{listarTesoros.lista}" var="item" style="margin: auto;text-align: center" rendered="#{listarTesoros.busqueda}">
