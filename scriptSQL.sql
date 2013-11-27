@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS `proyecto9`.`Tesoro` (
   `ciudad` VARCHAR(45) NOT NULL,
   `pais` VARCHAR(45) NOT NULL,
   `posicion` VARCHAR(45) NOT NULL,
+  `altitud` VARCHAR(45),
   `codigoSecreto` VARCHAR(45) NOT NULL,
   `habilitado` TINYINT(1) NOT NULL,
   `user_idUser` INT NOT NULL,
@@ -50,7 +51,6 @@ CREATE TABLE IF NOT EXISTS `proyecto9`.`Tesoro` (
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
-
 -- -----------------------------------------------------
 -- Table `proyecto9`.`Usuario_Tesoro_Map`
 -- -----------------------------------------------------
@@ -112,12 +112,12 @@ VALUES ('1', 'admin', 'admin', 'admin@admin.com', 'Admin'),
 ('7', 'col1','col1', 'col1@col1.com',  'Colaborador');
 
 
-INSERT INTO `proyecto9`.`Tesoro` (`idTesoro`,  `nombre`,  `ciudad`,  `pais`,  `posicion`,  `codigoSecreto`,  `habilitado`,  `user_idUser`) 
-VALUES ('1','Pirata','Malaga','España','13-39','pirata',true,'6'),
-('2','Nazi','Granada','España','17-39','nazi',true,'6'),
-('3','Magico','Jaen','España','34-39','magico',true,'6'),
-('4','Cofre de Oro','Sevilla','España','47-39','cofredeoro',true,'7'),
-('5','Rubi','Cadiz','España','53-39','rubi',true,'7');
+INSERT INTO `proyecto9`.`Tesoro` (`idTesoro`,  `nombre`,  `ciudad`,  `pais`,  `posicion`,`altitud`,  `codigoSecreto`,  `habilitado`,  `user_idUser`) 
+VALUES ('1','Pirata','Malaga','España','13,39', '0','pirata',true,'6'),
+('2','Nazi','Granada','España','17,39','0','nazi',true,'6'),
+('3','Magico','Jaen','España','34,39','0','magico',true,'6'),
+('4','Cofre de Oro','Sevilla','España','47,39','10','cofredeoro',true,'7'),
+('5','Rubi','Cadiz','España','53,39','0','rubi',true,'7');
 
 INSERT INTO `proyecto9`.`Usuario_Tesoro_Map` (`user_idUser`, `Tesoro_idTesoro`)
 VALUES ('2','1'),
