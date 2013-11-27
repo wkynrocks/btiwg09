@@ -60,7 +60,6 @@ public class ListarTesoros implements Serializable{
     
     @PostConstruct
     public void init(){
-        System.out.println("LAAAAAAAAAAAAAAAA :"+activeUser.getUsername());
         setLista(findByUsuarioBuscando(activeUser.getUsername()));
         setBusqueda(!getLista().isEmpty());
     }
