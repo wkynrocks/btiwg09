@@ -77,6 +77,10 @@ public class Tesoro implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "posicion")
     private String posicion;
+    @Basic(optional = true)
+    @Size(min = 1, max = 45)
+    @Column(name = "altitud")
+    private String altitud;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -107,6 +111,7 @@ public class Tesoro implements Serializable {
         this.ciudad = ciudad;
         this.pais = pais;
         this.posicion = posicion;
+        this.altitud = altitud;
         this.codigoSecreto = codigoSecreto;
         this.habilitado = habilitado;
     }
@@ -149,6 +154,14 @@ public class Tesoro implements Serializable {
 
     public void setPosicion(String posicion) {
         this.posicion = posicion;
+    }
+    
+    public String getAltitud() {
+        return altitud;
+    }
+
+    public void setAltitud(String altitud) {
+        this.altitud = altitud;
     }
 
     public String getCodigoSecreto() {
