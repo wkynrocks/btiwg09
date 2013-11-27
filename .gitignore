@@ -4,3 +4,14 @@
 *.jar
 *.war
 *.ear
+/Proyecto9/Proyecto9-ejb/nbproject/private/
+/Proyecto9/Proyecto9-war/nbproject/private/
+/ClienteProyecto9/nbproject/private/
+/Proyecto9/nbproject/private/
+/GeocachingGoogle/nbproject/private/
+/GeocachingGoogle/build/
+/ClienteProyecto9/build/
+/Proyecto9/Proyecto9-ejb/build/
+/Proyecto9/Proyecto9-war/build/
+/Proyecto9/build/
+/Proyecto9/dist/
