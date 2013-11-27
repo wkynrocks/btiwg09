@@ -105,7 +105,7 @@ public class Tesoro implements Serializable {
         this.idTesoro = idTesoro;
     }
 
-    public Tesoro(Integer idTesoro, String nombre, String ciudad, String pais, String posicion, String codigoSecreto, boolean habilitado) {
+    public Tesoro(Integer idTesoro, String nombre, String ciudad, String pais, String posicion, String altitud, String codigoSecreto, boolean habilitado) {
         this.idTesoro = idTesoro;
         this.nombre = nombre;
         this.ciudad = ciudad;

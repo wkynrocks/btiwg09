@@ -4,35 +4,26 @@
 <xsd:import namespace="http://service/" schemaLocation="http://localhost:8080/Proyecto9-war/TesoroService?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="removeTesoro">
-<part name="parameters" element="tns:removeTesoro"/>
+<message name="findAllTesoro">
+<part name="parameters" element="tns:findAllTesoro"/>
 </message>
-<message name="editTesoro">
-<part name="parameters" element="tns:editTesoro"/>
+<message name="findAllTesoroResponse">
+<part name="parameters" element="tns:findAllTesoroResponse"/>
 </message>
-<message name="countTesoro">
-<part name="parameters" element="tns:countTesoro"/>
+<message name="findRangeTesoro">
+<part name="parameters" element="tns:findRangeTesoro"/>
 </message>
-<message name="countTesoroResponse">
-<part name="parameters" element="tns:countTesoroResponse"/>
-</message>
-<message name="findTesoro">
-<part name="parameters" element="tns:findTesoro"/>
-</message>
-<message name="findTesoroResponse">
-<part name="parameters" element="tns:findTesoroResponse"/>
-</message>
-<message name="seguirTesoro">
-<part name="parameters" element="tns:seguirTesoro"/>
-</message>
-<message name="findAllLogs">
-<part name="parameters" element="tns:findAllLogs"/>
-</message>
-<message name="findAllLogsResponse">
-<part name="parameters" element="tns:findAllLogsResponse"/>
+<message name="findRangeTesoroResponse">
+<part name="parameters" element="tns:findRangeTesoroResponse"/>
 </message>
 <message name="createTesoro">
 <part name="parameters" element="tns:createTesoro"/>
+</message>
+<message name="findByUsuarioBuscando">
+<part name="parameters" element="tns:findByUsuarioBuscando"/>
+</message>
+<message name="findByUsuarioBuscandoResponse">
+<part name="parameters" element="tns:findByUsuarioBuscandoResponse"/>
 </message>
 <message name="findByNombreTesoro">
 <part name="parameters" element="tns:findByNombreTesoro"/>
@@ -61,48 +52,48 @@
 <message name="dejarseguirTesoro">
 <part name="parameters" element="tns:dejarseguirTesoro"/>
 </message>
-<message name="findByUsuarioBuscando">
-<part name="parameters" element="tns:findByUsuarioBuscando"/>
+<message name="findAllLogs">
+<part name="parameters" element="tns:findAllLogs"/>
 </message>
-<message name="findByUsuarioBuscandoResponse">
-<part name="parameters" element="tns:findByUsuarioBuscandoResponse"/>
+<message name="findAllLogsResponse">
+<part name="parameters" element="tns:findAllLogsResponse"/>
 </message>
-<message name="findAllTesoro">
-<part name="parameters" element="tns:findAllTesoro"/>
+<message name="seguirTesoro">
+<part name="parameters" element="tns:seguirTesoro"/>
 </message>
-<message name="findAllTesoroResponse">
-<part name="parameters" element="tns:findAllTesoroResponse"/>
+<message name="findTesoro">
+<part name="parameters" element="tns:findTesoro"/>
 </message>
-<message name="findRangeTesoro">
-<part name="parameters" element="tns:findRangeTesoro"/>
+<message name="findTesoroResponse">
+<part name="parameters" element="tns:findTesoroResponse"/>
 </message>
-<message name="findRangeTesoroResponse">
-<part name="parameters" element="tns:findRangeTesoroResponse"/>
+<message name="countTesoro">
+<part name="parameters" element="tns:countTesoro"/>
+</message>
+<message name="countTesoroResponse">
+<part name="parameters" element="tns:countTesoroResponse"/>
+</message>
+<message name="editTesoro">
+<part name="parameters" element="tns:editTesoro"/>
+</message>
+<message name="removeTesoro">
+<part name="parameters" element="tns:removeTesoro"/>
 </message>
 <portType name="TesoroService">
-<operation name="removeTesoro">
-<input wsam:Action="http://service/TesoroService/removeTesoro" message="tns:removeTesoro"/>
+<operation name="findAllTesoro">
+<input wsam:Action="http://service/TesoroService/findAllTesoroRequest" message="tns:findAllTesoro"/>
+<output wsam:Action="http://service/TesoroService/findAllTesoroResponse" message="tns:findAllTesoroResponse"/>
 </operation>
-<operation name="editTesoro">
-<input wsam:Action="http://service/TesoroService/editTesoro" message="tns:editTesoro"/>
-</operation>
-<operation name="countTesoro">
-<input wsam:Action="http://service/TesoroService/countTesoroRequest" message="tns:countTesoro"/>
-<output wsam:Action="http://service/TesoroService/countTesoroResponse" message="tns:countTesoroResponse"/>
-</operation>
-<operation name="findTesoro">
-<input wsam:Action="http://service/TesoroService/findTesoroRequest" message="tns:findTesoro"/>
-<output wsam:Action="http://service/TesoroService/findTesoroResponse" message="tns:findTesoroResponse"/>
-</operation>
-<operation name="seguirTesoro">
-<input wsam:Action="http://service/TesoroService/seguirTesoro" message="tns:seguirTesoro"/>
-</operation>
-<operation name="findAllLogs">
-<input wsam:Action="http://service/TesoroService/findAllLogsRequest" message="tns:findAllLogs"/>
-<output wsam:Action="http://service/TesoroService/findAllLogsResponse" message="tns:findAllLogsResponse"/>
+<operation name="findRangeTesoro">
+<input wsam:Action="http://service/TesoroService/findRangeTesoroRequest" message="tns:findRangeTesoro"/>
+<output wsam:Action="http://service/TesoroService/findRangeTesoroResponse" message="tns:findRangeTesoroResponse"/>
 </operation>
 <operation name="createTesoro">
 <input wsam:Action="http://service/TesoroService/createTesoro" message="tns:createTesoro"/>
+</operation>
+<operation name="findByUsuarioBuscando">
+<input wsam:Action="http://service/TesoroService/findByUsuarioBuscandoRequest" message="tns:findByUsuarioBuscando"/>
+<output wsam:Action="http://service/TesoroService/findByUsuarioBuscandoResponse" message="tns:findByUsuarioBuscandoResponse"/>
 </operation>
 <operation name="findByNombreTesoro">
 <input wsam:Action="http://service/TesoroService/findByNombreTesoroRequest" message="tns:findByNombreTesoro"/>
@@ -123,34 +114,31 @@
 <operation name="dejarseguirTesoro">
 <input wsam:Action="http://service/TesoroService/dejarseguirTesoro" message="tns:dejarseguirTesoro"/>
 </operation>
-<operation name="findByUsuarioBuscando">
-<input wsam:Action="http://service/TesoroService/findByUsuarioBuscandoRequest" message="tns:findByUsuarioBuscando"/>
-<output wsam:Action="http://service/TesoroService/findByUsuarioBuscandoResponse" message="tns:findByUsuarioBuscandoResponse"/>
+<operation name="findAllLogs">
+<input wsam:Action="http://service/TesoroService/findAllLogsRequest" message="tns:findAllLogs"/>
+<output wsam:Action="http://service/TesoroService/findAllLogsResponse" message="tns:findAllLogsResponse"/>
 </operation>
-<operation name="findAllTesoro">
-<input wsam:Action="http://service/TesoroService/findAllTesoroRequest" message="tns:findAllTesoro"/>
-<output wsam:Action="http://service/TesoroService/findAllTesoroResponse" message="tns:findAllTesoroResponse"/>
+<operation name="seguirTesoro">
+<input wsam:Action="http://service/TesoroService/seguirTesoro" message="tns:seguirTesoro"/>
 </operation>
-<operation name="findRangeTesoro">
-<input wsam:Action="http://service/TesoroService/findRangeTesoroRequest" message="tns:findRangeTesoro"/>
-<output wsam:Action="http://service/TesoroService/findRangeTesoroResponse" message="tns:findRangeTesoroResponse"/>
+<operation name="findTesoro">
+<input wsam:Action="http://service/TesoroService/findTesoroRequest" message="tns:findTesoro"/>
+<output wsam:Action="http://service/TesoroService/findTesoroResponse" message="tns:findTesoroResponse"/>
+</operation>
+<operation name="countTesoro">
+<input wsam:Action="http://service/TesoroService/countTesoroRequest" message="tns:countTesoro"/>
+<output wsam:Action="http://service/TesoroService/countTesoroResponse" message="tns:countTesoroResponse"/>
+</operation>
+<operation name="editTesoro">
+<input wsam:Action="http://service/TesoroService/editTesoro" message="tns:editTesoro"/>
+</operation>
+<operation name="removeTesoro">
+<input wsam:Action="http://service/TesoroService/removeTesoro" message="tns:removeTesoro"/>
 </operation>
 </portType>
 <binding name="TesoroServicePortBinding" type="tns:TesoroService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="removeTesoro">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-</operation>
-<operation name="editTesoro">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-</operation>
-<operation name="countTesoro">
+<operation name="findAllTesoro">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -159,22 +147,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="findTesoro">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="seguirTesoro">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-</operation>
-<operation name="findAllLogs">
+<operation name="findRangeTesoro">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -188,6 +161,15 @@
 <input>
 <soap:body use="literal"/>
 </input>
+</operation>
+<operation name="findByUsuarioBuscando">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
 </operation>
 <operation name="findByNombreTesoro">
 <soap:operation soapAction=""/>
@@ -231,7 +213,7 @@
 <soap:body use="literal"/>
 </input>
 </operation>
-<operation name="findByUsuarioBuscando">
+<operation name="findAllLogs">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -240,7 +222,13 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="findAllTesoro">
+<operation name="seguirTesoro">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+</operation>
+<operation name="findTesoro">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -249,7 +237,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="findRangeTesoro">
+<operation name="countTesoro">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -257,6 +245,18 @@
 <output>
 <soap:body use="literal"/>
 </output>
+</operation>
+<operation name="editTesoro">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+</operation>
+<operation name="removeTesoro">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
 </operation>
 </binding>
 <service name="TesoroService">
