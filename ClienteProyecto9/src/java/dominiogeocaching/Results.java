@@ -2,19 +2,22 @@
 package dominiogeocaching;
 
 import java.util.List;
+import javax.xml.bind.annotation.XmlElement;
 
 public class Results{
-   	private List address_components;
+   	private List<Address_components> address_components;
    	private String formatted_address;
    	private Geometry geometry;
-   	private List types;
+   	private List<String> types;
 
- 	public List getAddress_components(){
+ 	public List<Address_components> getAddress_components(){
 		return this.address_components;
 	}
-	public void setAddress_components(List address_components){
+        @XmlElement(name="address_component")
+	public void setAddress_components(List<Address_components> address_components){
 		this.address_components = address_components;
 	}
+        
  	public String getFormatted_address(){
 		return this.formatted_address;
 	}
@@ -27,10 +30,13 @@ public class Results{
 	public void setGeometry(Geometry geometry){
 		this.geometry = geometry;
 	}
- 	public List getTypes(){
+        
+ 	public List<String> getTypes(){
 		return this.types;
 	}
-	public void setTypes(List types){
+        
+        @XmlElement(name="type")
+	public void setTypes(List<String> types){
 		this.types = types;
 	}
 }

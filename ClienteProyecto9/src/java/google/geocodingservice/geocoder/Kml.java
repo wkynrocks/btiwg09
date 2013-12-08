@@ -8,7 +8,7 @@
 
 package google.geocodingservice.geocoder;
 
-import dominiogeocaching.Google;
+import dominiogeocaching.GeocodeResponse;
 import java.util.List;
 import javax.ws.rs.core.GenericType;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -411,7 +411,7 @@ public class Kml {
             this.placemark = value;
         }
 
-        public List<Google> readEntity(GenericType<List<Google>> genericType) {
+        public List<GeocodeResponse> readEntity(GenericType<List<GeocodeResponse>> genericType) {
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
 

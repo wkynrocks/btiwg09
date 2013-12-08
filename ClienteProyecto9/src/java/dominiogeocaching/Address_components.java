@@ -2,11 +2,12 @@
 package dominiogeocaching;
 
 import java.util.List;
+import javax.xml.bind.annotation.XmlElement;
 
 public class Address_components{
    	private String long_name;
    	private String short_name;
-   	private List types;
+   	private List<String> types;
 
  	public String getLong_name(){
 		return this.long_name;
@@ -20,10 +21,11 @@ public class Address_components{
 	public void setShort_name(String short_name){
 		this.short_name = short_name;
 	}
- 	public List getTypes(){
+ 	public List<String> getTypes(){
 		return this.types;
 	}
-	public void setTypes(List types){
+        @XmlElement(name="type")
+	public void setTypes(List<String> types){
 		this.types = types;
 	}
 }

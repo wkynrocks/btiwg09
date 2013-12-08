@@ -1,7 +1,6 @@
 
 package dominiogeocaching;
 
-import java.util.List;
 
 public class Viewport{
    	private Northeast northeast;

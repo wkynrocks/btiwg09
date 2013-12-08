@@ -1,22 +1,22 @@
 
 package dominiogeocaching;
 
-import java.util.List;
+import java.math.BigDecimal;
 
 public class Location{
-   	private Number lat;
-   	private Number lng;
+   	private BigDecimal lat;
+   	private BigDecimal lng;
 
- 	public Number getLat(){
+ 	public BigDecimal getLat(){
 		return this.lat;
 	}
-	public void setLat(Number lat){
+	public void setLat(BigDecimal lat){
 		this.lat = lat;
 	}
- 	public Number getLng(){
+ 	public BigDecimal getLng(){
 		return this.lng;
 	}
-	public void setLng(Number lng){
+	public void setLng(BigDecimal lng){
 		this.lng = lng;
 	}
 }

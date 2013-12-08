@@ -30,9 +30,10 @@ public class GoogleGeoClient {
     private static final String BASE_URI = "http://maps.google.com/maps/api/";
     
     public GoogleGeoClient() {
-//        ClientConfig clientconf = new ClientConfig(JacksonJaxbJsonProvider.class);
+//        ClientConfig config = new ClientConfig(JacksonFeature.class);
+//        client = javax.ws.rs.client.ClientBuilder.newClient(config);
         client = javax.ws.rs.client.ClientBuilder.newClient();
-         webTarget = client.target(BASE_URI).path("geocode/xml");
+        webTarget = client.target(BASE_URI).path("geocode/xml");
     }
 
     /**
@@ -47,7 +48,7 @@ public class GoogleGeoClient {
     public <T> T geocode(Class<T> responseType, String address, String sensor, String... optionalQueryParams) throws ClientErrorException {
         String[] queryParamNames = new String[]{"address", "sensor"};
         String[] queryParamValues = new String[]{address, sensor};
-        ;
+       
         javax.ws.rs.core.Form form = getQueryOrFormParams(queryParamNames, queryParamValues);
         javax.ws.rs.core.MultivaluedMap<String, String> map = form.asMap();
         for (java.util.Map.Entry<String, java.util.List<String>> entry : map.entrySet()) {
@@ -61,6 +62,8 @@ public class GoogleGeoClient {
             String[] values = list.toArray(new String[list.size()]);
             webTarget = webTarget.queryParam(entry.getKey(), (Object[]) values);
         }
+        
+        
         T s = webTarget.request(javax.ws.rs.core.MediaType.APPLICATION_XML).get(responseType);
         System.out.println("Devuelto ok");
         return s;

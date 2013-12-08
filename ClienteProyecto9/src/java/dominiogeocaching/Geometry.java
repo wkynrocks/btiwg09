@@ -1,8 +1,6 @@
 
 package dominiogeocaching;
 
-import java.util.List;
-
 public class Geometry{
    	private Location location;
    	private String location_type;
