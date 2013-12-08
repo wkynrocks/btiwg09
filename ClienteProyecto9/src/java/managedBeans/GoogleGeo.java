@@ -28,6 +28,15 @@ public class GoogleGeo {
         rest.googlegeo.GoogleGeoClient client = new rest.googlegeo.GoogleGeoClient();
         System.out.println("SGG");
         System.out.println(client.geocode(String.class, "Blvd Louis Pasteur, Málaga", "true", ""));
+//        javax.ws.rs.core.Response response = customerFacade.findAll_XML(Response.class);
+////if (response.getStatus() == 200) {
+////   System.out.println("Respuesta con éxito");
+////   GenericType<List<Customer>> genericType = new GenericType<List<Customer>>() {
+////   };
+////   List<Customer> lc = response.readEntity(genericType);
+////}else{
+////   System.out.println("Error al recibir el recurso, estado= " + response.getStatus()); 
+////}
         System.out.println("SGG");
         return "";
     }
