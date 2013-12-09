@@ -68,6 +68,31 @@ public class GoogleGeoClient {
         System.out.println("Devuelto ok");
         return s;
     }
+    
+    //El valor latitud y longitud (latlng) sin espacios y separados por una coma ','
+    public <T> T geocodeInverso(Class<T> responseType, String latlng, String sensor, String... optionalQueryParams) throws ClientErrorException {
+        String[] queryParamNames = new String[]{"latlng", "sensor"};
+        String[] queryParamValues = new String[]{latlng, sensor};
+       
+        javax.ws.rs.core.Form form = getQueryOrFormParams(queryParamNames, queryParamValues);
+        javax.ws.rs.core.MultivaluedMap<String, String> map = form.asMap();
+        for (java.util.Map.Entry<String, java.util.List<String>> entry : map.entrySet()) {
+            java.util.List<String> list = entry.getValue();
+            String[] values = list.toArray(new String[list.size()]);
+            webTarget = webTarget.queryParam(entry.getKey(), (Object[]) values);
+        }
+        javax.ws.rs.core.MultivaluedMap<String, String> mapOptionalParams = getQParams(optionalQueryParams);
+        for (java.util.Map.Entry<String, java.util.List<String>> entry : mapOptionalParams.entrySet()) {
+            java.util.List<String> list = entry.getValue();
+            String[] values = list.toArray(new String[list.size()]);
+            webTarget = webTarget.queryParam(entry.getKey(), (Object[]) values);
+        }
+        
+        
+        T s = webTarget.request(javax.ws.rs.core.MediaType.APPLICATION_XML).get(responseType);
+        System.out.println("Devuelto ok");
+        return s;
+    }
 
     private Form getQueryOrFormParams(String[] paramNames, String[] paramValues) {
         Form form = new javax.ws.rs.core.Form();

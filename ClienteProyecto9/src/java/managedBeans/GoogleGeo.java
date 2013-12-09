@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package managedBeans;
 
 import dominiogeocaching.GeocodeResponse;
@@ -24,19 +23,23 @@ public class GoogleGeo {
      */
     public GoogleGeo() {
     }
-    
-    public String prueba(){
+
+    public String prueba() {
         System.out.println("HOLA");
         rest.googlegeo.GoogleGeoClient client = new rest.googlegeo.GoogleGeoClient();
-        System.out.println("SGG");
         System.out.println(client.geocode(String.class, "Blvd Louis Pasteur, Málaga", "true", ""));
         GeocodeResponse google = client.geocode(GeocodeResponse.class, "Blvd Louis Pasteur, Málaga", "true", "");
         System.out.println(google.getStatus());
         Results result = google.getResults().get(0);
         System.out.println(result.getFormatted_address());
         System.out.println(result.getTypes());
-        System.out.println("SGG");
+
+        System.out.println(result.getGeometry().getLocation().getLat().toString() + result.getGeometry().getLocation().getLng().toString()+": ");
+
+        GeocodeResponse googleInverso = client.geocodeInverso(GeocodeResponse.class, result.getGeometry().getLocation().getLat().toString() + "," + result.getGeometry().getLocation().getLng().toString(), "true", "");
+        Results resultInverso = googleInverso.getResults().get(0);
+        System.out.println(resultInverso.getFormatted_address());
         return "";
     }
-    
+
 }
