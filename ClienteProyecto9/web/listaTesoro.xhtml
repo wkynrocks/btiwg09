@@ -32,6 +32,10 @@
                         #{item.codigoSecreto}
                     </h:column>
                     <h:column>
+                        <f:facet name="header">Elevación</f:facet>
+                        #{item.altitud}
+                    </h:column>
+                    <h:column>
                         <f:facet name="header">Habilitado</f:facet>
                         <h:commandButton value="Habilitar" action="#{listarTesoros.habilitar(item)}" rendered="#{!item.habilitado}"/>
                         <h:commandButton value="Deshabilitar" action="#{listarTesoros.deshabilitar(item)}" rendered="#{item.habilitado}"/>

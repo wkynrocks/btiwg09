@@ -6,6 +6,7 @@
 
 package managedBeans;
 
+import domainelevation.Elevation;
 import dominiogeocaching.GeocodeResponse;
 import dominiogeocaching.Results;
 import java.util.List;
@@ -81,7 +82,10 @@ public class Tesoro {
             String lat = lr.get(0).getGeometry().getLocation().getLat().toString();
             String lng = lr.get(0).getGeometry().getLocation().getLng().toString();
             tesoro.setPosicion(lat+","+lng);
-            tesoro.setAltitud("0");
+            
+            rest.googlegeo.ElevationClient eleclient = new rest.googlegeo.ElevationClient();
+            Elevation ele = eleclient.elevation(Elevation.class, "true", lat+","+lng,"");
+            tesoro.setAltitud(ele.getResults().get(0).getElevation().toString());
             create(tesoro);
             usuario.setRol("Colaborador");
             editUser(usuario);
