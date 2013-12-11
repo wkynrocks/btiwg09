@@ -5,6 +5,7 @@
  */
 package managedBeans;
 
+import domainelevation.Elevation;
 import dominiogeocaching.GeocodeResponse;
 import dominiogeocaching.Results;
 import javax.faces.bean.ManagedBean;
@@ -39,6 +40,10 @@ public class GoogleGeo {
         GeocodeResponse googleInverso = client.geocodeInverso(GeocodeResponse.class, result.getGeometry().getLocation().getLat().toString() + "," + result.getGeometry().getLocation().getLng().toString(), "true", "");
         Results resultInverso = googleInverso.getResults().get(0);
         System.out.println(resultInverso.getFormatted_address());
+        
+        rest.googlegeo.ElevationClient eleclient = new rest.googlegeo.ElevationClient();
+        Elevation ele = eleclient.elevation(Elevation.class, "true", "40.714728,-73.998672","");
+        System.out.println(ele.getResults().get(0).getElevation());
         return "";
     }
 
