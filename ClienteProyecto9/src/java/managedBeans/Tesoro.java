@@ -6,10 +6,14 @@
 
 package managedBeans;
 
+import dominiogeocaching.GeocodeResponse;
+import dominiogeocaching.Results;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.ws.rs.core.GenericType;
 import javax.xml.ws.WebServiceRef;
 import service.TesoroService_Service;
 import service.UserService_Service;
@@ -26,6 +30,7 @@ public class Tesoro {
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Proyecto9-war/TesoroService.wsdl")
     private TesoroService_Service service;
     
+    private String dirección;
     private boolean errorTesoroCrear=false;
 
     public boolean isErrorTesoroCrear() {
@@ -66,11 +71,21 @@ public class Tesoro {
     }
     
     public String crearTesoro(service.User usuario){
+        setDirección(getDirección() + " " + tesoro.getCiudad() + " " + tesoro.getPais());
         tesoro.setUseridUser(usuario);
         tesoro.setHabilitado(true);
-        create(tesoro);
-        usuario.setRol("Colaborador");
-        editUser(usuario);
+        rest.googlegeo.GoogleGeoClient client = new rest.googlegeo.GoogleGeoClient();
+        GeocodeResponse googleresponse = client.geocode(GeocodeResponse.class, getDirección(), "true", "");
+        if (googleresponse.getStatus().equals("OK")){
+            List<Results> lr = googleresponse.getResults();
+            String lat = lr.get(0).getGeometry().getLocation().getLat().toString();
+            String lng = lr.get(0).getGeometry().getLocation().getLng().toString();
+            tesoro.setPosicion(lat+","+lng);
+            tesoro.setAltitud("0");
+            create(tesoro);
+            usuario.setRol("Colaborador");
+            editUser(usuario);
+        }
         return "paginaHomeUsuario.xhtml";
     }
     
@@ -90,5 +105,19 @@ public class Tesoro {
     public String pagInfo(service.Tesoro tesoro){
         this.tesoro = tesoro;
         return "infoTesoro.xhtml";
+    }
+
+    /**
+     * @return the dirección
+     */
+    public String getDirección() {
+        return dirección;
+    }
+
+    /**
+     * @param dirección the dirección to set
+     */
+    public void setDirección(String dirección) {
+        this.dirección = dirección;
     }
 }

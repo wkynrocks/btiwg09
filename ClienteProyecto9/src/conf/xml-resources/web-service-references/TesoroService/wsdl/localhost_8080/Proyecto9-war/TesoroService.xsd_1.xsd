@@ -56,13 +56,13 @@
 
 <xs:element name="user" type="tns:user"/>
 
-<xs:complexType name="findByPosicionTesoro">
+<xs:complexType name="findByUsuarioBuscando">
 <xs:sequence>
-<xs:element name="textbusqueda" type="xs:string" minOccurs="0"/>
+<xs:element name="usu" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="findByPosicionTesoroResponse">
+<xs:complexType name="findByUsuarioBuscandoResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:tesoro" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
@@ -92,13 +92,13 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="findByUsuarioBuscando">
+<xs:complexType name="findByPosicionTesoro">
 <xs:sequence>
-<xs:element name="usu" type="xs:string" minOccurs="0"/>
+<xs:element name="textbusqueda" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="findByUsuarioBuscandoResponse">
+<xs:complexType name="findByPosicionTesoroResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:tesoro" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
