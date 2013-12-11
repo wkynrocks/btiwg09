@@ -30,7 +30,7 @@ public class Tesoro {
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/Proyecto9-war/TesoroService.wsdl")
     private TesoroService_Service service;
     
-    private String dirección;
+    private String direccion;
     private boolean errorTesoroCrear=false;
 
     public boolean isErrorTesoroCrear() {
@@ -71,11 +71,11 @@ public class Tesoro {
     }
     
     public String crearTesoro(service.User usuario){
-        setDirección(getDirección() + " " + tesoro.getCiudad() + " " + tesoro.getPais());
+        setDireccion(getDireccion() + " " + tesoro.getCiudad() + " " + tesoro.getPais());
         tesoro.setUseridUser(usuario);
         tesoro.setHabilitado(true);
         rest.googlegeo.GoogleGeoClient client = new rest.googlegeo.GoogleGeoClient();
-        GeocodeResponse googleresponse = client.geocode(GeocodeResponse.class, getDirección(), "true", "");
+        GeocodeResponse googleresponse = client.geocode(GeocodeResponse.class, getDireccion(), "true", "");
         if (googleresponse.getStatus().equals("OK")){
             List<Results> lr = googleresponse.getResults();
             String lat = lr.get(0).getGeometry().getLocation().getLat().toString();
@@ -108,16 +108,24 @@ public class Tesoro {
     }
 
     /**
-     * @return the dirección
+     * @return the direccion
      */
-    public String getDirección() {
-        return dirección;
+    public String getDireccion() {
+        return direccion;
     }
 
     /**
-     * @param dirección the dirección to set
+     * @param direccion the direccion to set
      */
-    public void setDirección(String dirección) {
-        this.dirección = dirección;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+    
+    public String obtenerDireccion(){
+        rest.googlegeo.GoogleGeoClient client = new rest.googlegeo.GoogleGeoClient();
+        String[] pos = tesoro.getPosicion().split(",");
+        GeocodeResponse googleInverso = client.geocodeInverso(GeocodeResponse.class, pos[0] + "," + pos[1], "true", "");
+        Results resultInverso = googleInverso.getResults().get(0);
+        return resultInverso.getFormatted_address();
     }
 }
