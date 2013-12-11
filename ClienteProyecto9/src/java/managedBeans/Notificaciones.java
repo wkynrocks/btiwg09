@@ -42,7 +42,7 @@ public class Notificaciones {
     
     public String goToLog(service.Log log){
         
-        return null;
+        return "listaLogs";
     }
 
     public List<Log> getLl() {
