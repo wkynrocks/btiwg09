@@ -1,5 +1,5 @@
 
-package dominiogeocaching;
+package rest.domains.geocaching;
 
 import java.util.List;
 import javax.xml.bind.annotation.XmlElement;

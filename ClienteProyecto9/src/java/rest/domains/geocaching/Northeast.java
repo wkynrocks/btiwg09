@@ -1,10 +1,9 @@
 
-package dominiogeocaching;
+package rest.domains.geocaching;
 
 import java.math.BigDecimal;
 
-
-public class Southwest{
+public class Northeast{
    	private BigDecimal lat;
    	private BigDecimal lng;
 

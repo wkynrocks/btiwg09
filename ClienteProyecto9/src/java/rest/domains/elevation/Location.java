@@ -1,9 +1,10 @@
 
-package dominiogeocaching;
+package rest.domains.elevation;
 
 import java.math.BigDecimal;
+import java.util.List;
 
-public class Northeast{
+public class Location{
    	private BigDecimal lat;
    	private BigDecimal lng;
 

@@ -1,8 +1,7 @@
 
-package domainelevation;
+package rest.domains.geocaching;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 public class Location{
    	private BigDecimal lat;

@@ -6,9 +6,9 @@
 
 package managedBeans;
 
-import domainelevation.Elevation;
-import dominiogeocaching.GeocodeResponse;
-import dominiogeocaching.Results;
+import rest.domains.elevation.Elevation;
+import rest.domains.geocaching.GeocodeResponse;
+import rest.domains.geocaching.Results;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -75,7 +75,7 @@ public class Tesoro {
         setDireccion(getDireccion() + " " + tesoro.getCiudad() + " " + tesoro.getPais());
         tesoro.setUseridUser(usuario);
         tesoro.setHabilitado(true);
-        rest.googlegeo.GoogleGeoClient client = new rest.googlegeo.GoogleGeoClient();
+        rest.clients.GoogleGeoClient client = new rest.clients.GoogleGeoClient();
         GeocodeResponse googleresponse = client.geocode(GeocodeResponse.class, getDireccion(), "true", "");
         if (googleresponse.getStatus().equals("OK")){
             List<Results> lr = googleresponse.getResults();
@@ -83,7 +83,7 @@ public class Tesoro {
             String lng = lr.get(0).getGeometry().getLocation().getLng().toString();
             tesoro.setPosicion(lat+","+lng);
             
-            rest.googlegeo.ElevationClient eleclient = new rest.googlegeo.ElevationClient();
+            rest.clients.ElevationClient eleclient = new rest.clients.ElevationClient();
             Elevation ele = eleclient.elevation(Elevation.class, "true", lat+","+lng,"");
             tesoro.setAltitud(ele.getResults().get(0).getElevation().toString());
             create(tesoro);
@@ -126,7 +126,7 @@ public class Tesoro {
     }
     
     public String obtenerDireccion(){
-        rest.googlegeo.GoogleGeoClient client = new rest.googlegeo.GoogleGeoClient();
+        rest.clients.GoogleGeoClient client = new rest.clients.GoogleGeoClient();
         String[] pos = tesoro.getPosicion().split(",");
         GeocodeResponse googleInverso = client.geocodeInverso(GeocodeResponse.class, pos[0] + "," + pos[1], "true", "");
         Results resultInverso = googleInverso.getResults().get(0);

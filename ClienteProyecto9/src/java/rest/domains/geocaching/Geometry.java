@@ -1,5 +1,5 @@
 
-package dominiogeocaching;
+package rest.domains.geocaching;
 
 public class Geometry{
    	private Location location;

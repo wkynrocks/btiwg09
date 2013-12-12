@@ -5,9 +5,9 @@
  */
 package managedBeans;
 
-import domainelevation.Elevation;
-import dominiogeocaching.GeocodeResponse;
-import dominiogeocaching.Results;
+import rest.domains.elevation.Elevation;
+import rest.domains.geocaching.GeocodeResponse;
+import rest.domains.geocaching.Results;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
@@ -27,7 +27,7 @@ public class GoogleGeo {
 
     public String prueba() {
         System.out.println("HOLA");
-        rest.googlegeo.GoogleGeoClient client = new rest.googlegeo.GoogleGeoClient();
+        rest.clients.GoogleGeoClient client = new rest.clients.GoogleGeoClient();
         System.out.println(client.geocode(String.class, "Blvd Louis Pasteur, Málaga", "true", ""));
         GeocodeResponse google = client.geocode(GeocodeResponse.class, "Blvd Louis Pasteur, Málaga", "true", "");
         System.out.println(google.getStatus());
@@ -41,7 +41,7 @@ public class GoogleGeo {
         Results resultInverso = googleInverso.getResults().get(0);
         System.out.println(resultInverso.getFormatted_address());
         
-        rest.googlegeo.ElevationClient eleclient = new rest.googlegeo.ElevationClient();
+        rest.clients.ElevationClient eleclient = new rest.clients.ElevationClient();
         Elevation ele = eleclient.elevation(Elevation.class, "true", "40.714728,-73.998672","");
         System.out.println(ele.getResults().get(0).getElevation());
         return "";

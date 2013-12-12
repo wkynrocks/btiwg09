@@ -1,5 +1,5 @@
 
-package domainelevation;
+package rest.domains.elevation;
 
 import java.math.BigDecimal;
 import java.util.List;
