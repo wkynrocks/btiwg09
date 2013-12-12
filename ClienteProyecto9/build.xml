@@ -72,4 +72,9 @@
 <xjc destdir="src/java" encoding="${source.encoding}" package="google.geocodingservice.geocoder" schema="src/java/META-INF/Geocoder.xsd" target="2.1"/>
 </target>
 
+<!--Target required for SAAS(REST) services: data types generation-->
+<target depends="saas-init-xjc" name="saas.xjc.flickr.photoservice">
+<xjc destdir="src/java" encoding="${source.encoding}" package="flickr.photoservice.flickrresponse" schema="src/java/META-INF/FlickrResponse.xsd" target="2.1"/>
+</target>
+
 </project>
