@@ -6,6 +6,8 @@
 
 package managedBeans;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import rest.domains.elevation.Elevation;
 import rest.domains.geocaching.GeocodeResponse;
 import rest.domains.geocaching.Results;
@@ -14,8 +16,12 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.core.GenericType;
 import javax.xml.ws.WebServiceRef;
+import rest.flickr.photoservice.flickrresponse.Rsp;
+import rest.flickr.photoservice.flickrresponse.Rsp.Photo;
+import rest.flickr.photoservice.flickrresponse.Rsp.Photos;
 import service.TesoroService_Service;
 import service.UserService_Service;
 
@@ -33,6 +39,10 @@ public class Tesoro {
     
     private String direccion;
     private boolean errorTesoroCrear=false;
+    private List<String> imagenestes;
+    private boolean booleanimg;
+    private String[] pos;
+    
 
     public boolean isErrorTesoroCrear() {
         return errorTesoroCrear;
@@ -97,6 +107,7 @@ public class Tesoro {
     @PostConstruct
     public void init(){
         tesoro=new service.Tesoro();
+        
     }
 
     private void editUser(service.User entity) {
@@ -127,9 +138,37 @@ public class Tesoro {
     
     public String obtenerDireccion(){
         rest.clients.GoogleGeoClient client = new rest.clients.GoogleGeoClient();
-        String[] pos = tesoro.getPosicion().split(",");
+        pos = tesoro.getPosicion().split(",");
         GeocodeResponse googleInverso = client.geocodeInverso(GeocodeResponse.class, pos[0] + "," + pos[1], "true", "");
         Results resultInverso = googleInverso.getResults().get(0);
+        booleanimg=false;
         return resultInverso.getFormatted_address();
+    }
+    
+    public List<String> imagenestesoro() throws ClientErrorException, IOException{
+        if (!booleanimg){
+            rest.clients.FlickrClient flickrclient = new rest.clients.FlickrClient();
+            Rsp responseflickr = flickrclient.photos_ownsearch(Rsp.class, "4bb4a7f3590b07606fc71d4e4e34c656", pos[0],pos[1]);
+            List<Photos.Photo> lphotos = responseflickr.getPhotos().getPhoto().subList(0, 3);
+
+            //http://farmX.staticflickr.com/SERVER/ID_SECRET_A.jpg
+            List<String> dirphotos = new ArrayList();
+            StringBuilder direc = new StringBuilder();
+            StringBuilder direcz = new StringBuilder();
+            for (Photos.Photo p: lphotos){
+                Rsp responsephoto = flickrclient.photos_owngetInfo(Rsp.class,"4bb4a7f3590b07606fc71d4e4e34c656", p.getId(), "");
+                direc.append("http://farm");
+                direc.append(responsephoto.getPhoto().getFarm());
+                direc.append(".staticflickr.com/");
+                direc.append(responsephoto.getPhoto().getServer()).append("/");
+                direc.append(responsephoto.getPhoto().getId()).append("_");  
+                direc.append(responsephoto.getPhoto().getSecret()).append("_t.jpg");
+                dirphotos.add(direc.toString());
+                direc.delete( 0, direc.length() );
+            }
+            imagenestes = dirphotos;
+            booleanimg = true;
+        }
+        return imagenestes;
     }
 }

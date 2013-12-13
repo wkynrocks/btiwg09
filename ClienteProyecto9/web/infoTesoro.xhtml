@@ -1,11 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Info Tesoro</title>
     </h:head>
-    <h:body>
+    <h:body> 
         <h:form>
         <h1>Tesoro <h:outputLabel value="#{tesoro.tesoro.nombre}"/></h1>
         <br/>
@@ -28,6 +29,17 @@
         Altitud: <h:outputLabel value="#{tesoro.tesoro.altitud} m"/>
         <br/>
         <br/>
+        Imagenes 
+        <f:view>
+            <h:form>
+                <h:dataTable value="#{tesoro.imagenestesoro()}" var="item">
+                    <h:column>
+                        <a href="#{item}"><img src="#{item}"/></a>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>
+
         <h:link value="Crear Log" outcome="crearLog"/>
         <br/>
         <br/>

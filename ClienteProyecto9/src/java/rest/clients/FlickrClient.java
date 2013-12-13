@@ -2489,4 +2489,43 @@ public class FlickrClient {
         return signParams(paramNames, paramValues, new String[]{});
     }
     
+    public <T> T photos_ownsearch(Class<T> responseType, String api_key, String lat, String lng) throws ClientErrorException, IOException {
+
+        String lat1 = String.valueOf(Double.parseDouble(lat)-1);
+        String lng1 = String.valueOf(Double.parseDouble(lng)-1);
+        String lat2 = String.valueOf(Double.parseDouble(lat)+1);
+        String lng2 = String.valueOf(Double.parseDouble(lng)+1);
+        String bbox = lat1+","+lng1+","+lat2+","+lng2;
+        String[] queryParamNames = new String[]{"method", "api_key", "bbox"};
+        String[] queryParamValues = new String[]{"flickr.photos.search", api_key, bbox};
+        
+        javax.ws.rs.core.Form form = getQueryOrFormParams(queryParamNames, queryParamValues);
+        javax.ws.rs.core.MultivaluedMap<String, String> map = form.asMap();
+        for (java.util.Map.Entry<String, java.util.List<String>> entry : map.entrySet()) {
+            java.util.List<String> list = entry.getValue();
+            String[] values = list.toArray(new String[list.size()]);
+            webTarget = webTarget.queryParam(entry.getKey(), (Object[]) values);
+        }        
+        return webTarget.request(javax.ws.rs.core.MediaType.TEXT_XML).get(responseType);
+     }
+    
+     public <T> T photos_owngetInfo(Class<T> responseType, String api_key, String photo_id, String... optionalQueryParams) throws ClientErrorException, IOException {
+        String[] queryParamNames = new String[]{"api_key", "photo_id", "method"};
+        String[] queryParamValues = new String[]{api_key, photo_id, "flickr.photos.getInfo"};
+        javax.ws.rs.core.Form form = getQueryOrFormParams(queryParamNames, queryParamValues);
+        javax.ws.rs.core.MultivaluedMap<String, String> map = form.asMap();
+        for (java.util.Map.Entry<String, java.util.List<String>> entry : map.entrySet()) {
+            java.util.List<String> list = entry.getValue();
+            String[] values = list.toArray(new String[list.size()]);
+            webTarget = webTarget.queryParam(entry.getKey(), (Object[]) values);
+        }
+        javax.ws.rs.core.MultivaluedMap<String, String> mapOptionalParams = getQParams(optionalQueryParams);
+        for (java.util.Map.Entry<String, java.util.List<String>> entry : mapOptionalParams.entrySet()) {
+            java.util.List<String> list = entry.getValue();
+            String[] values = list.toArray(new String[list.size()]);
+            webTarget = webTarget.queryParam(entry.getKey(), (Object[]) values);
+        }
+        return webTarget.request(javax.ws.rs.core.MediaType.TEXT_XML).get(responseType);
+    }
+    
 }
