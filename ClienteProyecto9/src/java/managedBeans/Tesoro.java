@@ -149,7 +149,7 @@ public class Tesoro {
         if (!booleanimg){
             rest.clients.FlickrClient flickrclient = new rest.clients.FlickrClient();
             Rsp responseflickr = flickrclient.photos_ownsearch(Rsp.class, "4bb4a7f3590b07606fc71d4e4e34c656", pos[0],pos[1]);
-            List<Photos.Photo> lphotos = responseflickr.getPhotos().getPhoto().subList(0, 3);
+            List<Photos.Photo> lphotos = responseflickr.getPhotos().getPhoto().subList(0, 6);
 
             //http://farmX.staticflickr.com/SERVER/ID_SECRET_A.jpg
             List<String> dirphotos = new ArrayList();
@@ -170,5 +170,9 @@ public class Tesoro {
             booleanimg = true;
         }
         return imagenestes;
+    }
+    
+    public String zoomFoto(String url){
+        return url.replaceAll("_t.jpg", "_z.jpg");
     }
 }
