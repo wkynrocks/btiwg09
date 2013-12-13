@@ -12,9 +12,7 @@ import rest.domains.geocaching.GeocodeResponse;
 import rest.domains.geocaching.Results;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.ws.rs.ClientErrorException;
-import rest.flickr.photoservice.flickrresponse.Rsp;
-import rest.flickr.photoservice.flickrresponse.Rsp.Photo;
+import rest.domains.flickr.Flickr;
 
 /**
  *
@@ -52,13 +50,11 @@ public class GoogleGeo {
         return "";
     }
     
-    public String flickr() throws ClientErrorException, IOException {
-        rest.clients.FlickrClient flickrclient = new rest.clients.FlickrClient();
-        Rsp flickr = flickrclient.photos_ownsearch(Rsp.class, "4bb4a7f3590b07606fc71d4e4e34c656", "37.1716884","-3.6030309");
+    public String flickr() {
+        rest.clients.FlickrClient flickclient = new rest.clients.FlickrClient();
+        Flickr flickr = flickclient.photos_ownsearch(Flickr.class, "4bb4a7f3590b07606fc71d4e4e34c656", "36","-4","");
         System.out.println(flickr.getPhotos().getPhoto().size());
-        List<Rsp.Photos.Photo> lphotos = flickr.getPhotos().getPhoto();
-        Rsp p = flickrclient.photos_owngetInfo(Rsp.class,"4bb4a7f3590b07606fc71d4e4e34c656", lphotos.get(0).getId(), "");
-        System.out.println(p.getPhoto().getFarm());
+        System.out.println(flickr.getPhotos().getPhoto().get(20).getFarm());
         return "";
     }
 }

@@ -33,16 +33,16 @@
         Imagenes 
         <f:view>
             <h:form>
-               <h:dataTable value="#{tesoro.imagenestesoro()}" var="item">
+<!--               <h:dataTable value="{tesoro.imagenestesoro()}" var="item">
                     <h:column>
-                        <a href="#{tesoro.zoomFoto(item)}"><img src="#{item}"/></a>
-                    </h:column>
-                  </h:dataTable>
-<!--                <h:panelGrid columns="3" cellpadding="3" rules="all">   
-                        <ui:repeat value="{tesoro.imagenestesoro()}" var="item">
                         <a href="{tesoro.zoomFoto(item)}"><img src="{item}"/></a>
+                    </h:column>
+                  </h:dataTable>-->
+                <h:panelGrid columns="3" cellpadding="3" rules="all">   
+                        <ui:repeat value="#{tesoro.imagenestesoro()}" var="item">
+                        <a href="#{tesoro.zoomFoto(item)}"><img src="#{item}"/></a>
                         </ui:repeat>                    
-                </h:panelGrid>-->
+                </h:panelGrid>
             </h:form>
         </f:view>
 
