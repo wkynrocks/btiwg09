@@ -113,6 +113,7 @@ public class Tesoro {
 
     public String pagInfo(service.Tesoro tesoro) {
         this.tesoro = tesoro;
+        setPos(tesoro.getPosicion().split(","));
         return "infoTesoro.xhtml";
     }
 
@@ -132,15 +133,14 @@ public class Tesoro {
 
     public String obtenerDireccion() {
         rest.clients.GoogleGeoClient client = new rest.clients.GoogleGeoClient();
-        pos = tesoro.getPosicion().split(",");
-        GeocodeResponse googleInverso = client.geocodeInverso(GeocodeResponse.class, pos[0] + "," + pos[1], "true", "");
+        GeocodeResponse googleInverso = client.geocodeInverso(GeocodeResponse.class, getPos()[0] + "," + getPos()[1], "true", "");
         Results resultInverso = googleInverso.getResults().get(0);
         return resultInverso.getFormatted_address();
     }
 
     public List<String> imagenestesoro() throws ClientErrorException, IOException {
         rest.clients.FlickrClient flickrclient = new rest.clients.FlickrClient();
-        Flickr responseflickr = flickrclient.photos_ownsearch(Flickr.class, "4bb4a7f3590b07606fc71d4e4e34c656", pos[0], pos[1], "");
+        Flickr responseflickr = flickrclient.photos_ownsearch(Flickr.class, "4bb4a7f3590b07606fc71d4e4e34c656", getPos()[0], getPos()[1], "");
         List<Photo> lphotos = responseflickr.getPhotos().getPhoto().subList(0, 6);
 
         //http://farmX.staticflickr.com/SERVER/ID_SECRET_A.jpg
@@ -162,5 +162,19 @@ public class Tesoro {
 
     public String zoomFoto(String url) {
         return url.replaceAll("_t.jpg", "_z.jpg");
+    }
+
+    /**
+     * @return the pos
+     */
+    public String[] getPos() {
+        return pos;
+    }
+
+    /**
+     * @param pos the pos to set
+     */
+    public void setPos(String[] pos) {
+        this.pos = pos;
     }
 }
