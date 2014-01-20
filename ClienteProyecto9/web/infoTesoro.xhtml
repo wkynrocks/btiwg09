@@ -24,6 +24,7 @@
           
           function initialize() {
             var myLatlng = new google.maps.LatLng(#{tesoro.pos[0]},#{tesoro.pos[1]});
+            
             var myTitle = "My location";
             var mapOptions = {
               center: myLatlng,
@@ -32,7 +33,6 @@
             map = new google.maps.Map(document.getElementById("map-canvas"),
                 mapOptions);
             centralMarker = addMarker(map, myLatlng, myTitle);
-            
             if ((latMarker &amp;&amp; lngMarker )){
                 var varLatlng = new google.maps.LatLng(latMarker,lngMarker);
                 if (otherMarker){
@@ -51,6 +51,10 @@
                     });
               return marker;
           }
+          
+          if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(mapa,error); 
+          } 
         </script>
     </h:head>
     <h:body> 
