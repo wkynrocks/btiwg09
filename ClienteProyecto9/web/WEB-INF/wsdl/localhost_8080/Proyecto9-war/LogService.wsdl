@@ -4,20 +4,17 @@
 <xsd:import namespace="http://service/" schemaLocation="http://localhost:8080/Proyecto9-war/LogService?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="createLog">
-<part name="parameters" element="tns:createLog"/>
-</message>
 <message name="editLog">
 <part name="parameters" element="tns:editLog"/>
+</message>
+<message name="removeLog">
+<part name="parameters" element="tns:removeLog"/>
 </message>
 <message name="findLog">
 <part name="parameters" element="tns:findLog"/>
 </message>
 <message name="findLogResponse">
 <part name="parameters" element="tns:findLogResponse"/>
-</message>
-<message name="removeLog">
-<part name="parameters" element="tns:removeLog"/>
 </message>
 <message name="findAllLog">
 <part name="parameters" element="tns:findAllLog"/>
@@ -43,19 +40,19 @@
 <message name="findByTesoroIdResponse">
 <part name="parameters" element="tns:findByTesoroIdResponse"/>
 </message>
+<message name="createLog">
+<part name="parameters" element="tns:createLog"/>
+</message>
 <portType name="LogService">
-<operation name="createLog">
-<input wsam:Action="http://service/LogService/createLog" message="tns:createLog"/>
-</operation>
 <operation name="editLog">
 <input wsam:Action="http://service/LogService/editLog" message="tns:editLog"/>
+</operation>
+<operation name="removeLog">
+<input wsam:Action="http://service/LogService/removeLog" message="tns:removeLog"/>
 </operation>
 <operation name="findLog">
 <input wsam:Action="http://service/LogService/findLogRequest" message="tns:findLog"/>
 <output wsam:Action="http://service/LogService/findLogResponse" message="tns:findLogResponse"/>
-</operation>
-<operation name="removeLog">
-<input wsam:Action="http://service/LogService/removeLog" message="tns:removeLog"/>
 </operation>
 <operation name="findAllLog">
 <input wsam:Action="http://service/LogService/findAllLogRequest" message="tns:findAllLog"/>
@@ -73,16 +70,19 @@
 <input wsam:Action="http://service/LogService/findByTesoroIdRequest" message="tns:findByTesoroId"/>
 <output wsam:Action="http://service/LogService/findByTesoroIdResponse" message="tns:findByTesoroIdResponse"/>
 </operation>
+<operation name="createLog">
+<input wsam:Action="http://service/LogService/createLog" message="tns:createLog"/>
+</operation>
 </portType>
 <binding name="LogServicePortBinding" type="tns:LogService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="createLog">
+<operation name="editLog">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
 </input>
 </operation>
-<operation name="editLog">
+<operation name="removeLog">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -96,12 +96,6 @@
 <output>
 <soap:body use="literal"/>
 </output>
-</operation>
-<operation name="removeLog">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
 </operation>
 <operation name="findAllLog">
 <soap:operation soapAction=""/>
@@ -138,6 +132,12 @@
 <output>
 <soap:body use="literal"/>
 </output>
+</operation>
+<operation name="createLog">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
 </operation>
 </binding>
 <service name="LogService">

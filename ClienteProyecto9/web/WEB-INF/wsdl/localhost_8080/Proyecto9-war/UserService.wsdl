@@ -4,57 +4,6 @@
 <xsd:import namespace="http://service/" schemaLocation="http://localhost:8080/Proyecto9-war/UserService?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="findRangeUser">
-<part name="parameters" element="tns:findRangeUser"/>
-</message>
-<message name="findRangeUserResponse">
-<part name="parameters" element="tns:findRangeUserResponse"/>
-</message>
-<message name="countUser">
-<part name="parameters" element="tns:countUser"/>
-</message>
-<message name="countUserResponse">
-<part name="parameters" element="tns:countUserResponse"/>
-</message>
-<message name="removeUser">
-<part name="parameters" element="tns:removeUser"/>
-</message>
-<message name="findUser">
-<part name="parameters" element="tns:findUser"/>
-</message>
-<message name="findUserResponse">
-<part name="parameters" element="tns:findUserResponse"/>
-</message>
-<message name="findListaTesorosCreados">
-<part name="parameters" element="tns:findListaTesorosCreados"/>
-</message>
-<message name="findListaTesorosCreadosResponse">
-<part name="parameters" element="tns:findListaTesorosCreadosResponse"/>
-</message>
-<message name="findAllUser">
-<part name="parameters" element="tns:findAllUser"/>
-</message>
-<message name="findAllUserResponse">
-<part name="parameters" element="tns:findAllUserResponse"/>
-</message>
-<message name="findByUsername">
-<part name="parameters" element="tns:findByUsername"/>
-</message>
-<message name="findByUsernameResponse">
-<part name="parameters" element="tns:findByUsernameResponse"/>
-</message>
-<message name="findByPartialUsername">
-<part name="parameters" element="tns:findByPartialUsername"/>
-</message>
-<message name="findByPartialUsernameResponse">
-<part name="parameters" element="tns:findByPartialUsernameResponse"/>
-</message>
-<message name="findByPartialEmail">
-<part name="parameters" element="tns:findByPartialEmail"/>
-</message>
-<message name="findByPartialEmailResponse">
-<part name="parameters" element="tns:findByPartialEmailResponse"/>
-</message>
 <message name="findByRol">
 <part name="parameters" element="tns:findByRol"/>
 </message>
@@ -64,45 +13,61 @@
 <message name="createUser">
 <part name="parameters" element="tns:createUser"/>
 </message>
+<message name="findUser">
+<part name="parameters" element="tns:findUser"/>
+</message>
+<message name="findUserResponse">
+<part name="parameters" element="tns:findUserResponse"/>
+</message>
+<message name="countUser">
+<part name="parameters" element="tns:countUser"/>
+</message>
+<message name="countUserResponse">
+<part name="parameters" element="tns:countUserResponse"/>
+</message>
+<message name="findAllUser">
+<part name="parameters" element="tns:findAllUser"/>
+</message>
+<message name="findAllUserResponse">
+<part name="parameters" element="tns:findAllUserResponse"/>
+</message>
 <message name="editUser">
 <part name="parameters" element="tns:editUser"/>
 </message>
+<message name="findByPartialEmail">
+<part name="parameters" element="tns:findByPartialEmail"/>
+</message>
+<message name="findByPartialEmailResponse">
+<part name="parameters" element="tns:findByPartialEmailResponse"/>
+</message>
+<message name="findByPartialUsername">
+<part name="parameters" element="tns:findByPartialUsername"/>
+</message>
+<message name="findByPartialUsernameResponse">
+<part name="parameters" element="tns:findByPartialUsernameResponse"/>
+</message>
+<message name="findByUsername">
+<part name="parameters" element="tns:findByUsername"/>
+</message>
+<message name="findByUsernameResponse">
+<part name="parameters" element="tns:findByUsernameResponse"/>
+</message>
+<message name="findListaTesorosCreados">
+<part name="parameters" element="tns:findListaTesorosCreados"/>
+</message>
+<message name="findListaTesorosCreadosResponse">
+<part name="parameters" element="tns:findListaTesorosCreadosResponse"/>
+</message>
+<message name="removeUser">
+<part name="parameters" element="tns:removeUser"/>
+</message>
+<message name="findRangeUser">
+<part name="parameters" element="tns:findRangeUser"/>
+</message>
+<message name="findRangeUserResponse">
+<part name="parameters" element="tns:findRangeUserResponse"/>
+</message>
 <portType name="UserService">
-<operation name="findRangeUser">
-<input wsam:Action="http://service/UserService/findRangeUserRequest" message="tns:findRangeUser"/>
-<output wsam:Action="http://service/UserService/findRangeUserResponse" message="tns:findRangeUserResponse"/>
-</operation>
-<operation name="countUser">
-<input wsam:Action="http://service/UserService/countUserRequest" message="tns:countUser"/>
-<output wsam:Action="http://service/UserService/countUserResponse" message="tns:countUserResponse"/>
-</operation>
-<operation name="removeUser">
-<input wsam:Action="http://service/UserService/removeUser" message="tns:removeUser"/>
-</operation>
-<operation name="findUser">
-<input wsam:Action="http://service/UserService/findUserRequest" message="tns:findUser"/>
-<output wsam:Action="http://service/UserService/findUserResponse" message="tns:findUserResponse"/>
-</operation>
-<operation name="findListaTesorosCreados">
-<input wsam:Action="http://service/UserService/findListaTesorosCreadosRequest" message="tns:findListaTesorosCreados"/>
-<output wsam:Action="http://service/UserService/findListaTesorosCreadosResponse" message="tns:findListaTesorosCreadosResponse"/>
-</operation>
-<operation name="findAllUser">
-<input wsam:Action="http://service/UserService/findAllUserRequest" message="tns:findAllUser"/>
-<output wsam:Action="http://service/UserService/findAllUserResponse" message="tns:findAllUserResponse"/>
-</operation>
-<operation name="findByUsername">
-<input wsam:Action="http://service/UserService/findByUsernameRequest" message="tns:findByUsername"/>
-<output wsam:Action="http://service/UserService/findByUsernameResponse" message="tns:findByUsernameResponse"/>
-</operation>
-<operation name="findByPartialUsername">
-<input wsam:Action="http://service/UserService/findByPartialUsernameRequest" message="tns:findByPartialUsername"/>
-<output wsam:Action="http://service/UserService/findByPartialUsernameResponse" message="tns:findByPartialUsernameResponse"/>
-</operation>
-<operation name="findByPartialEmail">
-<input wsam:Action="http://service/UserService/findByPartialEmailRequest" message="tns:findByPartialEmail"/>
-<output wsam:Action="http://service/UserService/findByPartialEmailResponse" message="tns:findByPartialEmailResponse"/>
-</operation>
 <operation name="findByRol">
 <input wsam:Action="http://service/UserService/findByRolRequest" message="tns:findByRol"/>
 <output wsam:Action="http://service/UserService/findByRolResponse" message="tns:findByRolResponse"/>
@@ -110,13 +75,63 @@
 <operation name="createUser">
 <input wsam:Action="http://service/UserService/createUser" message="tns:createUser"/>
 </operation>
+<operation name="findUser">
+<input wsam:Action="http://service/UserService/findUserRequest" message="tns:findUser"/>
+<output wsam:Action="http://service/UserService/findUserResponse" message="tns:findUserResponse"/>
+</operation>
+<operation name="countUser">
+<input wsam:Action="http://service/UserService/countUserRequest" message="tns:countUser"/>
+<output wsam:Action="http://service/UserService/countUserResponse" message="tns:countUserResponse"/>
+</operation>
+<operation name="findAllUser">
+<input wsam:Action="http://service/UserService/findAllUserRequest" message="tns:findAllUser"/>
+<output wsam:Action="http://service/UserService/findAllUserResponse" message="tns:findAllUserResponse"/>
+</operation>
 <operation name="editUser">
 <input wsam:Action="http://service/UserService/editUser" message="tns:editUser"/>
+</operation>
+<operation name="findByPartialEmail">
+<input wsam:Action="http://service/UserService/findByPartialEmailRequest" message="tns:findByPartialEmail"/>
+<output wsam:Action="http://service/UserService/findByPartialEmailResponse" message="tns:findByPartialEmailResponse"/>
+</operation>
+<operation name="findByPartialUsername">
+<input wsam:Action="http://service/UserService/findByPartialUsernameRequest" message="tns:findByPartialUsername"/>
+<output wsam:Action="http://service/UserService/findByPartialUsernameResponse" message="tns:findByPartialUsernameResponse"/>
+</operation>
+<operation name="findByUsername">
+<input wsam:Action="http://service/UserService/findByUsernameRequest" message="tns:findByUsername"/>
+<output wsam:Action="http://service/UserService/findByUsernameResponse" message="tns:findByUsernameResponse"/>
+</operation>
+<operation name="findListaTesorosCreados">
+<input wsam:Action="http://service/UserService/findListaTesorosCreadosRequest" message="tns:findListaTesorosCreados"/>
+<output wsam:Action="http://service/UserService/findListaTesorosCreadosResponse" message="tns:findListaTesorosCreadosResponse"/>
+</operation>
+<operation name="removeUser">
+<input wsam:Action="http://service/UserService/removeUser" message="tns:removeUser"/>
+</operation>
+<operation name="findRangeUser">
+<input wsam:Action="http://service/UserService/findRangeUserRequest" message="tns:findRangeUser"/>
+<output wsam:Action="http://service/UserService/findRangeUserResponse" message="tns:findRangeUserResponse"/>
 </operation>
 </portType>
 <binding name="UserServicePortBinding" type="tns:UserService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="findRangeUser">
+<operation name="findByRol">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="createUser">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+</operation>
+<operation name="findUser">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -134,30 +149,6 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="removeUser">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-</operation>
-<operation name="findUser">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="findListaTesorosCreados">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
 <operation name="findAllUser">
 <soap:operation soapAction=""/>
 <input>
@@ -167,7 +158,13 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="findByUsername">
+<operation name="editUser">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+</operation>
+<operation name="findByPartialEmail">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -185,7 +182,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="findByPartialEmail">
+<operation name="findByUsername">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -194,7 +191,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="findByRol">
+<operation name="findListaTesorosCreados">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -203,17 +200,20 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="createUser">
+<operation name="removeUser">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
 </input>
 </operation>
-<operation name="editUser">
+<operation name="findRangeUser">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
 </input>
+<output>
+<soap:body use="literal"/>
+</output>
 </operation>
 </binding>
 <service name="UserService">

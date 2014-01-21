@@ -82,6 +82,7 @@
 
 <xs:complexType name="tesoro">
 <xs:sequence>
+<xs:element name="altitud" type="xs:string" minOccurs="0"/>
 <xs:element name="ciudad" type="xs:string" minOccurs="0"/>
 <xs:element name="codigoSecreto" type="xs:string" minOccurs="0"/>
 <xs:element name="habilitado" type="xs:boolean"/>
@@ -105,6 +106,12 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="removeUser">
+<xs:sequence>
+<xs:element name="entity" type="tns:user" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="findUser">
 <xs:sequence>
 <xs:element name="id" type="xs:anyType" minOccurs="0"/>
@@ -114,12 +121,6 @@
 <xs:complexType name="findUserResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:user" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="removeUser">
-<xs:sequence>
-<xs:element name="entity" type="tns:user" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -135,16 +136,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="countUser">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="countUserResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="findRangeUser">
 <xs:sequence>
 <xs:element name="range" type="xs:int" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
@@ -157,9 +148,13 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="createUser">
+<xs:complexType name="countUser">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="countUserResponse">
 <xs:sequence>
-<xs:element name="entity" type="tns:user" minOccurs="0"/>
+<xs:element name="return" type="xs:int"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -173,7 +168,7 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="editUser">
+<xs:complexType name="createUser">
 <xs:sequence>
 <xs:element name="entity" type="tns:user" minOccurs="0"/>
 </xs:sequence>
@@ -188,6 +183,12 @@
 <xs:complexType name="findByPartialEmailResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:user" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="editUser">
+<xs:sequence>
+<xs:element name="entity" type="tns:user" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>
