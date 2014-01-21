@@ -35,6 +35,11 @@ public class GoogleGeoClient {
         client = javax.ws.rs.client.ClientBuilder.newClient();
         webTarget = client.target(BASE_URI).path("geocode/xml");
     }
+    
+    public GoogleGeoClient(byte b){
+        client = javax.ws.rs.client.ClientBuilder.newClient();
+        webTarget = client.target(BASE_URI).path("geocode/json");
+    }
 
     /**
      * @param responseType Class representing the response
@@ -90,6 +95,30 @@ public class GoogleGeoClient {
         
         
         T s = webTarget.request(javax.ws.rs.core.MediaType.APPLICATION_XML).get(responseType);
+        System.out.println("Devuelto ok");
+        return s;
+    }
+    
+    public <T> T geocodeInversoJSON(Class<T> responseType, String latlng, String sensor, String... optionalQueryParams) throws ClientErrorException {
+        String[] queryParamNames = new String[]{"latlng", "sensor"};
+        String[] queryParamValues = new String[]{latlng, sensor};
+       
+        javax.ws.rs.core.Form form = getQueryOrFormParams(queryParamNames, queryParamValues);
+        javax.ws.rs.core.MultivaluedMap<String, String> map = form.asMap();
+        for (java.util.Map.Entry<String, java.util.List<String>> entry : map.entrySet()) {
+            java.util.List<String> list = entry.getValue();
+            String[] values = list.toArray(new String[list.size()]);
+            webTarget = webTarget.queryParam(entry.getKey(), (Object[]) values);
+        }
+        javax.ws.rs.core.MultivaluedMap<String, String> mapOptionalParams = getQParams(optionalQueryParams);
+        for (java.util.Map.Entry<String, java.util.List<String>> entry : mapOptionalParams.entrySet()) {
+            java.util.List<String> list = entry.getValue();
+            String[] values = list.toArray(new String[list.size()]);
+            webTarget = webTarget.queryParam(entry.getKey(), (Object[]) values);
+        }
+        
+        
+        T s = webTarget.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
         System.out.println("Devuelto ok");
         return s;
     }

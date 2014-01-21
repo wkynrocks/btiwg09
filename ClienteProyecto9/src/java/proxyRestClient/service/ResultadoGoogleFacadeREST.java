@@ -9,6 +9,7 @@ package proxyRestClient.service;
 import javax.ejb.Stateless;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 /**
@@ -24,10 +25,12 @@ public class ResultadoGoogleFacadeREST {
     }
 
     @GET
-    @Path("latlong")
+    @Path("{lat}/{long}")
     @Produces({"application/json"})
-    public String g() {
-        return "{nombre:Pepe}";
+    public String direccionDesdeLatLong(@PathParam("lat")String lat, @PathParam("long")String longitud) {
+        byte json = 0;
+        rest.clients.GoogleGeoClient cliente = new rest.clients.GoogleGeoClient(json);
+        return cliente.geocodeInversoJSON(String.class, lat+","+longitud, "true", "");
     }
     
 }
