@@ -53,11 +53,17 @@
             }
             
             function funcionArrayCustomersJsonACadenaHTML(elementoJSON) {
-                var textoHTML = "<ul>";
-                for(i=0;i&lt;elementoJSON.length;i++){
-                    textoHTML += "<li>Direcciones: "+elementoJSON.results[i].formatted_address+"</li>";
+//                var textoHTML = "<ul>";
+//                for(i=0;i&lt;elementoJSON.length;i++){
+//                    textoHTML += "<li>Direcciones: "+elementoJSON.results[i].formatted_address+"</li>";
+//                }
+//                textoHTML += "</ul>";
+                if(elementoJSON.results.length &gt; 0){
+                    textoHTML = elementoJSON.results[0].formatted_address;
+                }else{
+                    textoHTML = "NO EXISTE NINGUNA DIRECCION"
                 }
-                textoHTML += "</ul>";
+                
                 return textoHTML;
             }
         </script>
