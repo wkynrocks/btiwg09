@@ -30,7 +30,7 @@
                 var entradaTextoLat = document.getElementById("entradaTextoLat");
                 var entradaTextoLong = document.getElementById("entradaTextoLong");
                 var ajaxURL =
-                        "http://localhost:8080/ClienteProyecto9/web/proxy/" + entradaTextoLat.value +"/"+entradaTextoLong.value;
+                        "http://localhost:8080/ClienteProyecto9/web/proxy?lat=" + entradaTextoLat.value +"&amp;long="+entradaTextoLong.value;
                 xmlhttp.onreadystatechange = funcionCambioEstado;
                 xmlhttp.open("GET", ajaxURL, true);
                 xmlhttp.send();
@@ -53,11 +53,6 @@
             }
             
             function funcionArrayCustomersJsonACadenaHTML(elementoJSON) {
-//                var textoHTML = "<ul>";
-//                for(i=0;i&lt;elementoJSON.length;i++){
-//                    textoHTML += "<li>Direcciones: "+elementoJSON.results[i].formatted_address+"</li>";
-//                }
-//                textoHTML += "</ul>";
                 if(elementoJSON.results.length &gt; 0){
                     textoHTML = elementoJSON.results[0].formatted_address;
                 }else{
