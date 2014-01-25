@@ -51,6 +51,21 @@ public class FlickrClient {
         return webTarget.request(javax.ws.rs.core.MediaType.TEXT_XML).get(responseType);
      }
     
+    public <T> T photos_latlong(Class<T> responseType, String api_key, String id){
+        String[] queryParamNames = new String[]{"method", "api_key", "photo_id"};
+         String[] queryParamValues = new String[]{"flickr.photos.geo.getLocation", api_key, id};
+         javax.ws.rs.core.Form form = getQueryOrFormParams(queryParamNames, queryParamValues);
+        javax.ws.rs.core.MultivaluedMap<String, String> map = form.asMap();
+        for (java.util.Map.Entry<String, java.util.List<String>> entry : map.entrySet()) {
+            java.util.List<String> list = entry.getValue();
+            String[] values = list.toArray(new String[list.size()]);
+            webTarget = webTarget.queryParam(entry.getKey(), (Object[]) values);
+        }        
+        
+        return webTarget.request(javax.ws.rs.core.MediaType.TEXT_XML).get(responseType);
+         
+    }
+    
         private Form getQueryOrFormParams(String[] paramNames, String[] paramValues) {
         Form form = new javax.ws.rs.core.Form();
         for (int i = 0; i < paramNames.length; i++) {

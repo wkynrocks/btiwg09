@@ -7,6 +7,7 @@ package managedBeans;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import rest.domains.elevation.Elevation;
 import rest.domains.geocaching.GeocodeResponse;
 import rest.domains.geocaching.Results;
@@ -18,6 +19,7 @@ import javax.faces.bean.SessionScoped;
 import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.core.GenericType;
 import javax.xml.ws.WebServiceRef;
+import rest.domain.geoFlickr.GeoPhoto;
 import rest.domains.flickr.Flickr;
 import rest.domains.flickr.Photo;
 import service.TesoroService_Service;
@@ -41,6 +43,16 @@ public class Tesoro {
     private List<String> imagenestes;
     private String[] pos;
 
+    public HashMap<String, String> getMap() {
+        return map;
+    }
+
+    public void setMap(HashMap<String, String> map) {
+        this.map = map;
+    }
+    
+    private HashMap<String , String> map = new HashMap<String,String>();
+
     public boolean isErrorTesoroCrear() {
         return errorTesoroCrear;
     }
@@ -51,7 +63,7 @@ public class Tesoro {
 
     private service.Tesoro tesoro;
 
-    public service.Tesoro getTesoro() {
+    public service.Tesoro getTesoro(){
         return tesoro;
     }
 
@@ -155,9 +167,16 @@ public class Tesoro {
             direc.append(p.getSecret()).append("_t.jpg");
             dirphotos.add(direc.toString());
             direc.delete(0, direc.length());
+            map.put(p.getId(), getPhotoLatLong(p.getId()));
         }
         imagenestes = dirphotos;
         return imagenestes;
+    }
+
+    public String getPhotoLatLong(String id) {
+        rest.clients.FlickrClient flickrclient = new rest.clients.FlickrClient();
+        GeoPhoto gp = flickrclient.photos_latlong(GeoPhoto.class, "4bb4a7f3590b07606fc71d4e4e34c656", id);
+        return gp.getPhoto().getLocation().getLatitude() + "-" + gp.getPhoto().getLocation().getLongitude();
     }
 
     public String zoomFoto(String url) {
@@ -177,4 +196,5 @@ public class Tesoro {
     public void setPos(String[] pos) {
         this.pos = pos;
     }
+
 }
