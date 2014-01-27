@@ -25,19 +25,6 @@
             
             
             function initialize() {
-                
-                var neighborhoods=new Array();
-                for (var i=0; i&lt;#{tesoro.map.size()}; i++)
-                {
-                    
-                }
-                
-                var neighborhoods = [
-                    new google.maps.LatLng(52.511467, 13.447179),
-                    new google.maps.LatLng(52.549061, 13.422975),
-                    new google.maps.LatLng(52.497622, 13.396110),
-                    new google.maps.LatLng(52.517683, 13.394393)
-                ];
 
                 var myLatlng = new google.maps.LatLng(#{tesoro.pos[0]},#{tesoro.pos[1]});
 
@@ -67,10 +54,6 @@
                 });
                 return marker;
             }
-
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(mapa, error);
-            }
         </script>
     </h:head>
     <h:body> 
@@ -98,11 +81,7 @@
                 <br/>
                 <br/>
                 Imagenes 
-                <!--               <h:dataTable value="{tesoro.imagenestesoro()}" var="item">
-                                    <h:column>
-                                        <a href="{tesoro.zoomFoto(item)}"><img src="{item}"/></a>
-                                    </h:column>
-                                  </h:dataTable>-->
+              
                 <h:panelGrid columns="3" cellpadding="3" rules="all">   
                     <ui:repeat value="#{tesoro.imagenestesoro()}" var="item">
                         
@@ -113,6 +92,9 @@
                 <h:panelGrid>
                     <div id="map-canvas" style="height:400px; width: 600px"></div>
                 </h:panelGrid>
+                <h:link value="Ver Mapa Detallado" outcome="mapaDetallado"/>
+                <br/>
+                <br/>
                 <h:link value="Crear Log" outcome="crearLog"/>
                 <br/>
                 <br/>

@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+        <script type="text/javascript"
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDK0Dbn9WqOhi-xwWFruKqcTeSV9P-gZ8c&amp;sensor=false">
+        </script>
+
+        <script type="text/javascript">
+            var myLatlng = new google.maps.LatLng(#{tesoro.pos[0]},#{tesoro.pos[1]});
+            
+            var locations =[
+                              [#{tesoro.lgphotos[0][0]},#{tesoro.lgphotos[0][1]}],
+                              [#{tesoro.lgphotos[1][0]},#{tesoro.lgphotos[1][1]}],
+                              [#{tesoro.lgphotos[2][0]},#{tesoro.lgphotos[2][1]}],
+                              [#{tesoro.lgphotos[3][0]},#{tesoro.lgphotos[3][1]}],
+                              [#{tesoro.lgphotos[4][0]},#{tesoro.lgphotos[4][1]}],
+                              [#{tesoro.lgphotos[5][0]},#{tesoro.lgphotos[5][1]}]
+                               ];
+                               
+            var dirphotos = [
+                            ["#{tesoro.webphotos[0]}"],
+                            ["#{tesoro.webphotos[1]}"],
+                            ["#{tesoro.webphotos[2]}"],
+                            ["#{tesoro.webphotos[3]}"],
+                            ["#{tesoro.webphotos[4]}"],
+                            ["#{tesoro.webphotos[5]}"],
+            ];
+    
+            var map;
+            var marker;
+           
+ 
+            function initialize() {
+              var mapOptions = {
+                zoom: 8,
+                center: myLatlng
+              };
+
+              map = new google.maps.Map(document.getElementById('map-canvas'),
+                      mapOptions);
+                      
+              var infowindow = new google.maps.InfoWindow();
+        
+              for (var i = 0; i &lt; locations.length; i++){
+                  marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(locations[i][0],locations[i][1]),
+                    map: map
+                  });
+                  
+                  google.maps.event.addListener(marker, 'click', (function(marker,i){
+                      return function(){
+                          infowindow.setContent('<img src="'+dirphotos[i]+'"></img>');
+                          infowindow.open(map,marker);
+                      }
+                  })(marker,i));
+              }
+          }
+
+            google.maps.event.addDomListener(window, 'load', initialize);
+            </script>
+    </h:head>
+    <h:body>
+        <h:panelGrid>
+                    <div id="map-canvas" style="height:600px; width: 900px"></div>
+                </h:panelGrid>
+    </h:body>
+</html>
+

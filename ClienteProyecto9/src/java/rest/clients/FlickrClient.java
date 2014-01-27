@@ -26,10 +26,10 @@ public class FlickrClient {
     }
     
     public <T> T photos_ownsearch(Class<T> responseType, String api_key, String lat, String lng, String... optionalQueryParams)  {
-        String lat1 = String.valueOf(Double.parseDouble(lat)-1);
-        String lng1 = String.valueOf(Double.parseDouble(lng)-1);
-        String lat2 = String.valueOf(Double.parseDouble(lat)+1);
-        String lng2 = String.valueOf(Double.parseDouble(lng)+1);
+        String lat1 = String.valueOf(Double.parseDouble(lat)-0.5);
+        String lng1 = String.valueOf(Double.parseDouble(lng)-0.5);
+        String lat2 = String.valueOf(Double.parseDouble(lat)+0.5);
+        String lng2 = String.valueOf(Double.parseDouble(lng)+0.5);
         String bbox = lat1+","+lng1+","+lat2+","+lng2;
         String[] queryParamNames = new String[]{"method", "api_key", "bbox"};
         String[] queryParamValues = new String[]{"flickr.photos.search", api_key, bbox};

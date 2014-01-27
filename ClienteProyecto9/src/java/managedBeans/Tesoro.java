@@ -7,17 +7,14 @@ package managedBeans;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import rest.domains.elevation.Elevation;
 import rest.domains.geocaching.GeocodeResponse;
 import rest.domains.geocaching.Results;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.ws.rs.ClientErrorException;
-import javax.ws.rs.core.GenericType;
 import javax.xml.ws.WebServiceRef;
 import rest.domain.geoFlickr.GeoPhoto;
 import rest.domains.flickr.Flickr;
@@ -42,16 +39,8 @@ public class Tesoro {
     private boolean errorTesoroCrear = false;
     private List<String> imagenestes;
     private String[] pos;
-
-    public HashMap<String, String> getMap() {
-        return map;
-    }
-
-    public void setMap(HashMap<String, String> map) {
-        this.map = map;
-    }
-    
-    private HashMap<String , String> map = new HashMap<String,String>();
+    private Double[][] lgphotos;
+    private String[] webphotos;
 
     public boolean isErrorTesoroCrear() {
         return errorTesoroCrear;
@@ -112,6 +101,8 @@ public class Tesoro {
 
     @PostConstruct
     public void init() {
+        lgphotos = new Double[6][2];
+        webphotos = new String[6];
         tesoro = new service.Tesoro();
 
     }
@@ -158,6 +149,7 @@ public class Tesoro {
         //http://farmX.staticflickr.com/SERVER/ID_SECRET_A.jpg
         List<String> dirphotos = new ArrayList();
         StringBuilder direc = new StringBuilder();
+        int i = 0;
         for (Photo p : lphotos) {
             direc.append("http://farm");
             direc.append(p.getFarm());
@@ -166,18 +158,17 @@ public class Tesoro {
             direc.append(p.getId()).append("_");
             direc.append(p.getSecret()).append("_t.jpg");
             dirphotos.add(direc.toString());
+            webphotos[i] = direc.toString();
             direc.delete(0, direc.length());
-            map.put(p.getId(), getPhotoLatLong(p.getId()));
+            GeoPhoto gp = flickrclient.photos_latlong(GeoPhoto.class, "4bb4a7f3590b07606fc71d4e4e34c656", p.getId());
+            lgphotos[i][0] = gp.getPhoto().getLocation().getLatitude();
+            lgphotos[i][1] = gp.getPhoto().getLocation().getLongitude();
+            i++;
         }
         imagenestes = dirphotos;
         return imagenestes;
     }
 
-    public String getPhotoLatLong(String id) {
-        rest.clients.FlickrClient flickrclient = new rest.clients.FlickrClient();
-        GeoPhoto gp = flickrclient.photos_latlong(GeoPhoto.class, "4bb4a7f3590b07606fc71d4e4e34c656", id);
-        return gp.getPhoto().getLocation().getLatitude() + "-" + gp.getPhoto().getLocation().getLongitude();
-    }
 
     public String zoomFoto(String url) {
         return url.replaceAll("_t.jpg", "_z.jpg");
@@ -196,5 +187,38 @@ public class Tesoro {
     public void setPos(String[] pos) {
         this.pos = pos;
     }
+
+    /**
+     * @return the lgphotos
+     */
+    public Double[][] getLgphotos() {
+        return lgphotos;
+    }
+
+    /**
+     * @param lgphotos the lgphotos to set
+     */
+    public void setLgphotos(Double[][] lgphotos) {
+        this.lgphotos = lgphotos;
+    }
+
+    /**
+     * @return the webphotos
+     */
+    public String[] getWebphotos() {
+        return webphotos;
+    }
+
+    /**
+     * @param webphotos the webphotos to set
+     */
+    public void setWebphotos(String[] webphotos) {
+        this.webphotos = webphotos;
+    }
+
+    /**
+     * @return the lgphotos
+     */
+
 
 }
