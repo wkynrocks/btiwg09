@@ -6,119 +6,117 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Home Usuario</title>
-              <script type="text/javascript"
+        <script type="text/javascript"
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDK0Dbn9WqOhi-xwWFruKqcTeSV9P-gZ8c&amp;sensor=false">
         </script>
 
-    <script type="text/javascript">
-        
-      var latValue;
-      var longValue;
-      function initialize() {
+        <script type="text/javascript">
 
-                var myLatlng = new google.maps.LatLng(latValue.valueOf(), longValue.valueOf());
-                var myTitle = "My location";
-                var mapOptions = {
-                    center: myLatlng,
-                    zoom: 10
-                };
-                map = new google.maps.Map(document.getElementById("map-canvas"),
-                        mapOptions);
-                myPositionMarker = addMarker(map, myLatlng, myTitle);
-            }
+                    var latValue;
+                    var longValue;
+                    function initialize() {
+
+                    var myLatlng = new google.maps.LatLng(latValue.valueOf(), longValue.valueOf());
+                            var myTitle = "My location";
+                            var mapOptions = {
+                            center: myLatlng,
+                                    zoom: 10
+                            };
+                            map = new google.maps.Map(document.getElementById("map-canvas"),
+                                    mapOptions);
+                            myPositionMarker = addMarker(map, myLatlng, myTitle);
+                    }
             google.maps.event.addDomListener(window, 'load', getGeoLocation);
-
-            function addMarker(map, latlong, title) {
-                var marker = new google.maps.Marker({
+                    function addMarker(map, latlong, title) {
+                    var marker = new google.maps.Marker({
                     position: latlong,
-                    map: map,
-                    title: title
-                });
-                return marker;
-            }
+                            map: map,
+                            title: title
+                    });
+                            return marker;
+                    }
 
             // Geolocalización por el navegador
             function getGeoLocation() {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError, {enableHighAccuracy: true});
-                } else {
-                    alert("Tu navegador o dispositivo no soporta geolocalización");
-                }
+            if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError, {enableHighAccuracy: true});
+            } else {
+            alert("Tu navegador o dispositivo no soporta geolocalización");
+            }
             }
             // Se obtiene con éxito la localización
             function onGeoSuccess(position) {
-                latValue = position.coords.latitude;
-                longValue = position.coords.longitude;
-                initialize();
+            latValue = position.coords.latitude;
+                    longValue = position.coords.longitude;
+                    initialize();
             }
 
             // Función por si algo fue mal en la localización
             function onGeoError(event) {
-                alert("Error con código: " + event.code + ". " + event.message);
-                latValue = 0;
-                longValue = 0;
-                initialize();
+            alert("Error con código: " + event.code + ". " + event.message);
+                    latValue = 0;
+                    longValue = 0;
+                    initialize();
             }
-            
+
             function getXMLHttpRequest(){
-                var xmlhttp;
-                if(window.XMLHttpRequest){
-                    // IE7+, Firefox, Chrome, Opera, Safari
-                    xmlhttp = new XMLHttpRequest();
-                }else{
-                    // IE6, IE5
-                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-                return xmlhttp;
+            var xmlhttp;
+                    if (window.XMLHttpRequest){
+            // IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+            } else{
+            // IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            return xmlhttp;
             }
 
             function llamarServidorRemoto(){
-                var xmlhttp = getXMLHttpRequest();
-                /*
-                 * En lugar de llamar a la URL remota http://localhost:8080/ServidorRemoto/rest/customer/findByName?name=XXXX,
-                 * se llama a la aplicación propia (AjaxCliente) pasándole el 
-                 * valor del parámetro imput de texto
-                */
-                var entradaTextoLat = document.getElementById("entradaTextoLat");
-                var entradaTextoLong = document.getElementById("entradaTextoLong");
-                var ajaxURL =
-                        "http://localhost:8080/ClienteProyecto9/web/proxy?lat=" + entradaTextoLat.value +"&amp;long="+entradaTextoLong.value;
-                xmlhttp.onreadystatechange = funcionCambioEstado;
-                xmlhttp.open("GET", ajaxURL, true);
-                xmlhttp.send();
+            var xmlhttp = getXMLHttpRequest();
+                    /*
+                     * En lugar de llamar a la URL remota http://localhost:8080/ServidorRemoto/rest/customer/findByName?name=XXXX,
+                     * se llama a la aplicación propia (AjaxCliente) pasándole el 
+                     * valor del parámetro imput de texto
+                     */
+                    var entradaTextoLat = document.getElementById("entradaTextoLat");
+                    var entradaTextoLong = document.getElementById("entradaTextoLong");
+                    var ajaxURL =
+                    "http://localhost:8080/ClienteProyecto9/web/proxy?lat=" + entradaTextoLat.value + "&amp;long=" + entradaTextoLong.value;
+                    xmlhttp.onreadystatechange = funcionCambioEstado;
+                    xmlhttp.open("GET", ajaxURL, true);
+                    xmlhttp.send();
             }
 
             function funcionCambioEstado() {
-                if (this.readyState === 4 &amp;&amp; this.status === 200) {
-                    var respuestaCadenaJSON = this.responseText;
+            if (this.readyState === 4 &amp;&amp; this.status === 200) {
+            var respuestaCadenaJSON = this.responseText;
                     var respuestaObjetoJSON = JSON.parse(respuestaCadenaJSON);
                     var textoMostrar = funcionArrayCustomersJsonACadenaHTML(respuestaObjetoJSON);
                     var contenedorAjax = document.getElementById("contenedorAjax");
                     //como es un Div, puedo modificar su propiedad innerHTML:
                     contenedorAjax.innerHTML = "" + textoMostrar;
-                    
-                }else if (this.readyState === 4){
-                    var contenedorAjax = document.getElementById("contenedorAjax");
+            } else if (this.readyState === 4){
+            var contenedorAjax = document.getElementById("contenedorAjax");
                     //como es un Div, puedo modificar su propiedad innerHTML:
                     contenedorAjax.innerHTML = "Error en la petici&oacute;n: " + this.status;
-                }
             }
-            
+            }
+
             function funcionArrayCustomersJsonACadenaHTML(elementoJSON) {
-                if(elementoJSON.results.length &gt; 0){
-                    textoHTML = elementoJSON.results[0].formatted_address;
-                }else{
-                    textoHTML = "NO EXISTE NINGUNA DIRECCION"
-                }
-                
-                return textoHTML;
+            if (elementoJSON.results.length &gt; 0){
+            textoHTML = elementoJSON.results[0].formatted_address;
+            } else{
+            textoHTML = "NO EXISTE NINGUNA DIRECCION"
             }
-    </script>
+
+            return textoHTML;
+            }
+        </script>
     </h:head>
     <h:body>
-        
-            
-       
+
+
+
         <h:panelGrid  style="text-align: left; margin-left: 0" cellspacing="20%"  columns="2" >
             <ui:include src="logout.xhtml" />
             <ui:include src="notificaciones.xhtml" />
@@ -127,51 +125,58 @@
                 <h:link  value="Gestionar Usuarios" outcome="gestionarUsuarios" rendered="#{usuario.isAdmin()}"/>
                 <h:link value="Búsqueda Tesoro" outcome="busquedaTesoro"/>
             </h:panelGrid></h2><br/><br/>
-            <h:form >
-                <h:dataTable border="1" value="#{listarTesoros.lista}" var="item" style="margin: auto;text-align: center" rendered="#{listarTesoros.busqueda}">
-                    <h:column >
-                        <f:facet name="header">Nombre</f:facet>
-                            #{item.nombre}
-                    </h:column>
-                    <h:column >
-                        <f:facet name="header">Ciudad</f:facet>
-                            #{item.ciudad}
-                    </h:column>
-                    <h:column >
-                        <f:facet name="header">Pais</f:facet>
-                            #{item.pais}
-                    </h:column>
-                    <h:column >
-                        <f:facet name="header">Posición</f:facet>
-                            #{item.posicion}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Ciudad</f:facet>
-                            #{item.ciudad}
-                    </h:column>
-                    <h:column >
-                        <f:facet name="header">Habilitado</f:facet>
-                            #{item.habilitado}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Creado por</f:facet>
-                            #{item.useridUser.username}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Información</f:facet>
-                        <h:commandButton value="Más Info" action="#{tesoro.pagInfo(item)}" rendered="#{item.habilitado}"/>
-                    </h:column>  
-                </h:dataTable>   
-                <h2 align="center"><h:outputText value="No estas siguiendo ningún tesoro" rendered="#{listarTesoros.busqueda eq false}"/></h2>
-            </h:form>
+        <h:form >
+            <h:dataTable border="1" value="#{listarTesoros.lista}" var="item" style="margin: auto;text-align: center" rendered="#{listarTesoros.busqueda}">
+                <h:column >
+                    <f:facet name="header">Nombre</f:facet>
+                        #{item.nombre}
+                </h:column>
+                <h:column >
+                    <f:facet name="header">Ciudad</f:facet>
+                        #{item.ciudad}
+                </h:column>
+                <h:column >
+                    <f:facet name="header">Pais</f:facet>
+                        #{item.pais}
+                </h:column>
+                <h:column >
+                    <f:facet name="header">Posición</f:facet>
+                        #{item.posicion}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Ciudad</f:facet>
+                        #{item.ciudad}
+                </h:column>
+                <h:column >
+                    <f:facet name="header">Habilitado</f:facet>
+                        #{item.habilitado}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Creado por</f:facet>
+                        #{item.useridUser.username}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Información</f:facet>
+                    <h:commandButton value="Más Info" action="#{tesoro.pagInfo(item)}" rendered="#{item.habilitado}"/>
+                </h:column>  
+            </h:dataTable>   
+            <h2 align="center"><h:outputText value="No estas siguiendo ningún tesoro" rendered="#{listarTesoros.busqueda eq false}"/></h2>
+        </h:form>
+        <br/>
+        <div style="text-align: center;
+             display: block;
+                 margin-left: auto;
+                 margin-right: auto;width: 600px;"> 
+        <h:outputText value="Posición actual"/>
+            <div id="map-canvas" style="width: 600px;
+                 height:300px;"></div>
+                 <br/>
+                 <h:outputText value="Buscar direccion con Ajax"/><br/>
+                 <b>Latitud: <input type="text" value="12.0239" id="entradaTextoLat"/>
+                     Longitud: <input type="text" value="13.3242" id="entradaTextoLong"/></b>
+            <input type="button" value="Buscar" onclick="llamarServidorRemoto();"/>
             <br/>
-            <h2 align="center"><h:outputText value="Posición actual"/>
-            <div id="map-canvas" style="height:200px; width: 400px"></div></h2>
-        <h3 align="center">       
-        Latitud: <input type="text" value="12.0239" id="entradaTextoLat"/>
-        Longitud: <input type="text" value="13.3242" id="entradaTextoLong"/>
-        <input type="button" value="Buscar" onclick="llamarServidorRemoto();"/>
-        <div id="contenedorAjax" ></div></h3>
+            <div  id="contenedorAjax" style="color: blue"></div></div>
         <h3>
             <h:link value="CrearTesoro" outcome="crearTesoro"/></h3>
         <h3><h:link value="Tesoros Creados" outcome="listaTesoro" /></h3>
