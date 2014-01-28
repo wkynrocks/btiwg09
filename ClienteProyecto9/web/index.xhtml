@@ -5,63 +5,6 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Buscador Tesoros</title>
-        
-        <script type="text/javascript">
-            
-            function getXMLHttpRequest(){
-                var xmlhttp;
-                if(window.XMLHttpRequest){
-                    // IE7+, Firefox, Chrome, Opera, Safari
-                    xmlhttp = new XMLHttpRequest();
-                }else{
-                    // IE6, IE5
-                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-                return xmlhttp;
-            }
-
-            function llamarServidorRemoto(){
-                var xmlhttp = getXMLHttpRequest();
-                /*
-                 * En lugar de llamar a la URL remota http://localhost:8080/ServidorRemoto/rest/customer/findByName?name=XXXX,
-                 * se llama a la aplicación propia (AjaxCliente) pasándole el 
-                 * valor del parámetro imput de texto
-                */
-                var entradaTextoLat = document.getElementById("entradaTextoLat");
-                var entradaTextoLong = document.getElementById("entradaTextoLong");
-                var ajaxURL =
-                        "http://localhost:8080/ClienteProyecto9/web/proxy?lat=" + entradaTextoLat.value +"&amp;long="+entradaTextoLong.value;
-                xmlhttp.onreadystatechange = funcionCambioEstado;
-                xmlhttp.open("GET", ajaxURL, true);
-                xmlhttp.send();
-            }
-
-            function funcionCambioEstado() {
-                if (this.readyState === 4 &amp;&amp; this.status === 200) {
-                    var respuestaCadenaJSON = this.responseText;
-                    var respuestaObjetoJSON = JSON.parse(respuestaCadenaJSON);
-                    var textoMostrar = funcionArrayCustomersJsonACadenaHTML(respuestaObjetoJSON);
-                    var contenedorAjax = document.getElementById("contenedorAjax");
-                    //como es un Div, puedo modificar su propiedad innerHTML:
-                    contenedorAjax.innerHTML = "Respuesta recibida correctamente: " + textoMostrar;
-                    
-                }else if (this.readyState === 4){
-                    var contenedorAjax = document.getElementById("contenedorAjax");
-                    //como es un Div, puedo modificar su propiedad innerHTML:
-                    contenedorAjax.innerHTML = "Error en la petici&oacute;n: " + this.status;
-                }
-            }
-            
-            function funcionArrayCustomersJsonACadenaHTML(elementoJSON) {
-                if(elementoJSON.results.length &gt; 0){
-                    textoHTML = elementoJSON.results[0].formatted_address;
-                }else{
-                    textoHTML = "NO EXISTE NINGUNA DIRECCION"
-                }
-                
-                return textoHTML;
-            }
-        </script>
     </h:head>
     <h:body>
         <h:form>
@@ -74,14 +17,7 @@
                 <h:commandButton value="Aceptar" action="#{usuario.loginUsuario()}"/>
                 <h:messages style="color:red" />
             </h:form>
-        </f:view>
-        <div>TODO write content</div>
-        <input type="text" value="12.0239" id="entradaTextoLat"/>
-        <input type="text" value="13.3242" id="entradaTextoLong"/>
-        <input type="button" value="Ajax" onclick="llamarServidorRemoto();"/>
-        <h1>Respuesta Ajax:</h1>
-        <div id="contenedorAjax" ></div>
-       
+        </f:view>       
     </h:body>
 </html>
 

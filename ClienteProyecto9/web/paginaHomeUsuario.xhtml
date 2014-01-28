@@ -59,6 +59,60 @@
                 longValue = 0;
                 initialize();
             }
+            
+            function getXMLHttpRequest(){
+                var xmlhttp;
+                if(window.XMLHttpRequest){
+                    // IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                }else{
+                    // IE6, IE5
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                return xmlhttp;
+            }
+
+            function llamarServidorRemoto(){
+                var xmlhttp = getXMLHttpRequest();
+                /*
+                 * En lugar de llamar a la URL remota http://localhost:8080/ServidorRemoto/rest/customer/findByName?name=XXXX,
+                 * se llama a la aplicación propia (AjaxCliente) pasándole el 
+                 * valor del parámetro imput de texto
+                */
+                var entradaTextoLat = document.getElementById("entradaTextoLat");
+                var entradaTextoLong = document.getElementById("entradaTextoLong");
+                var ajaxURL =
+                        "http://localhost:8080/ClienteProyecto9/web/proxy?lat=" + entradaTextoLat.value +"&amp;long="+entradaTextoLong.value;
+                xmlhttp.onreadystatechange = funcionCambioEstado;
+                xmlhttp.open("GET", ajaxURL, true);
+                xmlhttp.send();
+            }
+
+            function funcionCambioEstado() {
+                if (this.readyState === 4 &amp;&amp; this.status === 200) {
+                    var respuestaCadenaJSON = this.responseText;
+                    var respuestaObjetoJSON = JSON.parse(respuestaCadenaJSON);
+                    var textoMostrar = funcionArrayCustomersJsonACadenaHTML(respuestaObjetoJSON);
+                    var contenedorAjax = document.getElementById("contenedorAjax");
+                    //como es un Div, puedo modificar su propiedad innerHTML:
+                    contenedorAjax.innerHTML = "" + textoMostrar;
+                    
+                }else if (this.readyState === 4){
+                    var contenedorAjax = document.getElementById("contenedorAjax");
+                    //como es un Div, puedo modificar su propiedad innerHTML:
+                    contenedorAjax.innerHTML = "Error en la petici&oacute;n: " + this.status;
+                }
+            }
+            
+            function funcionArrayCustomersJsonACadenaHTML(elementoJSON) {
+                if(elementoJSON.results.length &gt; 0){
+                    textoHTML = elementoJSON.results[0].formatted_address;
+                }else{
+                    textoHTML = "NO EXISTE NINGUNA DIRECCION"
+                }
+                
+                return textoHTML;
+            }
     </script>
     </h:head>
     <h:body>
@@ -113,6 +167,11 @@
             <br/>
             <h2 align="center"><h:outputText value="Posición actual"/>
             <div id="map-canvas" style="height:200px; width: 400px"></div></h2>
+        <h3 align="center">       
+        Latitud: <input type="text" value="12.0239" id="entradaTextoLat"/>
+        Longitud: <input type="text" value="13.3242" id="entradaTextoLong"/>
+        <input type="button" value="Buscar" onclick="llamarServidorRemoto();"/>
+        <div id="contenedorAjax" ></div></h3>
         <h3>
             <h:link value="CrearTesoro" outcome="crearTesoro"/></h3>
         <h3><h:link value="Tesoros Creados" outcome="listaTesoro" /></h3>

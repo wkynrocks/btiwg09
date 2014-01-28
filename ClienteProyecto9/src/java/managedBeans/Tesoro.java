@@ -134,14 +134,15 @@ public class Tesoro {
         this.direccion = direccion;
     }
 
-    public String obtenerDireccion() {
+    public String obtenerDireccion() throws ClientErrorException, IOException {
         rest.clients.GoogleGeoClient client = new rest.clients.GoogleGeoClient();
         GeocodeResponse googleInverso = client.geocodeInverso(GeocodeResponse.class, getPos()[0] + "," + getPos()[1], "true", "");
         Results resultInverso = googleInverso.getResults().get(0);
+        imagenestesoro();
         return resultInverso.getFormatted_address();
     }
 
-    public List<String> imagenestesoro() throws ClientErrorException, IOException {
+    public void imagenestesoro() throws ClientErrorException, IOException {
         rest.clients.FlickrClient flickrclient = new rest.clients.FlickrClient();
         Flickr responseflickr = flickrclient.photos_ownsearch(Flickr.class, "4bb4a7f3590b07606fc71d4e4e34c656", getPos()[0], getPos()[1], "");
         List<Photo> lphotos = responseflickr.getPhotos().getPhoto().subList(0, 6);
@@ -165,8 +166,7 @@ public class Tesoro {
             lgphotos[i][1] = gp.getPhoto().getLocation().getLongitude();
             i++;
         }
-        imagenestes = dirphotos;
-        return imagenestes;
+        setImagenestes(dirphotos);
     }
 
 
@@ -214,6 +214,20 @@ public class Tesoro {
      */
     public void setWebphotos(String[] webphotos) {
         this.webphotos = webphotos;
+    }
+
+    /**
+     * @return the imagenestes
+     */
+    public List<String> getImagenestes() {
+        return imagenestes;
+    }
+
+    /**
+     * @param imagenestes the imagenestes to set
+     */
+    public void setImagenestes(List<String> imagenestes) {
+        this.imagenestes = imagenestes;
     }
 
     /**
